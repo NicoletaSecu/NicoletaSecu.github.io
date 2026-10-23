@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Progetti · Nicoleta Secu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Tema: quello salvato, altrimenti quello del sistema.
+    (function () {
+      var t;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+</head>
+<!-- data-title: la chiave del titolo della scheda in content/texts.js -->
+<body data-title="page.projectsTitle">
+  <!-- I testi stanno in content/texts.js: qui sotto ci sono solo quelli italiani di partenza -->
+  <header class="topbar">
+    <a href="index.html" class="brand">Nicoleta Secu</a>
+    <nav class="nav" data-i18n-aria="nav.label" aria-label="Sezioni">
+      <a href="progetti.html" aria-current="page" data-i18n="nav.projects">Progetti</a>
+      <a href="index.html#chi-sono" data-i18n="nav.about">Chi sono</a>
+      <a href="index.html#contatti" data-i18n="nav.contact">Contatti</a>
+    </nav>
+    <div class="lang" role="group" data-i18n-aria="lang.label" aria-label="Lingua">
+      <button type="button" data-lang="it" aria-pressed="true">IT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- TUTTA LA LINEA DEI PROGETTI -->
+    <section id="progetti" class="section">
+      <div class="section-head">
+        <h1 data-i18n="projects.title">La linea dei progetti</h1>
+        <p class="lede" data-i18n="projects.lede">Dal più recente al primo. Ogni fermata è un progetto: passa sopra le foto per svilupparle.</p>
+        <div class="filters" id="filters" role="group" data-i18n-aria="projects.filterLabel" aria-label="Filtra per tipo"></div>
+      </div>
+      <ol class="metro" id="metro" data-view="all"></ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="back-to-desk" href="index.html">
+      <span class="arrow" aria-hidden="true">↑</span>
+      <span data-i18n="footer.back">Torna alla scrivania</span>
+    </a>
+    <!-- L'indirizzo GitHub si imposta in content/settings.js -->
+    <a class="github" href="https://github.com/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+  </footer>
+
+  <!-- contenuti che modifichi tu -->
+  <script src="content/settings.js"></script>
+  <script src="content/texts.js"></script>
+  <script src="content/projects.js"></script>
+  <!-- codice del sito (qui niente scrivania né gravità) -->
+  <script src="js/lang.js"></script>
+  <script src="js/projects-line.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

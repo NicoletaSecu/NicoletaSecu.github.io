@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Tema: quello salvato, altrimenti quello del sistema.
+    (function () {
+      var t;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+</head>
+<body>
+  <!-- I testi stanno in content/texts.js: qui sotto ci sono solo quelli italiani di partenza -->
+  <header class="topbar">
+    <a href="#top" class="brand" data-gravity>Nicoleta Secu</a>
+    <nav class="nav" data-i18n-aria="nav.label" aria-label="Sezioni">
+      <a href="progetti.html" data-gravity data-i18n="nav.projects">Progetti</a>
+      <a href="#chi-sono" data-gravity data-i18n="nav.about">Chi sono</a>
+      <a href="#contatti" data-gravity data-i18n="nav.contact">Contatti</a>
+    </nav>
+    <div class="lang" role="group" data-i18n-aria="lang.label" aria-label="Lingua">
+      <button type="button" data-lang="it" aria-pressed="true">IT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- LA SCRIVANIA -->
+    <section class="desk-wrap" data-i18n-aria="desk.label" aria-label="La mia scrivania">
+      <div class="desk" id="desk">
+        <div class="obj sticky" style="--x:5%;--y:8%;--rot:-4deg" data-gravity data-i18n="desk.sticky">
+          <p>Ciao! Sono <strong>Nicoleta</strong>.</p>
+          <p>Questa è la mia scrivania: tocca gli oggetti per esplorare.</p>
+        </div>
+
+        <a class="obj notebook" href="progetti.html" style="--x:35%;--y:7%;--rot:3deg" data-gravity>
+          <span class="spiral" aria-hidden="true"></span>
+          <span class="nb-title" data-i18n="desk.notebook">Progetti</span>
+          <span class="nb-sub" data-i18n="desk.notebookSub">dal più recente</span>
+        </a>
+
+        <a class="obj mug" href="#chi-sono" style="--x:70%;--y:10%;--rot:0deg" data-gravity>
+          <span class="coffee" aria-hidden="true"></span>
+          <span class="obj-label" data-i18n="desk.mug">Chi sono</span>
+        </a>
+
+        <a class="obj phone" href="#contatti" style="--x:82%;--y:44%;--rot:-8deg" data-gravity>
+          <span class="screen"><span data-i18n="desk.phone">Contatti</span><small data-i18n="desk.phoneSub">scrivimi</small></span>
+        </a>
+
+        <button class="obj lamp" id="lamp" type="button" style="--x:6%;--y:56%;--rot:0deg" data-gravity
+                data-i18n-aria="desk.lampLabel" aria-label="Accendi o spegni la lampada (tema scuro)">
+          <span class="bulb" aria-hidden="true"></span>
+          <span class="obj-label" data-i18n="desk.lamp">luce</span>
+        </button>
+
+        <div class="obj polaroid" style="--x:38%;--y:62%;--rot:-6deg" data-gravity>
+          <!-- ritratto cartoon: capelli castani lunghi e maglia beige (i colori sono in content/settings.js) -->
+          <svg class="pic" viewBox="0 0 100 100" aria-hidden="true">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9ed0e6"/><stop offset="1" stop-color="#d8eef6"/>
+              </linearGradient>
+            </defs>
+            <rect width="100" height="100" fill="url(#sky)"/>
+
+            <!-- capelli dietro: lunghi, scendono oltre le spalle -->
+            <path class="hair hair-neat" d="M23 52 Q19 20 50 16 Q81 20 77 52 Q79 74 85 100 L15 100 Q21 74 23 52 Z"/>
+            <!-- capelli dietro scompigliati: una nuvola gonfia e spettinata -->
+            <path class="hair hair-messy" d="M22 54 L9 44 L18 39 L8 26 L22 27 L17 12 L31 19 L33 4 L44 15 L51 2 L57 15 L68 4 L69 19 L83 12 L78 27 L92 26 L82 39 L91 44 L78 54 L92 66 L80 72 L88 100 L12 100 L20 72 L8 66 Z"/>
+
+            <!-- collo, poi la maglia beige con lo scollo tondo -->
+            <path class="skin" d="M44.5 58 L55.5 58 L55.5 71 Q57 75.5 62 77 Q50 84 38 77 Q43 75.5 44.5 71 Z"/>
+            <path class="neck-shade" d="M44.5 62 Q50 67 55.5 62 L55.5 58 L44.5 58 Z"/>
+            <path class="shirt" d="M14 100 Q15 80 38 77 Q50 84 62 77 Q85 80 86 100 Z"/>
+            <path class="fold" d="M38 77 Q50 84 62 77"/>
+
+            <!-- testa -->
+            <ellipse class="skin" cx="50" cy="46" rx="17.5" ry="20"/>
+
+            <!-- faccia normale -->
+            <g class="face-calm">
+              <path class="brow" d="M39 40 Q43 38 46 40"/>
+              <path class="brow" d="M54 40 Q57 38 61 40"/>
+              <ellipse class="ink" cx="43" cy="47" rx="2" ry="2.4"/>
+              <ellipse class="ink" cx="57" cy="47" rx="2" ry="2.4"/>
+              <circle class="eye-shine" cx="43.7" cy="46.2" r="0.7"/>
+              <circle class="eye-shine" cx="57.7" cy="46.2" r="0.7"/>
+              <!-- palpebre e ciglia -->
+              <path class="lash" d="M40.4 45.8 Q43 43.6 45.6 45.4"/>
+              <path class="lash" d="M40.9 45.2 L39.3 44.1"/>
+              <path class="lash" d="M41.9 44.5 L41 43"/>
+              <path class="lash" d="M54.4 45.4 Q57 43.6 59.6 45.8"/>
+              <path class="lash" d="M59.1 45.2 L60.7 44.1"/>
+              <path class="lash" d="M58.1 44.5 L59 43"/>
+              <path class="line thin" d="M49.5 50 Q48.5 53 50.5 53.4"/>
+              <path class="line" d="M45 56.5 Q50 60.5 55 56.5"/>
+            </g>
+            <!-- faccia stordita (dopo lo scossone) -->
+            <g class="face-dizzy">
+              <path class="line" d="M39.5 47 q1.6 -3 3.2 0 q1.6 3 3.2 0"/>
+              <path class="line" d="M54 47 q1.6 -3 3.2 0 q1.6 3 3.2 0"/>
+              <ellipse class="ink" cx="50" cy="57" rx="2.4" ry="3"/>
+            </g>
+            <circle class="blush" cx="38.5" cy="53" r="3"/>
+            <circle class="blush" cx="61.5" cy="53" r="3"/>
+
+            <!-- capelli davanti: riga in mezzo, fronte scoperta, ciocche sulle spalle -->
+            <g class="hair-neat">
+              <path class="hair" d="M31 47 Q28 21 50 20 Q72 21 69 47 Q67 33 60 28.5 Q54 26.5 50 29.5 Q46 26.5 40 28.5 Q33 33 31 47 Z"/>
+              <path class="hair" d="M33 44 Q28 64 30 80 Q25 84 21 86 Q24 66 27 50 Z"/>
+              <path class="hair" d="M67 44 Q72 64 70 80 Q75 84 79 86 Q76 66 73 50 Z"/>
+              <path class="shine" d="M38 26 Q44 22 48 23"/>
+              <path class="shine" d="M27 58 Q26 68 25 76"/>
+            </g>
+            <!-- capelli davanti scompigliati: ciuffi per aria -->
+            <g class="hair-messy">
+              <path class="hair" d="M29 46 L23 33 L31 35 L28 22 L37 28 L39 14 L46 25 L51 11 L55 25 L63 14 L64 28 L73 22 L69 35 L77 33 L71 46 Q62 33 50 32 Q38 33 29 46 Z"/>
+              <path class="strand" d="M30 20 q-7 -5 -4 -13"/>
+              <path class="strand" d="M70 19 q8 -4 5 -12"/>
+              <path class="strand" d="M50 9 q3 -5 -1 -8"/>
+              <path class="strand" d="M16 52 q-8 2 -10 -5"/>
+              <path class="strand" d="M84 52 q8 2 10 -5"/>
+            </g>
+          </svg>
+          <span class="cap" data-i18n="desk.polaroid">io, più o meno</span>
+        </div>
+
+        <span class="obj pencil" style="--x:14%;--y:88%;--rot:-10deg" data-gravity aria-hidden="true"><span class="pencil-body"></span></span>
+
+        <button class="obj big-red" id="gravityDesk" type="button" style="--x:61%;--y:62%;--rot:0deg" data-gravity>
+          <span data-i18n="desk.button">NON<br>PREMERE</span>
+        </button>
+      </div>
+      <a class="desk-hint" href="#progetti" data-i18n="desk.hint">scendi lungo la linea dei progetti ↓</a>
+    </section>
+
+    <!-- PROGETTI SCELTI (quelli con home: true in content/projects.js) -->
+    <section id="progetti" class="section">
+      <div class="section-head">
+        <h2 data-gravity data-i18n="home.projectsTitle">Progetti scelti</h2>
+        <p class="lede" data-i18n="home.projectsLede">Un paio di fermate della mia linea. Passa sopra le foto per svilupparle.</p>
+      </div>
+      <ol class="metro" id="metro" data-view="home"></ol>
+      <p class="see-all"><a href="progetti.html" data-i18n="home.seeAll">Vedi tutta la linea →</a></p>
+    </section>
+
+    <section id="chi-sono" class="section narrow">
+      <h2 data-gravity data-i18n="about.title">Chi sono</h2>
+      <p data-gravity data-i18n="about.text">Scrivi qui due o tre righe su di te: cosa fai, cosa ti piace, cosa stai imparando adesso.</p>
+    </section>
+
+    <section id="contatti" class="section narrow">
+      <h2 data-gravity data-i18n="contact.title">Scrivimi</h2>
+      <p class="lede-left" data-i18n="contact.lede">Un'idea, una domanda, un ciao: lasciami un messaggio e ti rispondo appena posso.</p>
+      <form class="letter" id="contactForm" novalidate>
+        <div class="letter-row">
+          <label>
+            <span data-i18n="contact.email">Email</span>
+            <input name="email" type="email" autocomplete="email" required maxlength="200">
+          </label>
+          <label>
+            <span data-i18n="contact.phone">Telefono <small>(facoltativo)</small></span>
+            <input name="phone" type="tel" autocomplete="tel" maxlength="30">
+          </label>
+        </div>
+        <label>
+          <span data-i18n="contact.subject">Oggetto</span>
+          <input name="subject" type="text" required maxlength="150">
+        </label>
+        <label>
+          <span data-i18n="contact.message">Messaggio</span>
+          <textarea name="message" rows="5" required maxlength="4000"></textarea>
+        </label>
+        <!-- trappola per i bot: le persone non la vedono -->
+        <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="letter-foot">
+          <button type="submit" class="send" data-i18n="contact.send">Invia ✉</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="back-to-desk" href="#top">
+      <span class="arrow" aria-hidden="true">↑</span>
+      <span data-i18n="footer.back">Torna alla scrivania</span>
+    </a>
+    <!-- L'indirizzo GitHub si imposta in content/settings.js -->
+    <a class="github" href="https://github.com/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+  </footer>
+
+  <div class="gravity-bar">
+    <p class="shake-hint" data-i18n="gravity.hint">Prova ad afferrare un oggetto e scuoterlo</p>
+    <button id="restore" class="restore" type="button" hidden data-i18n="gravity.restore">Rimetti tutto a posto</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <!-- contenuti che modifichi tu -->
+  <script src="content/settings.js"></script>
+  <script src="content/texts.js"></script>
+  <script src="content/projects.js"></script>
+  <!-- codice del sito -->
+  <script src="js/lang.js"></script>
+  <script src="js/projects-line.js"></script>
+  <script src="js/desk.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/toys.js"></script>
+  <script src="js/gravity.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
