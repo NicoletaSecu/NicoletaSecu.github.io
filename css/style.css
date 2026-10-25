@@ -1521,7 +1521,7 @@ body { padding-top: 0; font-family: var(--ui); }
   line-height: 1;
 }
 @media (max-width: 700px) { .doing { grid-template-columns: 1fr; } }
-.about-cta { display: inline-block; color: var(--accent); text-decoration: none; transition: translate 0.3s; }
+.about-cta { display: inline-block; font-size: clamp(2rem, 4.5vw, 4rem); color: var(--accent); text-decoration: none; transition: translate 0.3s; }
 .about-cta:hover { translate: 12px 0; }
 
 /* le lettere del nome si spostano una per una quando scorri (js/hero.js) */

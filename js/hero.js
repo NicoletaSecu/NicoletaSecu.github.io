@@ -87,7 +87,7 @@ let statementTimer = null;
 function renderStatement() {
   const el = document.getElementById("statement");
   if (!el) return;
-  el.textContent = t(el.dataset.i18nWords);
+  el.innerHTML = t(el.dataset.i18nWords); // innerHTML: così i <br> del testo vanno a capo
   const words = wrapWords(el);
   // dopo un cambio di lingua (o se le animazioni sono ridotte) la frase è già tutta accesa
   if (statementPlayed || reduceMotion) words.forEach((w) => w.classList.add("on"));

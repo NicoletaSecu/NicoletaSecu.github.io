@@ -26,7 +26,7 @@ const STRINGS = {
     "label.contact": "Contatti",
 
     // elenco dei progetti
-    "home.more": "Tutti i progetti, con i filtri ↗",
+    "home.more": "Tutti i progetti ↗",
     "list.with": "Con",
     "list.ongoing": "in corso",
     "list.maintained": "+ migliorie e bug fix ogni tanto",
@@ -40,7 +40,7 @@ const STRINGS = {
     "projects.terminus": "capolinea: qui è dove tutto è cominciato",
 
     // chi sono: la frase grande si accende parola per parola; sotto la scheda
-    "about.statement": "Chi sono? Una ragazza piena di idee, questo è sicuro. E pronta ad affrontare più di quanto immagini, a volte persino più di quanto immagini io.",
+    "about.statement": "Chi sono?<br>Una ragazza piena di idee, questo è sicuro.<br>E pronta ad affrontare più di quanto immagini, a volte persino più di quanto immagini io.",
 
     // pagina Chi sono
     "page.aboutTitle": "Chi sono · Nicoleta Secu",
@@ -138,7 +138,7 @@ const STRINGS = {
     "label.desk": "Play with my desk",
     "label.contact": "Contact",
 
-    "home.more": "All projects, with filters ↗",
+    "home.more": "All projects ↗",
     "list.with": "With",
     "list.ongoing": "ongoing",
     "list.maintained": "+ occasional improvements and bug fixes",
@@ -150,7 +150,7 @@ const STRINGS = {
     "projects.all": "All",
     "projects.terminus": "end of the line: this is where it all started",
 
-    "about.statement": "Who am I? A girl full of ideas, that's for sure. And ready to take on more than you'd expect, sometimes even more than I'd expect.",
+    "about.statement": "Who am I?<br>A girl full of ideas, that's for sure.<br>And ready to take on more than you'd expect, sometimes even more than I'd expect.",
 
     "page.aboutTitle": "About · Nicoleta Secu",
     "page.contactTitle": "Contact · Nicoleta Secu",
