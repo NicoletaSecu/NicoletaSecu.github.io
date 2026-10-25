@@ -51,6 +51,8 @@ const Gravity = (() => {
     hint(key) { hintEl.textContent = t(key); },
     // Cosa rimettere a posto quando la gravità finisce.
     onStop(fn) { cleanups.push(fn); },
+    // Rimette tutto a posto (come il bottone "Rimetti tutto a posto").
+    stop: () => stop(),
   };
   const hintEl = document.querySelector(".shake-hint");
 
@@ -106,7 +108,7 @@ const Gravity = (() => {
 
       const saved = m.el.getAttribute("style");
       m.el.style.cssText = (saved || "") +
-        `;position:fixed;left:0;top:0;right:auto;bottom:auto;margin:0;translate:none;` +
+        `;position:fixed;left:0;top:0;right:auto;bottom:auto;margin:0;translate:none;rotate:none;opacity:1;` +
         `width:${m.w}px;height:${m.h}px;transition:none;touch-action:none;`;
       addItem(m.el, body, m.w, m.h, { ph, saved });
     }
@@ -139,6 +141,7 @@ const Gravity = (() => {
     if (!it) return;
     e.preventDefault();
     Toys.grab(it);
+    Toys.played(api, 1); // ogni oggetto afferrato conta come "gioco"
     const b = it.body;
     const p = { x: e.clientX, y: e.clientY };
     // Alcuni oggetti si prendono da un punto preciso (la matita per la punta).
@@ -183,6 +186,7 @@ const Gravity = (() => {
     if (drag.flips.length >= SHAKE_FLIPS && now - (it.lastShake || 0) > SHAKE_COOLDOWN_MS) {
       it.lastShake = now;
       drag.flips = [];
+      Toys.played(api, 3); // scuotere conta di più
       Toys.shake(it, api);
     }
   }

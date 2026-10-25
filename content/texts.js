@@ -20,21 +20,19 @@ const STRINGS = {
 
     // apertura: il nome enorme
     "hero.label": "Presentazione",
-    "intro.kicker": "Docente ITP · Sviluppatrice web",
-    "intro.lead": "Insegno, programmo e trasformo le idee <em>in siti che si possono usare.</em>",
+    "intro.lead": "Insegno, programmo e trasformo le idee <em>in cose che si possono usare.</em>",
     "hero.scroll": "Scorri per esplorare ↓",
 
     // etichette numerate delle sezioni
     "label.projects": "Progetti",
-    "label.about": "Chi sono",
     "label.desk": "Gioca con la mia scrivania",
     "label.contact": "Contatti",
 
     // elenco dei progetti
     "home.more": "Tutti i progetti, con i filtri ↗",
     "list.site": "Sito ↗",
-    "list.code": "Codice ↗",
     "list.with": "Con",
+    "cursor.open": "Apri",
 
     // pagina Progetti
     "projects.title": "Tutti i progetti",
@@ -45,13 +43,26 @@ const STRINGS = {
 
     // chi sono: la frase grande si accende parola per parola; sotto la scheda
     "about.statement": "Chi sono? Una ragazza piena di idee, questo è sicuro. E pronta ad affrontare più di quanto immagini, a volte persino più di quanto immagini io.",
-    "about.details":
+
+    // pagina Chi sono
+    "page.aboutTitle": "Chi sono · Nicoleta Secu",
+    "aboutPage.title": "Chi sono",
+    "aboutPage.photo": "io, più o meno (cliccami)",
+    "label.doing": "Cosa faccio",
+    "doing.teachTitle": "Insegno",
+    "doing.teachText": "Informatica e Matematica, come docente ITP, dal 2025. Spiegare bene una cosa è il modo migliore per capirla davvero.",
+    "doing.codeTitle": "Programmo",
+    "doing.codeText": "Web app e strumenti per studiare, nati spesso da un problema mio. <a href=\"progetti.html\">I miei progetti ↗</a>",
+    "label.path": "Percorso",
+    "path.list":
       '<dl class="about-facts">' +
-        '<dt>Oggi</dt><dd>Docente ITP di Informatica e Matematica, dal 2025</dd>' +
+        '<dt>Dal 2025</dt><dd>Docente ITP di Informatica e Matematica</dd>' +
         '<dt>Laurea</dt><dd>Informatica</dd>' +
         '<dt>Diploma</dt><dd>Amministrazione, Finanza e Marketing, articolazione Sistemi Informativi Aziendali (SIA)</dd>' +
-      '</dl>' +
-      '<p>Esperienza? Sempre in crescita, sempre in cammino verso qualcosa di nuovo da imparare. La dimostrazione? <a href="#progetti">I miei progetti ↑</a></p>',
+      '</dl>',
+    "label.tools": "Con cosa lavoro",
+    "label.talk": "Parliamone",
+    "aboutPage.cta": "Scriviamoci ↗",
 
     // scrivania
     "desk.label": "La mia scrivania",
@@ -91,6 +102,12 @@ const STRINGS = {
     "toys.phoneTitle": "Drin drin!",
     "toys.phoneSub": "smettila di scuotermi",
 
+    // la schermata blu quando si gioca troppo con la scrivania
+    "bsod.text": "Il portfolio ha riscontrato un problema perché qualcuno ha giocato un po' troppo con la scrivania. Stiamo rimettendo tutto a posto.",
+    "bsod.done": "% completato",
+    "bsod.more": "Per saperne di più: è stato divertente, vero? (clicca per fare prima)",
+    "bsod.code": "Codice di arresto: TROPPO_DIVERTIMENTO",
+
     months: ["gen", "feb", "mar", "apr", "mag", "giu", "lug", "ago", "set", "ott", "nov", "dic"],
   },
 
@@ -106,19 +123,17 @@ const STRINGS = {
     "nav.contact": "Contact",
 
     "hero.label": "Introduction",
-    "intro.kicker": "Computer Science teacher · Web developer",
-    "intro.lead": "I teach, I code, and I turn ideas <em>into websites people can actually use.</em>",
+    "intro.lead": "I teach, I code, and I turn ideas <em>into things people can actually use.</em>",
     "hero.scroll": "Scroll to explore ↓",
 
     "label.projects": "Projects",
-    "label.about": "About me",
     "label.desk": "Play with my desk",
     "label.contact": "Contact",
 
     "home.more": "All projects, with filters ↗",
     "list.site": "Site ↗",
-    "list.code": "Code ↗",
     "list.with": "With",
+    "cursor.open": "Open",
 
     "projects.title": "All projects",
     "projects.lede": "Newest first. Hover a project to see it.",
@@ -127,13 +142,25 @@ const STRINGS = {
     "projects.terminus": "end of the line: this is where it all started",
 
     "about.statement": "Who am I? A girl full of ideas, that's for sure. And ready to take on more than you'd expect, sometimes even more than I'd expect.",
-    "about.details":
+
+    "page.aboutTitle": "About · Nicoleta Secu",
+    "aboutPage.title": "About me",
+    "aboutPage.photo": "me, more or less (click me)",
+    "label.doing": "What I do",
+    "doing.teachTitle": "I teach",
+    "doing.teachText": "Computer Science and Maths, as an ITP (technical-practical) teacher, since 2025. Explaining something well is the best way to really understand it.",
+    "doing.codeTitle": "I code",
+    "doing.codeText": "Web apps and study tools, often born from a problem of my own. <a href=\"progetti.html\">My projects ↗</a>",
+    "label.path": "Path",
+    "path.list":
       '<dl class="about-facts">' +
-        '<dt>Now</dt><dd>Computer Science and Maths teacher (ITP, technical-practical teacher), since 2025</dd>' +
+        '<dt>Since 2025</dt><dd>Computer Science and Maths teacher (ITP)</dd>' +
         '<dt>Degree</dt><dd>Computer Science</dd>' +
         '<dt>Diploma</dt><dd>Administration, Finance and Marketing, Business Information Systems track (SIA)</dd>' +
-      '</dl>' +
-      '<p>Experience? Always growing, always on the way to something new to learn. The proof? <a href="#progetti">My projects ↑</a></p>',
+      '</dl>',
+    "label.tools": "What I work with",
+    "label.talk": "Let's talk",
+    "aboutPage.cta": "Write me ↗",
 
     "desk.label": "My desk",
     "desk.note": "Touch the objects. And if you really must, press the red button.",
@@ -168,6 +195,11 @@ const STRINGS = {
     "gravity.soakHint": "Put a page on the coffee…",
     "toys.phoneTitle": "Ring ring!",
     "toys.phoneSub": "stop shaking me",
+
+    "bsod.text": "Your portfolio ran into a problem because someone played a little too much with the desk. We're putting everything back.",
+    "bsod.done": "% complete",
+    "bsod.more": "For more information: it was fun, wasn't it? (click to speed up)",
+    "bsod.code": "Stop code: TOO_MUCH_FUN",
 
     months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   },

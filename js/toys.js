@@ -8,6 +8,7 @@
 //   tutto il resto → trema un po'
 // La matita invece si prende per la punta: passala sui fogli caduti per scriverci sopra.
 // Un foglio tenuto sopra il caffè rovesciato si inzuppa e, se lo lasci lì, si appiccica.
+// Chi gioca troppo si becca una schermata blu di errore (finta).
 const Toys = (() => {
   const rand = (a, b) => a + Math.random() * (b - a);
   const NO_COLLIDE = -7; // oggetti con questo gruppo non si urtano tra loro
@@ -329,5 +330,52 @@ const Toys = (() => {
     else if (!c.contains("pencil")) api.buzz(it, 350); // la matita si muove per scrivere, non trema
   }
 
-  return { shake, grip, grab, whileHeld, release, tick };
+  // ── Troppo gioco: la schermata blu di errore ──
+  // Mentre la gravità è attiva conto quanto si gioca (afferrare = 1, scuotere = 3).
+  // Superato il limite compare una finta schermata blu che poi rimette tutto a posto.
+  const PLAY_LIMIT = 30;
+  let playScore = 0;
+
+  function played(api, points) {
+    if (playScore === 0) api.onStop(() => { playScore = 0; });
+    playScore += points;
+    if (playScore >= PLAY_LIMIT && !document.querySelector(".bsod")) blueScreen(api);
+  }
+
+  function blueScreen(api) {
+    const el = document.createElement("div");
+    el.className = "bsod";
+    el.setAttribute("role", "alertdialog");
+    el.setAttribute("aria-label", t("bsod.code"));
+    el.innerHTML = `
+      <div class="bsod-inner">
+        <p class="bsod-face">:(</p>
+        <p class="bsod-text">${t("bsod.text")}</p>
+        <p class="bsod-text"><span class="bsod-pct">0</span>${t("bsod.done")}</p>
+        <div class="bsod-foot">
+          <span class="bsod-qr" aria-hidden="true"></span>
+          <p>${t("bsod.more")}<br><small>${t("bsod.code")}</small></p>
+        </div>
+      </div>`;
+    document.body.appendChild(el);
+
+    // la percentuale sale a scatti, come quella vera; cliccando va più veloce
+    const num = el.querySelector(".bsod-pct");
+    let pct = 0;
+    let speed = 1;
+    el.addEventListener("click", () => { speed = 6; });
+    const timer = setInterval(() => {
+      pct = Math.min(100, pct + Math.ceil(Math.random() * 4) * speed);
+      num.textContent = pct;
+      if (pct < 100) return;
+      clearInterval(timer);
+      setTimeout(() => {
+        api.stop();
+        el.classList.add("bye");
+        setTimeout(() => el.remove(), 500);
+      }, 600);
+    }, 180);
+  }
+
+  return { shake, grip, grab, whileHeld, release, tick, played };
 })();

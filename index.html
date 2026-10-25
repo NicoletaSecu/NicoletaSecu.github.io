@@ -24,7 +24,7 @@
     <div class="fl-top-right">
       <nav class="fl-nav" data-i18n-aria="nav.label" aria-label="Sezioni">
         <a href="#progetti" data-i18n="nav.projects">Progetti</a>
-        <a href="#chi-sono" data-i18n="nav.about">Chi sono</a>
+        <a href="chi-sono.html" data-i18n="nav.about">Chi sono</a>
         <a href="#scrivania" data-i18n="nav.desk">Scrivania</a>
         <a href="#contatti" data-i18n="nav.contact">Contatti</a>
       </nav>
@@ -40,9 +40,8 @@
     <section class="fl-hero" data-i18n-aria="hero.label" aria-label="Presentazione">
       <div class="fl-floats" id="floats" aria-hidden="true"></div>
       <div class="fl-hero-text">
-        <p class="fl-kicker" data-gravity data-i18n="intro.kicker">Docente ITP · Sviluppatrice web</p>
         <h1 class="fl-name" data-gravity>Nicoleta<br>Secu</h1>
-        <p class="fl-lead" data-gravity data-i18n="intro.lead">Insegno, programmo e trasformo le idee <em>in siti che si possono usare.</em></p>
+        <p class="fl-lead" data-gravity data-i18n="intro.lead">Insegno, programmo e trasformo le idee <em>in cose che si possono usare.</em></p>
       </div>
       <a class="fl-scroll" href="#progetti" data-i18n="hero.scroll">Scorri per esplorare ↓</a>
     </section>
@@ -55,16 +54,10 @@
       <p class="fl-more"><a href="progetti.html" data-i18n="home.more">Tutti i progetti, con i filtri ↗</a></p>
     </section>
 
-    <!-- 02 · CHI SONO: la frase si accende parola per parola mentre scorri -->
-    <section id="chi-sono" class="fl-section">
-      <p class="fl-label"><span>02</span> <b data-i18n="label.about">Chi sono</b></p>
-      <p class="fl-statement" id="statement" data-i18n-words="about.statement">Chi sono? Una ragazza piena di idee, questo è sicuro.</p>
-      <div class="fl-about" data-i18n="about.details"></div>
-    </section>
 
-    <!-- 03 · LA SCRIVANIA: il gioco resta, più in basso -->
+    <!-- 02 · LA SCRIVANIA: il gioco resta, più in basso -->
     <section id="scrivania" class="fl-section">
-      <p class="fl-label"><span>03</span> <b data-i18n="label.desk">Gioca con la mia scrivania</b></p>
+      <p class="fl-label"><span>02</span> <b data-i18n="label.desk">Gioca con la mia scrivania</b></p>
       <p class="fl-note" data-i18n="desk.note">Tocca gli oggetti. E se proprio vuoi, premi il bottone rosso.</p>
       <div class="desk-wrap" data-i18n-aria="desk.label" aria-label="La mia scrivania">
       <div class="desk" id="desk">
@@ -79,7 +72,7 @@
           <span class="nb-sub" data-i18n="desk.notebookSub">dal più recente</span>
         </a>
 
-        <a class="obj mug" href="#chi-sono" style="--x:70%;--y:10%;--rot:0deg" data-gravity>
+        <a class="obj mug" href="chi-sono.html" style="--x:70%;--y:10%;--rot:0deg" data-gravity>
           <span class="coffee" aria-hidden="true"></span>
           <span class="obj-label" data-i18n="desk.mug">Chi sono</span>
         </a>
@@ -175,9 +168,9 @@
       </div>
     </section>
 
-    <!-- 04 · CONTATTI -->
+    <!-- 03 · CONTATTI -->
     <section id="contatti" class="fl-section">
-      <p class="fl-label"><span>04</span> <b data-i18n="label.contact">Contatti</b></p>
+      <p class="fl-label"><span>03</span> <b data-i18n="label.contact">Contatti</b></p>
       <h2 class="fl-big" data-gravity data-i18n="contact.big">Scriviamoci.</h2>
       <div class="fl-form">
       <form class="letter" id="contactForm" novalidate>
@@ -240,6 +233,7 @@
   <script src="js/navigation.js"></script>
   <script src="js/toys.js"></script>
   <script src="js/gravity.js"></script>
+  <script src="js/cursor.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

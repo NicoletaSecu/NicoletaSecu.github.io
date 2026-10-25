@@ -80,3 +80,50 @@ function setupStatement() {
   addEventListener("scroll", updateStatement, { passive: true });
   addEventListener("resize", updateStatement);
 }
+
+// ───────────── Il nome si sparpaglia mentre scorri ─────────────
+// Ogni lettera di "Nicoleta Secu" si allontana dal centro, ruota un po' e sbiadisce,
+// come gli screenshot intorno. Tornando su, le lettere si rimettono a posto.
+function setupNameSpread() {
+  const name = document.querySelector(".fl-name");
+  if (!name || reduceMotion) return;
+
+  // divido il nome in lettere, tenendo l'a capo
+  const parts = [...name.childNodes].map((n) => n.nodeType === 3
+    ? [...n.textContent].map((ch) => (/\s/.test(ch) ? ch : `<span class="ch">${escapeHtml(ch)}</span>`)).join("")
+    : n.outerHTML);
+  name.innerHTML = parts.join("");
+  const letters = [...name.querySelectorAll(".ch")];
+  // ogni lettera ha la sua direzione "a caso", ma sempre la stessa
+  const rnd = letters.map((_, i) => ({ y: Math.sin(i * 12.9898) * 0.5, r: Math.cos(i * 78.233) }));
+
+  let base = [];
+  const measure = () => {
+    letters.forEach((l) => { l.style.translate = ""; l.style.rotate = ""; });
+    const nr = name.getBoundingClientRect();
+    const cx = nr.left + nr.width / 2, cy = nr.top + nr.height / 2;
+    base = letters.map((l) => {
+      const r = l.getBoundingClientRect();
+      return { x: r.left + r.width / 2 - cx, y: r.top + r.height / 2 - cy };
+    });
+  };
+  measure();
+  addEventListener("resize", () => { measure(); update(); });
+
+  let queued = false;
+  const update = () => {
+    queued = false;
+    if (document.documentElement.classList.contains("gravity-active")) return;
+    const s = Math.max(0, Math.min(1, scrollY / (innerHeight * 0.8))); // 0 = in cima, 1 = sparpagliato
+    letters.forEach((l, i) => {
+      const b = base[i];
+      const x = b.x * s * 0.9;
+      const y = b.y * s * 0.9 + rnd[i].y * s * 220;
+      l.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;
+      l.style.rotate = `${(rnd[i].r * s * 30).toFixed(1)}deg`;
+    });
+    name.style.opacity = String(1 - s * 0.75);
+  };
+  addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+}

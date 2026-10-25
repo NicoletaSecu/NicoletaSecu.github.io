@@ -26,6 +26,16 @@ const TYPES = {
 
 const PROJECTS = [
   {
+    title: "Sync",
+    date: "2026-10",
+    type: "app",
+    description: "Un'app per tenere traccia del ciclo mestruale con i dati salvati solo sul telefono: niente account, niente server, niente pubblicità. Calendario, previsioni, sintomi, grafici e consigli per ogni fase; si installa sul telefono e funziona anche offline.",
+    description_en: "An app to track the menstrual cycle with data stored only on your phone: no account, no server, no ads. Calendar, predictions, symptoms, charts and tips for each phase; it installs on your phone and works offline.",
+    image: "img/sync.jpg",
+    link: "https://syncycle.onrender.com",
+    repo: "", // il repository è privato: niente link al codice
+  },
+  {
     title: "Questo portfolio",
     title_en: "This portfolio",
     date: "2026-10",
@@ -59,7 +69,6 @@ const PROJECTS = [
     image: "img/b2-to-c1.jpg",
     link: "https://b2-to-c1.netlify.app/",
     repo: "https://github.com/NicoletaSecu/B2-to-C1",
-    home: true,
   },
   {
     title: "Studio Java",
@@ -71,7 +80,6 @@ const PROJECTS = [
     image: "img/studio-java.jpg",
     link: "https://easy-java.netlify.app/",
     repo: "https://github.com/NicoletaSecu/Studio-Java",
-    home: true,
   },
   {
     title: "WaySafe",
@@ -83,7 +91,6 @@ const PROJECTS = [
     link: "https://waysafe.onrender.com",
     repo: "https://github.com/davide-modena/WaySafe",
     with: [{ name: "Davide Modena", url: "https://davide-modena.github.io" }],
-    home: true,
   },
   {
     title: "FlowDegree",
@@ -95,6 +102,5 @@ const PROJECTS = [
     link: "https://flow-degree.vercel.app/",
     repo: "https://github.com/NicoletaSecu/FlowDegree",
     featured: true,
-    home: true,
   },
 ];

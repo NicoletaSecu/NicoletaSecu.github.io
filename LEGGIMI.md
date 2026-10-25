@@ -5,7 +5,8 @@
 ```
 Portfolio/
 ├── index.html          la home: nome, progetti, chi sono, scrivania, contatti
-├── progetti.html       tutti i progetti, divisi per anno, con i filtri
+├── progetti.html       tutti i progetti su un albero del tempo, con i filtri
+├── chi-sono.html       chi sono: ritratto, cosa faccio, percorso, con cosa lavoro
 ├── content/            ← QUELLO CHE MODIFICHI TU
 │   ├── projects.js     i progetti (italiano + inglese)
 │   ├── texts.js        tutti i testi del sito (italiano + inglese)
@@ -15,13 +16,14 @@ Portfolio/
 │   └── style.css       colori, font, aspetto (l'ultimo strato in fondo è lo stile attuale)
 └── js/                 il codice, un file per ogni parte
     ├── lang.js           lingua IT / EN
-    ├── project-list.js   elenco dei progetti, filtri, immagine che segue il mouse
+    ├── project-list.js   elenco e linea del tempo dei progetti, filtri, immagine che segue il mouse
     ├── hero.js           apertura (immagini sparse) e frase "Chi sono" che si accende
     ├── desk.js           scrivania e lampada (giorno/notte)
     ├── contact.js        modulo "Scrivimi"
     ├── navigation.js     link interni e ricarica dall'inizio
     ├── gravity.js        il bottone rosso: gli oggetti cadono
     ├── toys.js           cosa succede se scuoti un oggetto caduto
+    ├── cursor.js         il pallino che insegue il mouse ("Apri" sopra i progetti)
     └── main.js           avvia tutto
 ```
 

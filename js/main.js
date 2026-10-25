@@ -8,15 +8,20 @@ const polaroid = document.querySelector(".polaroid");
 if (polaroid) {
   for (const [part, color] of Object.entries(SETTINGS.avatar)) polaroid.style.setProperty(`--${part}`, color);
 }
+// nella pagina Chi sono, cliccando il ritratto i capelli si scompigliano (e si ripettinano)
+const aboutPhoto = document.querySelector(".about-photo");
+if (aboutPhoto) aboutPhoto.addEventListener("click", () => aboutPhoto.classList.toggle("messy"));
 
 setupAnchors();
 if (typeof setupFloats === "function") {
   setupFloats();
   setupStatement();
+  setupNameSpread();
 }
 if (document.getElementById("desk")) {
   setupDeskScale();
   setupLamp();
+  setupDeskSpread();
 }
 setupFilters();
 setupPreview();
