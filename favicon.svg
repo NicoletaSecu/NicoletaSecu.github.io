@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- favicon: le iniziali NS in bianco su un quadrato bordeaux con gli angoli arrotondati -->
+  <rect width="64" height="64" rx="14" fill="#8c2f45"/>
+  <text x="32" y="43" text-anchor="middle"
+        font-family="Inter Tight, Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="30" font-weight="600" letter-spacing="-1.5" fill="#f4efe6">NS</text>
+</svg>

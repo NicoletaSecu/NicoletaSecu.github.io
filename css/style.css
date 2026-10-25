@@ -1613,3 +1613,10 @@ html, body { overflow-x: clip; }
 .fl-name::selection, .fl-name *::selection { background: transparent; color: var(--accent); }
 /* le immagini sparse intorno al nome non si colorano quando selezioni la pagina */
 .fl-float { user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
+
+
+/* ── il progetto al centro dello schermo si accende mentre scorri (js/project-list.js) ── */
+.fl-row.active .fl-thumb { filter: none; }
+.fl-row .fl-title { transition: translate 0.35s cubic-bezier(.2, .8, .2, 1), color 0.4s; }
+.fl-row.active .fl-title { color: var(--accent); }
+.fl-page .fl-row.active .fl-dot { background: var(--c); scale: 1.3; }

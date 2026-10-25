@@ -7,6 +7,7 @@ Portfolio/
 ├── index.html          la home: nome, progetti, chi sono, scrivania, contatti
 ├── progetti.html       tutti i progetti su un albero del tempo, con i filtri
 ├── chi-sono.html       chi sono: ritratto, cosa faccio, percorso
+├── favicon.svg         l'iconcina della scheda (NS in bordeaux) + favicon-32.png e apple-touch-icon.png
 ├── content/            ← QUELLO CHE MODIFICHI TU
 │   ├── projects.js     i progetti (italiano + inglese)
 │   ├── texts.js        tutti i testi del sito (italiano + inglese)

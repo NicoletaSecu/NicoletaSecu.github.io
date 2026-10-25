@@ -188,3 +188,4 @@ function setupNameSpread() {
   addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
   update();
 }
+

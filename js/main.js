@@ -26,6 +26,7 @@ if (document.getElementById("desk")) {
 }
 setupFilters();
 setupPreview();
+setupActiveRow();
 setupLanguageSwitch();
 applyLanguage();
 if (document.getElementById("contactForm")) setupContactForm();

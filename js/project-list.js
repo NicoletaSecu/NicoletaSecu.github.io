@@ -79,6 +79,36 @@ function renderProjectList() {
   if (!onlyHome) html += `<li class="fl-end"><span>${t("projects.terminus")}</span></li>`;
   list.innerHTML = html;
   placeSides();
+  updateActiveRow();
+}
+
+// ───────────── Il progetto al centro dello schermo si accende ─────────────
+// Mentre scorri, il progetto più vicino al centro dello schermo ha la miniatura a colori,
+// il titolo bordeaux e (nella pagina Progetti) il pallino pieno. Funziona anche su telefono.
+function updateActiveRow() {
+  const rows = [...document.querySelectorAll("#projectList .fl-row:not(.closed)")];
+  const mid = innerHeight / 2;
+  let best = null;
+  let bestDist = Infinity;
+  for (const r of rows) {
+    const b = r.getBoundingClientRect();
+    if (b.bottom < 0 || b.top > innerHeight) continue; // fuori dallo schermo
+    const dist = Math.abs(b.top + b.height / 2 - mid);
+    if (dist < bestDist) { best = r; bestDist = dist; }
+  }
+  rows.forEach((r) => r.classList.toggle("active", r === best));
+}
+
+function setupActiveRow() {
+  if (!document.getElementById("projectList")) return;
+  let queued = false;
+  const onScroll = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; updateActiveRow(); });
+  };
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll);
 }
 
 // Nell'albero i progetti visibili si alternano: il primo a sinistra, il secondo a destra, e così via.
@@ -117,6 +147,7 @@ function setupFilters() {
       y.classList.toggle("closed", !open);
     });
     placeSides();
+    updateActiveRow();
   });
 }
 
