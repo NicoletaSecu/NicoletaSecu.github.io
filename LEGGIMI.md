@@ -4,18 +4,19 @@
 
 ```
 Portfolio/
-├── index.html          la home: scrivania, progetti scelti, chi sono, contatti
-├── progetti.html       tutti i progetti (linea completa con filtri)
+├── index.html          la home: nome, progetti, chi sono, scrivania, contatti
+├── progetti.html       tutti i progetti, divisi per anno, con i filtri
 ├── content/            ← QUELLO CHE MODIFICHI TU
 │   ├── projects.js     i progetti (italiano + inglese)
 │   ├── texts.js        tutti i testi del sito (italiano + inglese)
-│   └── settings.js     link GitHub e chiave del modulo "Scrivimi"
+│   └── settings.js     link GitHub, chiave del modulo "Scrivimi", colori del ritratto
 ├── img/                le immagini dei progetti (es. img/meteo.png)
 ├── css/
-│   └── style.css       colori, font, aspetto
+│   └── style.css       colori, font, aspetto (l'ultimo strato in fondo è lo stile attuale)
 └── js/                 il codice, un file per ogni parte
     ├── lang.js           lingua IT / EN
-    ├── projects-line.js  linea della metro, filtri, camera oscura
+    ├── project-list.js   elenco dei progetti, filtri, immagine che segue il mouse
+    ├── hero.js           apertura (immagini sparse) e frase "Chi sono" che si accende
     ├── desk.js           scrivania e lampada (giorno/notte)
     ├── contact.js        modulo "Scrivimi"
     ├── navigation.js     link interni e ricarica dall'inizio
@@ -27,8 +28,8 @@ Portfolio/
 ## Aggiungere un progetto
 
 Apri `content/projects.js`, copia un blocco `{ ... }` e cambia i testi.
-Tutti i progetti compaiono nella pagina Progetti; aggiungi `home: true` a quelli
-che vuoi mostrare anche in home.
+Tutti i progetti compaiono nella pagina Progetti; quelli con `home: true`
+compaiono anche nell'elenco della home (toglilo per nasconderlo dalla home).
 Se ha un'immagine, mettila in `img/` e scrivi `image: "img/nome-file.png"`.
 
 ## Vedere il sito sul computer

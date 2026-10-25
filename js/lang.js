@@ -20,9 +20,10 @@ function applyLanguage() {
   document.querySelectorAll(".lang button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
   const status = document.getElementById("formStatus");
   if (status) status.textContent = "";
-  renderMetro();
+  // le parti costruite dal codice si ricostruiscono nella lingua nuova
+  renderProjectList();
   renderFilters();
-  setupDarkroom();
+  if (typeof renderStatement === "function") renderStatement();
 }
 
 function setupLanguageSwitch() {

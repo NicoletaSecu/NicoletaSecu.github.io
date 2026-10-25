@@ -9,9 +9,13 @@
   --desk-2: #c4925f;
   --grain: rgba(80, 40, 10, 0.07);
   --ui: "DM Sans", system-ui, sans-serif;
-  --hand: "Caveat", "Comic Sans MS", cursive;
+  /* niente più font scritto a mano: post-it e polaroid usano il corsivo con le grazie */
+  --hand: "Fraunces", Georgia, serif;
+  /* il colore d'accento del sito: link, bottoni, dettagli attivi */
+  --accent: #b9532f;
 }
 :root[data-theme="dark"] {
+  --accent: #e2805d;
   --bg: #14130f;
   --ink: #efe8dc;
   --muted: #a39a8c;
@@ -526,8 +530,8 @@ button { font: inherit; color: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* foto "non sviluppata": quasi nera, si intravede appena */
-  filter: grayscale(1) brightness(0.22) contrast(1.3);
+  /* di base in bianco e nero chiaro: a colori quando ci passi sopra */
+  filter: grayscale(1) contrast(0.92) brightness(1.03);
   transform: scale(1.04);
   /* quando togli il mouse torna scura, un po' più in fretta di come si sviluppa */
   transition: filter 0.9s ease-in, transform 0.9s ease-in;
@@ -949,3 +953,372 @@ h2,
 .send { border: 1px solid var(--ink); background: var(--ink); color: var(--bg); box-shadow: none; }
 
 .footer { border-top: 1px solid var(--ink); }
+
+/* ───────────── Chi sono ───────────── */
+.about p { margin: 0 0 16px; }
+.about-lead {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+  line-height: 1.35;
+}
+/* la scheda: etichetta piccola a sinistra, testo a destra, righe sottili */
+.about-facts {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  margin: 24px 0;
+  border-top: 1px solid var(--ink);
+}
+.about-facts dt,
+.about-facts dd {
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.about-facts dt {
+  padding-top: 15px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.about a { font-weight: 600; text-underline-offset: 4px; }
+@media (max-width: 560px) {
+  .about-facts { grid-template-columns: 1fr; }
+  .about-facts dt { padding-bottom: 0; border-bottom: 0; }
+  .about-facts dd { padding-top: 4px; }
+}
+
+/* ───────────── Introduzione (sopra la scrivania) ───────────── */
+.intro {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 56px 16px 8px;
+  text-align: center;
+}
+.intro-kicker {
+  width: fit-content;
+  margin: 0 auto 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.intro-title {
+  width: fit-content;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(3rem, 9vw, 5.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+}
+.intro-lead {
+  max-width: 36ch;
+  margin: 20px auto 0;
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  line-height: 1.45;
+}
+.intro-lead em { font-family: var(--serif); font-style: italic; }
+/* con l'introduzione sopra, la scrivania è un po' più compatta */
+.desk-wrap { padding-top: 32px; }
+.desk { max-width: 1000px; }
+
+/* ───────────── Colore d'accento e rifiniture ───────────── */
+::selection { background: var(--accent); color: #fff; }
+.intro-kicker { color: var(--accent); }
+.intro-lead em { color: var(--accent); }
+.nav a:hover, .nav a[aria-current="page"] { text-decoration-color: var(--accent); }
+.see-all a { color: var(--accent); text-decoration-color: var(--accent); }
+.about a { color: var(--accent); }
+.about-facts { border-top-color: var(--accent); }
+.chip[data-filter="all"][aria-pressed="true"] { border-bottom-color: var(--accent); }
+.send { background: var(--accent); border-color: var(--accent); color: #fff; }
+.letter input:focus-visible, .letter textarea:focus-visible { outline-color: var(--accent); }
+.lang button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+
+/* con le foto chiare, l'etichetta "sviluppo…" non serve più */
+.dev-label { display: none; }
+
+/* post-it e didascalia della polaroid in corsivo con le grazie */
+.sticky, .polaroid .cap { font-style: italic; }
+.sticky { font-size: calc(1.9 * var(--u)); line-height: 1.3; }
+.polaroid .cap { font-size: calc(1.5 * var(--u)); }
+
+
+/* ─────────────────────────────────────────────────────────────
+   STILE ATTUALE ("alla Floema")
+   L'ultimo strato, sopra a tutto: tipografia enorme senza grazie (Inter Tight),
+   lavori in grande, interfaccia minima, etichette numerate, terracotta usato poco.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --ui: "Inter Tight", system-ui, sans-serif;
+  --bg: #eeebe5;
+  --card: #f7f5f1;
+  --muted: #77736b;
+}
+:root[data-theme="dark"] { --bg: #121210; --card: #1b1a17; --muted: #9b968c; }
+html { scroll-padding-top: 0; }
+body { padding-top: 0; font-family: var(--ui); }
+
+/* ── barra in alto: solo il nome e quattro pillole ── */
+.fl-top {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  pointer-events: none;
+}
+.fl-top > * { pointer-events: auto; }
+.fl-brand { font-weight: 600; text-decoration: none; letter-spacing: -0.01em; }
+.fl-nav { display: flex; gap: 6px; }
+.fl-nav a {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--card);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: background 0.2s, color 0.2s;
+}
+.fl-nav a:hover { background: var(--ink); color: var(--bg); }
+@media (max-width: 640px) {
+  .fl-nav a:nth-child(3) { display: none; }
+  .fl-nav a { padding: 6px 10px; }
+}
+
+/* ── 00 · apertura ── */
+.fl-hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 90px 16px 60px;
+}
+.fl-hero-text { position: relative; z-index: 3; text-align: center; }
+.fl-kicker {
+  width: fit-content;
+  margin: 0 auto 18px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.fl-name {
+  width: fit-content;
+  margin: 0 auto;
+  font-family: var(--ui);
+  font-weight: 500;
+  font-size: clamp(4rem, 15vw, 13rem);
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+}
+.fl-lead {
+  width: fit-content;
+  max-width: 30ch;
+  margin: 26px auto 0;
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  line-height: 1.4;
+}
+.fl-lead em { font-family: "Fraunces", Georgia, serif; font-style: italic; color: var(--accent); }
+.fl-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  translate: -50% 0;
+  z-index: 2;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+/* gli screenshot sparsi intorno al nome */
+.fl-floats { position: absolute; inset: 0; z-index: 0; }
+.fl-float {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  transform: rotate(var(--rot));
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--card);
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.35);
+  cursor: grab;
+}
+.fl-float img { display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
+/* su telefono solo due immagini, negli angoli in alto, lontane dal testo */
+@media (max-width: 700px) {
+  .fl-float { width: 34vw; }
+  .fl-float:nth-child(1) { left: 4%; top: 11%; }
+  .fl-float:nth-child(2) { left: 60%; top: 9%; }
+  .fl-float:nth-child(n + 3) { display: none; }
+}
+
+/* ── sezioni ed etichette numerate ── */
+.fl-section { max-width: 1240px; margin: 0 auto; padding: 110px 24px 40px; }
+.fl-label {
+  display: flex;
+  gap: 18px;
+  margin: 0 0 48px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.fl-label span { color: var(--accent); }
+.fl-note { margin: -28px 0 28px; color: var(--muted); }
+.fl-big {
+  margin: 0 0 40px;
+  font-family: var(--ui);
+  font-weight: 500;
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+/* ── 01 · elenco gigante dei progetti ── */
+.fl-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.fl-row {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr auto;
+  align-items: center;
+  gap: 6px 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.fl-num { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.fl-main { display: flex; align-items: center; gap: 22px; min-width: 0; text-decoration: none; }
+.fl-thumb {
+  flex: none;
+  width: clamp(70px, 9vw, 120px);
+  aspect-ratio: 2 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+  filter: grayscale(1);
+  transition: filter 0.4s;
+}
+.fl-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.fl-title {
+  font-size: clamp(2.2rem, 6.4vw, 5.6rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  transition: translate 0.35s cubic-bezier(.2, .8, .2, 1), color 0.3s;
+}
+.fl-side { text-align: right; font-size: 0.85rem; }
+.fl-side .fl-type { display: block; color: var(--muted); margin-bottom: 4px; }
+.fl-side a { margin-left: 12px; font-weight: 500; text-underline-offset: 3px; }
+.fl-side a:first-of-type { margin-left: 0; }
+.fl-desc {
+  grid-column: 2 / -1;
+  max-width: 62ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.fl-row:hover .fl-title { translate: 14px 0; color: var(--accent); }
+.fl-row:hover .fl-thumb { filter: none; }
+.fl-more { margin: 30px 0 0; text-align: right; }
+.fl-more a { font-weight: 500; text-underline-offset: 4px; }
+@media (max-width: 700px) {
+  .fl-row { grid-template-columns: 1fr; }
+  .fl-num { display: none; }
+  .fl-side { text-align: left; }
+  .fl-desc { grid-column: 1; }
+  .fl-main { gap: 14px; }
+}
+
+/* l'immagine grande che segue il mouse */
+.fl-preview {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 40;
+  width: 380px;
+  aspect-ratio: 2 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  scale: 0.85;
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.45);
+  transition: opacity 0.25s, scale 0.25s;
+}
+.fl-preview.show { opacity: 1; scale: 1; }
+.fl-preview img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (hover: none) { .fl-preview { display: none; } }
+
+/* ── 02 · la frase che si accende parola per parola ── */
+.fl-statement {
+  margin: 0 0 60px;
+  font-size: clamp(1.9rem, 4.6vw, 4rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+.fl-statement .w { opacity: 0.14; transition: opacity 0.35s; }
+.fl-statement .w.on { opacity: 1; }
+.fl-about { max-width: 760px; margin-left: auto; }
+.fl-about a { color: var(--accent); font-weight: 600; text-underline-offset: 4px; }
+
+/* ── 03 · scrivania ── */
+#scrivania .desk-wrap { padding: 0; }
+#scrivania .obj-label, #scrivania .nb-title { font-family: var(--ui); }
+
+/* ── 04 · contatti ── */
+.fl-form { max-width: 760px; margin-left: auto; }
+
+/* ── piè di pagina ── */
+.fl-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1240px;
+  margin: 60px auto 0;
+  padding: 24px 24px 40px;
+  border-top: 1px solid var(--ink);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ── selettore di lingua tra le pillole in alto ── */
+.fl-top-right { display: flex; align-items: center; gap: 10px; }
+.fl-top .lang { border: 0; background: var(--card); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06); }
+.fl-top .lang button { padding: 7px 11px; font-size: 0.78rem; }
+.fl-nav a[aria-current="page"] { background: var(--ink); color: var(--bg); }
+@media (max-width: 640px) {
+  .fl-top { padding: 14px 16px; }
+  .fl-brand { display: none; }
+  .fl-top-right { width: 100%; justify-content: space-between; }
+}
+
+/* ── pagina Progetti ── */
+.fl-page { padding-top: 130px; }
+.fl-page .fl-big { margin-bottom: 18px; }
+.fl-intro { max-width: 48ch; margin: 0 0 36px; color: var(--muted); font-size: 1.1rem; }
+.fl-page .filters { justify-content: flex-start; margin-bottom: 40px; }
+.fl-year {
+  padding: 34px 0 10px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+.fl-end { padding: 40px 0 0; color: var(--muted); font-style: italic; }
+/* quando filtri, i progetti che non c'entrano (e gli anni vuoti) spariscono */
+.fl-row.closed, .fl-year.closed { display: none; }
+.fl-row { animation: row-in 0.35s ease-out; }
+@keyframes row-in { from { opacity: 0; translate: 0 10px; } }
+.fl-footer a { color: inherit; }

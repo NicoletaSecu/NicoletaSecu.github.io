@@ -10,11 +10,16 @@ if (polaroid) {
 }
 
 setupAnchors();
+if (typeof setupFloats === "function") {
+  setupFloats();
+  setupStatement();
+}
 if (document.getElementById("desk")) {
   setupDeskScale();
   setupLamp();
 }
 setupFilters();
+setupPreview();
 setupLanguageSwitch();
 applyLanguage();
 if (document.getElementById("contactForm")) setupContactForm();

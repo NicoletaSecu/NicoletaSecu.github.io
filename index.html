@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio</title>
+  <title>Nicoleta Secu · Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script>
-    // Tema: quello salvato, altrimenti quello del sistema.
     (function () {
       var t;
       try { t = localStorage.getItem("theme"); } catch (e) {}
@@ -20,25 +19,57 @@
 </head>
 <body>
   <!-- I testi stanno in content/texts.js: qui sotto ci sono solo quelli italiani di partenza -->
-  <header class="topbar">
-    <a href="#top" class="brand" data-gravity>Nicoleta Secu</a>
-    <nav class="nav" data-i18n-aria="nav.label" aria-label="Sezioni">
-      <a href="progetti.html" data-gravity data-i18n="nav.projects">Progetti</a>
-      <a href="#chi-sono" data-gravity data-i18n="nav.about">Chi sono</a>
-      <a href="#contatti" data-gravity data-i18n="nav.contact">Contatti</a>
-    </nav>
-    <div class="lang" role="group" data-i18n-aria="lang.label" aria-label="Lingua">
-      <button type="button" data-lang="it" aria-pressed="true">IT</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  <header class="fl-top">
+    <a href="#top" class="fl-brand">Nicoleta Secu</a>
+    <div class="fl-top-right">
+      <nav class="fl-nav" data-i18n-aria="nav.label" aria-label="Sezioni">
+        <a href="#progetti" data-i18n="nav.projects">Progetti</a>
+        <a href="#chi-sono" data-i18n="nav.about">Chi sono</a>
+        <a href="#scrivania" data-i18n="nav.desk">Scrivania</a>
+        <a href="#contatti" data-i18n="nav.contact">Contatti</a>
+      </nav>
+      <div class="lang" role="group" data-i18n-aria="lang.label" aria-label="Lingua">
+        <button type="button" data-lang="it" aria-pressed="true">IT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </header>
 
   <main id="top">
-    <!-- LA SCRIVANIA -->
-    <section class="desk-wrap" data-i18n-aria="desk.label" aria-label="La mia scrivania">
+    <!-- 00 · APERTURA: il nome enorme, con gli screenshot dei progetti sparsi intorno -->
+    <section class="fl-hero" data-i18n-aria="hero.label" aria-label="Presentazione">
+      <div class="fl-floats" id="floats" aria-hidden="true"></div>
+      <div class="fl-hero-text">
+        <p class="fl-kicker" data-gravity data-i18n="intro.kicker">Docente ITP · Sviluppatrice web</p>
+        <h1 class="fl-name" data-gravity>Nicoleta<br>Secu</h1>
+        <p class="fl-lead" data-gravity data-i18n="intro.lead">Insegno, programmo e trasformo le idee <em>in siti che si possono usare.</em></p>
+      </div>
+      <a class="fl-scroll" href="#progetti" data-i18n="hero.scroll">Scorri per esplorare ↓</a>
+    </section>
+
+    <!-- 01 · PROGETTI: un elenco gigante, come le collezioni di Floema -->
+    <section id="progetti" class="fl-section">
+      <p class="fl-label"><span>01</span> <b data-i18n="label.projects">Progetti</b></p>
+      <!-- quelli con home: true in content/projects.js -->
+      <ol class="fl-list" id="projectList" data-view="home"></ol>
+      <p class="fl-more"><a href="progetti.html" data-i18n="home.more">Tutti i progetti, con i filtri ↗</a></p>
+    </section>
+
+    <!-- 02 · CHI SONO: la frase si accende parola per parola mentre scorri -->
+    <section id="chi-sono" class="fl-section">
+      <p class="fl-label"><span>02</span> <b data-i18n="label.about">Chi sono</b></p>
+      <p class="fl-statement" id="statement" data-i18n-words="about.statement">Chi sono? Una ragazza piena di idee, questo è sicuro.</p>
+      <div class="fl-about" data-i18n="about.details"></div>
+    </section>
+
+    <!-- 03 · LA SCRIVANIA: il gioco resta, più in basso -->
+    <section id="scrivania" class="fl-section">
+      <p class="fl-label"><span>03</span> <b data-i18n="label.desk">Gioca con la mia scrivania</b></p>
+      <p class="fl-note" data-i18n="desk.note">Tocca gli oggetti. E se proprio vuoi, premi il bottone rosso.</p>
+      <div class="desk-wrap" data-i18n-aria="desk.label" aria-label="La mia scrivania">
       <div class="desk" id="desk">
         <div class="obj sticky" style="--x:5%;--y:8%;--rot:-4deg" data-gravity data-i18n="desk.sticky">
-          <p>Ciao! Sono <strong>Nicoleta</strong>.</p>
+          <p>Ciao!</p>
           <p>Questa è la mia scrivania: tocca gli oggetti per esplorare.</p>
         </div>
 
@@ -141,27 +172,14 @@
           <span data-i18n="desk.button">NON<br>PREMERE</span>
         </button>
       </div>
-      <a class="desk-hint" href="#progetti" data-i18n="desk.hint">scendi lungo la linea dei progetti ↓</a>
-    </section>
-
-    <!-- PROGETTI SCELTI (quelli con home: true in content/projects.js) -->
-    <section id="progetti" class="section">
-      <div class="section-head">
-        <h2 data-gravity data-i18n="home.projectsTitle">Progetti scelti</h2>
-        <p class="lede" data-i18n="home.projectsLede">Un paio di fermate della mia linea. Passa sopra le foto per svilupparle.</p>
       </div>
-      <ol class="metro" id="metro" data-view="home"></ol>
-      <p class="see-all"><a href="progetti.html" data-i18n="home.seeAll">Vedi tutta la linea →</a></p>
     </section>
 
-    <section id="chi-sono" class="section narrow">
-      <h2 data-gravity data-i18n="about.title">Chi sono</h2>
-      <p data-gravity data-i18n="about.text">Scrivi qui due o tre righe su di te: cosa fai, cosa ti piace, cosa stai imparando adesso.</p>
-    </section>
-
-    <section id="contatti" class="section narrow">
-      <h2 data-gravity data-i18n="contact.title">Scrivimi</h2>
-      <p class="lede-left" data-i18n="contact.lede">Un'idea, una domanda, un ciao: lasciami un messaggio e ti rispondo appena posso.</p>
+    <!-- 04 · CONTATTI -->
+    <section id="contatti" class="fl-section">
+      <p class="fl-label"><span>04</span> <b data-i18n="label.contact">Contatti</b></p>
+      <h2 class="fl-big" data-gravity data-i18n="contact.big">Scriviamoci.</h2>
+      <div class="fl-form">
       <form class="letter" id="contactForm" novalidate>
         <div class="letter-row">
           <label>
@@ -188,20 +206,20 @@
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </div>
       </form>
+      </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <a class="back-to-desk" href="#top">
-      <span class="arrow" aria-hidden="true">↑</span>
-      <span data-i18n="footer.back">Torna alla scrivania</span>
-    </a>
-    <!-- L'indirizzo GitHub si imposta in content/settings.js -->
+  <footer class="fl-footer">
+    <span>© 2026 Nicoleta Secu</span>
     <a class="github" href="https://github.com/" target="_blank" rel="noopener">
       <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
       GitHub
     </a>
   </footer>
+
+  <!-- l'immagine grande che segue il mouse sull'elenco dei progetti -->
+  <div class="fl-preview" id="preview" aria-hidden="true"><img alt=""></div>
 
   <div class="gravity-bar">
     <p class="shake-hint" data-i18n="gravity.hint">Prova ad afferrare un oggetto e scuoterlo</p>
@@ -215,7 +233,8 @@
   <script src="content/projects.js"></script>
   <!-- codice del sito -->
   <script src="js/lang.js"></script>
-  <script src="js/projects-line.js"></script>
+  <script src="js/project-list.js"></script>
+  <script src="js/hero.js"></script>
   <script src="js/desk.js"></script>
   <script src="js/contact.js"></script>
   <script src="js/navigation.js"></script>
