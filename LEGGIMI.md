@@ -4,9 +4,10 @@
 
 ```
 Portfolio/
-├── index.html          la home: nome, progetti, chi sono, scrivania, contatti
+├── index.html          la home: nome, due progetti, scrivania, link ai contatti
 ├── progetti.html       tutti i progetti su un albero del tempo, con i filtri
 ├── chi-sono.html       chi sono: ritratto, cosa faccio, percorso
+├── contatti.html       il modulo per scrivermi
 ├── favicon.svg         l'iconcina della scheda (NS in bordeaux) + favicon-32.png e apple-touch-icon.png
 ├── content/            ← QUELLO CHE MODIFICHI TU
 │   ├── projects.js     i progetti (italiano + inglese)
@@ -40,7 +41,7 @@ Se ha un'immagine, mettila in `img/` e scrivi `image: "img/nome-file.png"`.
 Dal Terminale:
 
 ```bash
-cd ~/Desktop/ThingsForMyLife/Portfolio && python3 -m http.server 5173
+cd ~/.../.../Portfolio && python3 -m http.server 5173
 ```
 
 Poi apri http://localhost:5173 nel browser.

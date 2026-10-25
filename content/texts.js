@@ -1,9 +1,7 @@
-// ─────────────────────────────────────────────────────────────
 //  TESTI DEL SITO IN ITALIANO E INGLESE
 //  Ogni chiave corrisponde a un elemento con data-i18n="chiave" in index.html
 //  o progetti.html. Per cambiare un testo, modificalo qui (in tutte e due le lingue).
 //  Le chiavi "toys." sono i testi dei giochi con gli oggetti caduti.
-// ─────────────────────────────────────────────────────────────
 
 const STRINGS = {
   it: {
@@ -15,7 +13,6 @@ const STRINGS = {
     "nav.label": "Sezioni",
     "nav.projects": "Progetti",
     "nav.about": "Chi sono",
-    "nav.desk": "Scrivania",
     "nav.contact": "Contatti",
 
     // apertura: il nome enorme
@@ -30,7 +27,6 @@ const STRINGS = {
 
     // elenco dei progetti
     "home.more": "Tutti i progetti, con i filtri ↗",
-    "list.site": "Sito ↗",
     "list.with": "Con",
     "list.ongoing": "in corso",
     "list.maintained": "+ migliorie e bug fix ogni tanto",
@@ -48,6 +44,7 @@ const STRINGS = {
 
     // pagina Chi sono
     "page.aboutTitle": "Chi sono · Nicoleta Secu",
+    "page.contactTitle": "Contatti · Nicoleta Secu",
     "aboutPage.title": "Chi sono",
     "aboutPage.photo": "io, più o meno",
     "aboutPage.hint": "cliccami",
@@ -91,11 +88,12 @@ const STRINGS = {
 
     // contatti
     "contact.big": "Scriviamoci.",
+    "contact.intro": "Per un progetto, una collaborazione o anche solo per un saluto: ti rispondo appena posso.",
     "contact.email": "Email",
     "contact.phone": "Telefono <small>(facoltativo)</small>",
     "contact.subject": "Oggetto",
     "contact.message": "Messaggio",
-    "contact.send": "Invia ✉",
+    "contact.send": "Invia",
     "contact.missing": "Manca qualcosa: controlla email, oggetto e messaggio.",
     "contact.notReady": "Il modulo non è ancora collegato (manca la chiave in content/settings.js).",
     "contact.sending": "Invio in corso…",
@@ -130,7 +128,6 @@ const STRINGS = {
     "nav.label": "Sections",
     "nav.projects": "Projects",
     "nav.about": "About",
-    "nav.desk": "Desk",
     "nav.contact": "Contact",
 
     "hero.label": "Introduction",
@@ -142,7 +139,6 @@ const STRINGS = {
     "label.contact": "Contact",
 
     "home.more": "All projects, with filters ↗",
-    "list.site": "Site ↗",
     "list.with": "With",
     "list.ongoing": "ongoing",
     "list.maintained": "+ occasional improvements and bug fixes",
@@ -157,6 +153,7 @@ const STRINGS = {
     "about.statement": "Who am I? A girl full of ideas, that's for sure. And ready to take on more than you'd expect, sometimes even more than I'd expect.",
 
     "page.aboutTitle": "About · Nicoleta Secu",
+    "page.contactTitle": "Contact · Nicoleta Secu",
     "aboutPage.title": "About me",
     "aboutPage.photo": "me, more or less",
     "aboutPage.hint": "click me",
@@ -197,11 +194,12 @@ const STRINGS = {
     "desk.button": "DO NOT<br>PRESS",
 
     "contact.big": "Let's talk.",
+    "contact.intro": "For a project, a collaboration or just to say hi: I'll get back to you as soon as I can.",
     "contact.email": "Email",
     "contact.phone": "Phone <small>(optional)</small>",
     "contact.subject": "Subject",
     "contact.message": "Message",
-    "contact.send": "Send ✉",
+    "contact.send": "Send",
     "contact.missing": "Something's missing: check email, subject and message.",
     "contact.notReady": "The form isn't connected yet (the key in content/settings.js is missing).",
     "contact.sending": "Sending…",

@@ -43,7 +43,6 @@ function renderProjectList() {
         ${p.image ? `<span class="fl-thumb"><img src="${escapeHtml(p.image)}" alt="" loading="lazy"></span>` : ""}
         <span class="fl-title">${escapeHtml(pick(p, "title"))}</span>
       </a>`;
-    const site = p.link ? `<a href="${escapeHtml(p.link)}" target="_blank" rel="noopener">${t("list.site")}</a>` : "";
     const desc = `<p class="fl-desc">${escapeHtml(pick(p, "description"))}${withPeople(p)}</p>`;
     const attrs = `data-type="${p.type}" data-year="${y}" data-img="${escapeHtml(p.image)}"`;
 
@@ -53,7 +52,7 @@ function renderProjectList() {
         <li class="fl-row" ${attrs}>
           <span class="fl-num">${String(i + 1).padStart(2, "0")}</span>
           ${title}
-          <div class="fl-side"><span class="fl-type">${escapeHtml(pick(typeOf(p), "label"))} · ${when}</span>${site}${maintainedNote(p)}</div>
+          <div class="fl-side"><span class="fl-type">${escapeHtml(pick(typeOf(p), "label"))} · ${when}</span>${maintainedNote(p)}</div>
           ${desc}
         </li>`;
       return;
@@ -71,7 +70,7 @@ function renderProjectList() {
         <span class="fl-dot" style="--c:${typeOf(p).color}" aria-hidden="true"></span>
         <div class="fl-card">
           ${title}
-          <div class="fl-side"><span class="fl-type">${escapeHtml(pick(typeOf(p), "label"))}</span>${site}${maintainedNote(p)}</div>
+          <div class="fl-side"><span class="fl-type">${escapeHtml(pick(typeOf(p), "label"))}</span>${maintainedNote(p)}</div>
           ${desc}
         </div>
       </li>`;

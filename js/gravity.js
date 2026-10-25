@@ -1,4 +1,4 @@
-// ───────────── Gravità ─────────────
+//     Gravità 
 // Il bottone rosso fa cadere gli elementi con data-gravity visibili sullo schermo.
 // Si possono afferrare e lanciare; se ne scuoti uno succede qualcosa (vedi toys.js).
 // Al loro posto resta una copia invisibile, così la pagina non si sposta.

@@ -1,4 +1,4 @@
-// ───────────── Link interni e ricarica ─────────────
+//   Link interni e ricarica 
 // I link come "#progetti" scorrono alla sezione senza scriverla nell'indirizzo,
 // così quando ricarichi la pagina riparti sempre dall'inizio.
 // Se arrivi da un'altra pagina con un indirizzo tipo "index.html#contatti",

@@ -1,4 +1,4 @@
-// ───────────── Il pallino che insegue il mouse ─────────────
+//    Il pallino che insegue il mouse  
 // Un piccolo cerchio terracotta segue il mouse con un leggero ritardo.
 // Sopra un progetto (anche le immagini intorno al nome) diventa un cerchio grande con scritto "Apri"; sopra gli altri link
 // e bottoni diventa un anello. La freccia normale resta, così cliccare e trascinare

@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261025-1711">
+  <link rel="stylesheet" href="css/style.css?v=20261025-1736">
   <script>
     (function () {
       var t;
@@ -28,10 +28,9 @@
     <a href="#top" class="fl-brand">Nicoleta Secu</a>
     <div class="fl-top-right">
       <nav class="fl-nav" data-i18n-aria="nav.label" aria-label="Sezioni">
-        <a href="#progetti" data-i18n="nav.projects">Progetti</a>
+        <a href="progetti.html" data-i18n="nav.projects">Progetti</a>
         <a href="chi-sono.html" data-i18n="nav.about">Chi sono</a>
-        <a href="#scrivania" data-i18n="nav.desk">Scrivania</a>
-        <a href="#contatti" data-i18n="nav.contact">Contatti</a>
+        <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
       </nav>
       <div class="lang" role="group" data-i18n-aria="lang.label" aria-label="Lingua">
         <button type="button" data-lang="it" aria-pressed="true">IT</button>
@@ -82,7 +81,7 @@
           <span class="obj-label" data-i18n="desk.mug">Chi sono</span>
         </a>
 
-        <a class="obj phone" href="#contatti" style="--x:82%;--y:44%;--rot:-8deg" data-gravity>
+        <a class="obj phone" href="contatti.html" style="--x:82%;--y:44%;--rot:-8deg" data-gravity>
           <span class="screen"><span data-i18n="desk.phone">Contatti</span><small data-i18n="desk.phoneSub">scrivimi</small></span>
         </a>
 
@@ -173,38 +172,10 @@
       </div>
     </section>
 
-    <!-- 03 · CONTATTI -->
+    <!-- 03 · CONTATTI: il modulo sta nella pagina Contatti -->
     <section id="contatti" class="fl-section">
       <p class="fl-label"><span>03</span> <b data-i18n="label.contact">Contatti</b></p>
-      <h2 class="fl-big" data-gravity data-i18n="contact.big">Scriviamoci.</h2>
-      <div class="fl-form">
-      <form class="letter" id="contactForm" novalidate>
-        <div class="letter-row">
-          <label>
-            <span data-i18n="contact.email">Email</span>
-            <input name="email" type="email" autocomplete="email" required maxlength="200">
-          </label>
-          <label>
-            <span data-i18n="contact.phone">Telefono <small>(facoltativo)</small></span>
-            <input name="phone" type="tel" autocomplete="tel" maxlength="30">
-          </label>
-        </div>
-        <label>
-          <span data-i18n="contact.subject">Oggetto</span>
-          <input name="subject" type="text" required maxlength="150">
-        </label>
-        <label>
-          <span data-i18n="contact.message">Messaggio</span>
-          <textarea name="message" rows="5" required maxlength="4000"></textarea>
-        </label>
-        <!-- trappola per i bot: le persone non la vedono -->
-        <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="letter-foot">
-          <button type="submit" class="send" data-i18n="contact.send">Invia ✉</button>
-          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-        </div>
-      </form>
-      </div>
+      <a class="fl-big about-cta" href="contatti.html" data-gravity data-i18n="aboutPage.cta">Scriviamoci ↗</a>
     </section>
   </main>
 
@@ -226,19 +197,18 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
   <!-- contenuti che modifichi tu -->
-  <script src="content/settings.js?v=20261025-1711"></script>
-  <script src="content/texts.js?v=20261025-1711"></script>
-  <script src="content/projects.js?v=20261025-1711"></script>
+  <script src="content/settings.js?v=20261025-1736"></script>
+  <script src="content/texts.js?v=20261025-1736"></script>
+  <script src="content/projects.js?v=20261025-1736"></script>
   <!-- codice del sito -->
-  <script src="js/lang.js?v=20261025-1711"></script>
-  <script src="js/project-list.js?v=20261025-1711"></script>
-  <script src="js/hero.js?v=20261025-1711"></script>
-  <script src="js/desk.js?v=20261025-1711"></script>
-  <script src="js/contact.js?v=20261025-1711"></script>
-  <script src="js/navigation.js?v=20261025-1711"></script>
-  <script src="js/toys.js?v=20261025-1711"></script>
-  <script src="js/gravity.js?v=20261025-1711"></script>
-  <script src="js/cursor.js?v=20261025-1711"></script>
-  <script src="js/main.js?v=20261025-1711"></script>
+  <script src="js/lang.js?v=20261025-1736"></script>
+  <script src="js/project-list.js?v=20261025-1736"></script>
+  <script src="js/hero.js?v=20261025-1736"></script>
+  <script src="js/desk.js?v=20261025-1736"></script>
+  <script src="js/navigation.js?v=20261025-1736"></script>
+  <script src="js/toys.js?v=20261025-1736"></script>
+  <script src="js/gravity.js?v=20261025-1736"></script>
+  <script src="js/cursor.js?v=20261025-1736"></script>
+  <script src="js/main.js?v=20261025-1736"></script>
 </body>
 </html>

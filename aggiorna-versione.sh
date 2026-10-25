@@ -5,7 +5,7 @@
 #   sh aggiorna-versione.sh
 cd "$(dirname "$0")"
 V=$(date +%Y%m%d-%H%M)
-for f in index.html progetti.html chi-sono.html; do
+for f in *.html; do
   # toglie la versione vecchia (se c'è) e mette quella nuova
   sed -E -i '' \
     -e "s#(href=\"css/[^\"?]+\.css)(\?v=[^\"]*)?\"#\1?v=$V\"#g" \

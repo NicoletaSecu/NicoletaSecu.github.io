@@ -1,4 +1,4 @@
-// ───────────── Apertura e "Chi sono" (solo in home) ─────────────
+//    Apertura e "Chi sono" (solo in home) 
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Gli screenshot dei progetti sparsi intorno al nome (cliccandoli si apre il progetto).
@@ -56,7 +56,7 @@ function setupFloats() {
   requestAnimationFrame(frame);
 }
 
-// ───────────── Testi che si accendono parola per parola ─────────────
+//    Testi che si accendono parola per parola 
 // Avvolge ogni parola dei testi (anche quelle dentro i link) in <span class="w">.
 function wrapWords(root) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
@@ -142,7 +142,7 @@ function setupReveal() {
   addEventListener("resize", updateReveal);
 }
 
-// ───────────── Il nome si sparpaglia mentre scorri ─────────────
+//   Il nome si sparpaglia mentre scorri  
 // Ogni lettera di "Nicoleta Secu" si allontana dal centro, ruota un po' e sbiadisce,
 // come gli screenshot intorno. Tornando su, le lettere si rimettono a posto.
 function setupNameSpread() {

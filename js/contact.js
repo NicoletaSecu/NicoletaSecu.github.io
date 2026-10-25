@@ -1,4 +1,4 @@
-// ───────────── Modulo "Scrivimi" ─────────────
+//    Modulo "Scrivimi" 
 // I messaggi passano da Web3Forms, che li inoltra alla tua email senza mostrarla sul sito.
 // La chiave si imposta in content/settings.js.
 function setupContactForm() {

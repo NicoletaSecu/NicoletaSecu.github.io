@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contatti · Nicoleta Secu</title>
+  <!-- favicon: le iniziali NS in bordeaux (SVG per i browser moderni, PNG per gli altri e per l'iPhone) -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#eeebe5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20261025-1736">
+  <script>
+    (function () {
+      var t;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+</head>
+<!-- data-title: la chiave del titolo della scheda in content/texts.js -->
+<body data-title="page.contactTitle">
+  <!-- I testi stanno in content/texts.js: qui sotto ci sono solo quelli italiani di partenza -->
+  <header class="fl-top">
+    <a href="index.html" class="fl-brand">Nicoleta Secu</a>
+    <div class="fl-top-right">
+      <nav class="fl-nav" data-i18n-aria="nav.label" aria-label="Sezioni">
+        <a href="progetti.html" data-i18n="nav.projects">Progetti</a>
+        <a href="chi-sono.html" data-i18n="nav.about">Chi sono</a>
+        <a href="contatti.html" aria-current="page" data-i18n="nav.contact">Contatti</a>
+      </nav>
+      <div class="lang" role="group" data-i18n-aria="lang.label" aria-label="Lingua">
+        <button type="button" data-lang="it" aria-pressed="true">IT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- CONTATTI: titolo enorme e il modulo (i messaggi arrivano per email tramite Web3Forms) -->
+    <section id="contatti" class="fl-section fl-page">
+      <h1 class="fl-big" data-i18n="contact.big">Scriviamoci.</h1>
+      <p class="fl-intro" data-i18n="contact.intro">Per un progetto, una collaborazione o anche solo per un saluto: ti rispondo appena posso.</p>
+      <div class="fl-form">
+      <form class="letter" id="contactForm" novalidate>
+        <div class="letter-row">
+          <label>
+            <span data-i18n="contact.email">Email</span>
+            <input name="email" type="email" autocomplete="email" required maxlength="200">
+          </label>
+          <label>
+            <span data-i18n="contact.phone">Telefono <small>(facoltativo)</small></span>
+            <input name="phone" type="tel" autocomplete="tel" maxlength="30">
+          </label>
+        </div>
+        <label>
+          <span data-i18n="contact.subject">Oggetto</span>
+          <input name="subject" type="text" required maxlength="150">
+        </label>
+        <label>
+          <span data-i18n="contact.message">Messaggio</span>
+          <textarea name="message" rows="5" required maxlength="4000"></textarea>
+        </label>
+        <!-- trappola per i bot: le persone non la vedono -->
+        <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="letter-foot">
+          <button type="submit" class="send" data-i18n="contact.send">Invia</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="fl-footer">
+    <a href="index.html" data-i18n="footer.back">← Torna alla home</a>
+    <a class="github" href="https://github.com/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+  </footer>
+
+  <!-- contenuti che modifichi tu -->
+  <script src="content/settings.js?v=20261025-1736"></script>
+  <script src="content/texts.js?v=20261025-1736"></script>
+  <script src="content/projects.js?v=20261025-1736"></script>
+  <!-- codice del sito -->
+  <script src="js/lang.js?v=20261025-1736"></script>
+  <script src="js/project-list.js?v=20261025-1736"></script>
+  <script src="js/contact.js?v=20261025-1736"></script>
+  <script src="js/navigation.js?v=20261025-1736"></script>
+  <script src="js/cursor.js?v=20261025-1736"></script>
+  <script src="js/main.js?v=20261025-1736"></script>
+</body>
+</html>

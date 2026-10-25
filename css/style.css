@@ -1,4 +1,4 @@
-/* ───────────── Colori (giorno / notte) ───────────── */
+/*   Colori (giorno / notte)  */
 :root {
   --bg: #f4efe6;
   --ink: #1d1b18;
@@ -40,7 +40,7 @@ body {
 a { color: inherit; }
 button { font: inherit; color: inherit; }
 
-/* ───────────── Barra in alto ───────────── */
+/*  Barra in alto  */
 .topbar {
   position: fixed;
   inset: 0 0 auto 0;
@@ -79,7 +79,7 @@ button { font: inherit; color: inherit; }
   .lang { margin-left: auto; }
 }
 
-/* ───────────── La scrivania ───────────── */
+/*  La scrivania  */
 .desk-wrap { padding: 24px 16px 8px; }
 .desk {
   --u: 11px; /* unità di misura: la aggiorna script.js in base alla larghezza della scrivania */
@@ -369,7 +369,7 @@ button { font: inherit; color: inherit; }
   :root[data-theme="dark"] .desk::after { background: rgba(0, 0, 0, 0.25); }
 }
 
-/* ───────────── Sezioni ───────────── */
+/*  Sezioni  */
 .section { padding: 72px 16px; max-width: 1100px; margin: 0 auto; }
 .section.narrow { max-width: 720px; }
 .section h1, .section h2 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin: 0 0 12px; width: fit-content; }
@@ -414,7 +414,7 @@ button { font: inherit; color: inherit; }
 .chip[aria-pressed="true"] { color: var(--ink); font-weight: 700; border-bottom-color: var(--c, var(--ink)); }
 .chip:focus-visible { outline: 2px dashed var(--ink); outline-offset: 4px; }
 
-/* ───────────── La linea della metro ───────────── */
+/*  La linea della metro  */
 .metro {
   position: relative;
   list-style: none;
@@ -518,7 +518,7 @@ button { font: inherit; color: inherit; }
 .station { animation: stop-in 0.35s ease-out; }
 @keyframes stop-in { from { opacity: 0; translate: 0 12px; } }
 
-/* ───────────── Camera oscura ───────────── */
+/*  Camera oscura */
 .photo {
   position: relative;
   aspect-ratio: 2 / 1;
@@ -575,7 +575,7 @@ button { font: inherit; color: inherit; }
   .year-stop h3 { left: 52px; }
 }
 
-/* ───────────── Contatti e piè di pagina ───────────── */
+/*    Contatti e piè di pagina  */
 /* modulo "Scrivimi": un foglio a righe */
 .lede-left { color: var(--muted); margin: 0 0 24px; }
 .letter {
@@ -653,7 +653,7 @@ button { font: inherit; color: inherit; }
 .back-to-desk .arrow { display: inline-block; transition: transform 0.2s; }
 .back-to-desk:hover .arrow { transform: translateY(-3px); }
 
-/* ───────────── Gravità ───────────── */
+/*   Gravità */
 html.gravity-active, html.gravity-active body { overflow: hidden; }
 .falling { z-index: 1000; cursor: grab; user-select: none; -webkit-user-select: none; }
 .falling:active { cursor: grabbing; }
@@ -691,7 +691,7 @@ html.gravity-active .shake-hint { display: block; }
   cursor: pointer;
   box-shadow: 4px 4px 0 var(--ink);
 }
-/* ───────────── Giochi con gli oggetti caduti ───────────── */
+/* Giochi con gli oggetti caduti   */
 /* fogli del quaderno */
 .loose-page {
   border-radius: 3px;
@@ -765,11 +765,11 @@ html.gravity-active .shake-hint { display: block; }
 }
 
 
-/* ─────────────────────────────────────────────────────────────
+/* 
    STILE MORBIDO
    Rifiniture sopra a tutto quello che c'è qui sopra: niente contorni
    neri e ombre "a fumetto", ma ombre realistiche e sfumate e linee sottili.
-   ───────────────────────────────────────────────────────────── */
+    */
 
 :root {
   --line: rgba(29, 27, 24, 0.1);
@@ -857,11 +857,11 @@ h1, h2 { letter-spacing: -0.02em; }
 .footer { border-top: 1px solid var(--line); }
 
 
-/* ─────────────────────────────────────────────────────────────
+/* 
    STILE EDITORIALE
    L'ultimo strato, sopra a tutto: come una rivista. Titoli con le grazie
    (Fraunces), linee sottili, schede senza riquadro, modulo con le righe.
-   ───────────────────────────────────────────────────────────── */
+    */
 
 :root {
   --serif: "Fraunces", Georgia, serif;
@@ -955,7 +955,7 @@ h2,
 
 .footer { border-top: 1px solid var(--ink); }
 
-/* ───────────── Chi sono ───────────── */
+/* Chi sono */
 .about p { margin: 0 0 16px; }
 .about-lead {
   font-family: var(--serif);
@@ -990,7 +990,7 @@ h2,
   .about-facts dd { padding-top: 4px; }
 }
 
-/* ───────────── Introduzione (sopra la scrivania) ───────────── */
+/* Introduzione (sopra la scrivania)  */
 .intro {
   max-width: 900px;
   margin: 0 auto;
@@ -1026,7 +1026,7 @@ h2,
 .desk-wrap { padding-top: 32px; }
 .desk { max-width: 1000px; }
 
-/* ───────────── Colore d'accento e rifiniture ───────────── */
+/*  Colore d'accento e rifiniture  */
 ::selection { background: var(--accent); color: #fff; }
 .intro-kicker { color: var(--accent); }
 .intro-lead em { color: var(--accent); }
@@ -1048,11 +1048,11 @@ h2,
 .polaroid .cap { font-size: calc(1.5 * var(--u)); }
 
 
-/* ─────────────────────────────────────────────────────────────
+/* 
    STILE ATTUALE ("alla Floema")
    L'ultimo strato, sopra a tutto: tipografia enorme senza grazie (Inter Tight),
    lavori in grande, interfaccia minima, etichette numerate, terracotta usato poco.
-   ───────────────────────────────────────────────────────────── */
+    */
 
 :root {
   --ui: "Inter Tight", system-ui, sans-serif;
@@ -1090,7 +1090,6 @@ body { padding-top: 0; font-family: var(--ui); }
 }
 .fl-nav a:hover { background: var(--ink); color: var(--bg); }
 @media (max-width: 640px) {
-  .fl-nav a:nth-child(3) { display: none; }
   .fl-nav a { padding: 6px 10px; }
 }
 
@@ -1156,12 +1155,14 @@ body { padding-top: 0; font-family: var(--ui); }
   cursor: grab;
 }
 .fl-float img { display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
-/* su telefono solo due immagini, negli angoli in alto, lontane dal testo */
+/* su telefono quattro immagini: due in alto e due nello spazio sotto la frase, lontane dal testo */
 @media (max-width: 700px) {
   .fl-float { width: 34vw; }
   .fl-float:nth-child(1) { left: 4%; top: 11%; }
   .fl-float:nth-child(2) { left: 60%; top: 9%; }
-  .fl-float:nth-child(n + 3) { display: none; }
+  .fl-float:nth-child(3) { left: 58%; top: 73%; }
+  .fl-float:nth-child(4) { left: 7%; top: 77%; }
+  .fl-float:nth-child(n + 5) { display: none; }
 }
 
 /* ── sezioni ed etichette numerate ── */
@@ -1217,16 +1218,14 @@ body { padding-top: 0; font-family: var(--ui); }
   letter-spacing: -0.045em;
   transition: translate 0.35s cubic-bezier(.2, .8, .2, 1), color 0.3s;
 }
-.fl-side { text-align: right; font-size: 0.85rem; }
+.fl-side { text-align: right; font-size: 1.05rem; }
 .fl-side .fl-type { display: block; color: var(--muted); margin-bottom: 4px; }
-.fl-side a { margin-left: 12px; font-weight: 500; text-underline-offset: 3px; }
-.fl-side a:first-of-type { margin-left: 0; }
 .fl-desc {
   grid-column: 2 / -1;
   max-width: 62ch;
   margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 .fl-row:hover .fl-title { translate: 14px 0; color: var(--accent); }
 .fl-row:hover .fl-thumb { filter: none; }
@@ -1590,7 +1589,7 @@ html, body { overflow-x: clip; }
 .fl-float:hover { scale: 1.05; box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.45); }
 
 /* "+ migliorie e bug fix ogni tanto" sotto categoria e link */
-.fl-note-small { display: block; margin-top: 4px; font-size: 0.78rem; font-style: italic; color: var(--muted); }
+.fl-note-small { display: block; margin-top: 4px; font-size: 0.9rem; font-style: italic; color: var(--muted); }
 
 /* ── telefono lanciato e caduto: schermo crepato (js/toys.js) ── */
 .phone .screen { position: relative; overflow: hidden; }
@@ -1620,3 +1619,7 @@ html, body { overflow-x: clip; }
 .fl-row .fl-title { transition: translate 0.35s cubic-bezier(.2, .8, .2, 1), color 0.4s; }
 .fl-row.active .fl-title { color: var(--accent); }
 .fl-page .fl-row.active .fl-dot { background: var(--c); scale: 1.3; }
+
+/* bottone GitHub nel piè di pagina: passandoci sopra diventa bordeaux */
+.github { transition: background-color 0.25s, border-color 0.25s, color 0.25s; }
+.fl-footer .github:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }

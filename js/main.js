@@ -1,4 +1,4 @@
-// ───────────── Avvio ─────────────
+//   Avvio 
 // Qui si accende tutto. Ogni parte del sito vive nel suo file dentro js/.
 // Lo stesso file serve sia la home (index.html) sia la pagina Progetti (progetti.html):
 // ogni parte parte solo se nella pagina c'è il suo pezzo.

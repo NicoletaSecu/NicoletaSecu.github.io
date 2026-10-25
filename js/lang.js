@@ -1,4 +1,4 @@
-// ───────────── Lingua (IT / EN) ─────────────
+//     Lingua (IT / EN) 
 // Quella scelta col selettore, altrimenti quella del browser (italiano → IT, tutto il resto → EN).
 let lang = (() => {
   let saved;

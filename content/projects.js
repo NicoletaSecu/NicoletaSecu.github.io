@@ -1,5 +1,5 @@
-// ─────────────────────────────────────────────────────────────
-//  I TUOI PROGETTI
+
+//  I PROGETTI
 //  Per aggiungerne uno, copia un blocco { ... } e cambia i testi.
 //  L'ordine qui non conta: il sito li ordina dal più recente
 //  e li raggruppa per anno da solo.
@@ -18,7 +18,6 @@
 //  home:        true per mostrarlo anche nella home (tutti gli altri stanno solo nella pagina Progetti)
 //  with:        chi ha lavorato con te, es. [{ name: "Nome Cognome", url: "https://..." }]
 //               (compare come "Con Nome Cognome", con il link al suo sito)
-// ─────────────────────────────────────────────────────────────
 
 // Ogni tipo è una "linea della metro" con il suo colore.
 const TYPES = {

@@ -1,4 +1,4 @@
-// ───────────── Dimensioni della scrivania ─────────────
+//  Dimensioni della scrivania 
 // Gli oggetti sono misurati in "--u" = 1% della larghezza della scrivania (2.2% su telefono).
 function setupDeskScale() {
   const desk = document.getElementById("desk");
@@ -10,7 +10,7 @@ function setupDeskScale() {
   update();
 }
 
-// ───────────── Lampada = tema giorno/notte ─────────────
+//  Lampada = tema giorno/notte 
 function setupLamp() {
   document.getElementById("lamp").addEventListener("click", () => {
     const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
@@ -19,7 +19,7 @@ function setupLamp() {
   });
 }
 
-// ───────────── Gli oggetti della scrivania vanno via mentre scorri ─────────────
+//     Gli oggetti della scrivania vanno via mentre scorri 
 // Arrivando alla scrivania gli oggetti sono già al loro posto; quando la superi
 // (il suo centro sale oltre il centro dello schermo) si allontanano, ruotano e sbiadiscono.
 function setupDeskSpread() {
