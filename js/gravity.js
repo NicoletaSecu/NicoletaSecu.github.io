@@ -35,10 +35,10 @@ const Gravity = (() => {
       return addItem(el, body, w, h, { spawned: true });
     },
     // Fa vibrare un oggetto per un po'.
-    buzz(it, ms) { it.buzzUntil = performance.now() + ms; },
+    buzz(it, ms) { it.buzzUntil = performance.now() + ms; Matter.Sleeping.set(it.body, false); },
     // Toglie un oggetto creato con spawn (es. una goccia che si è asciugata).
     remove(it) {
-      if (!items.includes(it)) return;
+      if (!engine || !items.includes(it)) return; // la gravità è già finita
       Matter.Composite.remove(engine.world, it.body);
       it.el.remove();
       items = items.filter((i) => i !== it);
@@ -69,7 +69,9 @@ const Gravity = (() => {
     if (!els.length) return;
 
     active = true;
-    engine = Engine.create({ gravity: { y: 1.1 } });
+    // enableSleeping: gli oggetti fermi "si addormentano" e smettono di tremare
+    // (es. il quaderno con sopra la matita); più iterazioni = contatti più stabili
+    engine = Engine.create({ gravity: { y: 1.1 }, enableSleeping: true, positionIterations: 10, velocityIterations: 8 });
     Composite.add(engine.world, [
       Bodies.rectangle(W / 2, H + T / 2, W + 2 * T, T, { isStatic: true }), // pavimento
       Bodies.rectangle(-T / 2, H / 2, T, H * 6, { isStatic: true }),         // muro sinistro
@@ -96,12 +98,16 @@ const Gravity = (() => {
       ph.inert = true;
       m.el.before(ph);
 
+      // oggetti lunghi e sottili (la matita) con i bordi dritti: arrotondati farebbero da perno
+      // e ciò che ci finisce sopra continuerebbe a dondolare
+      const thin = Math.max(m.w, m.h) / Math.min(m.w, m.h) > 5;
       const body = Bodies.rectangle(m.r.left + m.r.width / 2, m.r.top + m.r.height / 2, m.w, m.h, {
         angle: (m.rot * Math.PI) / 180,
-        restitution: 0.35,
-        friction: 0.4,
-        frictionAir: 0.012,
-        chamfer: { radius: Math.min(m.w, m.h) * 0.12 },
+        restitution: 0.2,     // rimbalzano poco
+        friction: 0.7,        // e scivolano poco
+        frictionStatic: 1,
+        frictionAir: 0.02,    // un po' di freno, così si fermano invece di dondolare
+        chamfer: thin ? undefined : { radius: Math.min(m.w, m.h) * 0.12 },
       });
       Body.setVelocity(body, { x: (Math.random() - 0.5) * 4, y: -Math.random() * 3 });
       Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.08);
@@ -119,10 +125,12 @@ const Gravity = (() => {
   }
 
   function tick() {
+    if (!engine) return; // la gravità è appena finita: niente da muovere
     const now = performance.now();
     for (const it of items) {
       if (it.buzzUntil > now) {
         const f = 0.006 * it.body.mass;
+        Matter.Sleeping.set(it.body, false);
         Matter.Body.applyForce(it.body, it.body.position, { x: (Math.random() - 0.5) * f, y: (Math.random() - 0.7) * f });
       }
     }
@@ -140,6 +148,7 @@ const Gravity = (() => {
     const it = items.find((i) => i.el === e.currentTarget);
     if (!it) return;
     e.preventDefault();
+    Matter.Sleeping.set(it.body, false); // quando lo afferri si sveglia
     Toys.grab(it);
     Toys.played(api, 1); // ogni oggetto afferrato conta come "gioco"
     const b = it.body;
@@ -221,6 +230,8 @@ const Gravity = (() => {
     api.hint("gravity.hint");
     document.documentElement.classList.remove("gravity-active");
     restoreBtn.hidden = true;
+    // gli effetti di scorrimento (nome, scrivania) si rimettono in pari con la posizione attuale
+    dispatchEvent(new Event("scroll"));
   }
 
   // Mentre la gravità è attiva, gli oggetti si lanciano: niente clic sui link.

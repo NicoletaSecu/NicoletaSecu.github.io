@@ -174,7 +174,7 @@ function setupNameSpread() {
   let queued = false;
   const update = () => {
     queued = false;
-    if (document.documentElement.classList.contains("gravity-active")) return;
+    // (anche durante la gravità: si muovono solo le lettere dentro il nome, non il nome stesso)
     const s = Math.max(0, Math.min(1, scrollY / (innerHeight * 0.8))); // 0 = in cima, 1 = sparpagliato
     letters.forEach((l, i) => {
       const b = base[i];

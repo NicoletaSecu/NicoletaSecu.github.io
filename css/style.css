@@ -12,10 +12,10 @@
   /* niente più font scritto a mano: post-it e polaroid usano il corsivo con le grazie */
   --hand: "Fraunces", Georgia, serif;
   /* il colore d'accento del sito: link, bottoni, dettagli attivi */
-  --accent: #b9532f;
+  --accent: #8c2f45;
 }
 :root[data-theme="dark"] {
-  --accent: #e2805d;
+  --accent: #d9869a;
   --bg: #14130f;
   --ink: #efe8dc;
   --muted: #a39a8c;
@@ -211,7 +211,7 @@ button { font: inherit; color: inherit; }
 .phone .screen {
   height: 100%;
   border-radius: calc(1.2 * var(--u));
-  background: linear-gradient(160deg, #ff9a6c, #e4572e);
+  background: linear-gradient(160deg, #c2566f, #8c2f45);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -226,11 +226,11 @@ button { font: inherit; color: inherit; }
   z-index: 1;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.12),
-    0 0 calc(6 * var(--u)) calc(1.2 * var(--u)) rgba(255, 140, 90, 0.16);
+    0 0 calc(6 * var(--u)) calc(1.2 * var(--u)) rgba(194, 86, 111, 0.16);
 }
 :root[data-theme="dark"] .phone .screen {
   filter: brightness(0.82);
-  box-shadow: 0 0 calc(3 * var(--u)) calc(0.6 * var(--u)) rgba(255, 140, 90, 0.3);
+  box-shadow: 0 0 calc(3 * var(--u)) calc(0.6 * var(--u)) rgba(194, 86, 111, 0.3);
 }
 
 /* lampada (vista dall'alto): spenta di giorno, accesa di notte */
@@ -604,12 +604,12 @@ button { font: inherit; color: inherit; }
   width: 100%;
 }
 .letter textarea { resize: vertical; min-height: 120px; }
-.letter input:focus-visible, .letter textarea:focus-visible { outline: 3px solid #e4572e; outline-offset: 2px; }
+.letter input:focus-visible, .letter textarea:focus-visible { outline: 3px solid #8c2f45; outline-offset: 2px; }
 .botcheck { position: absolute; left: -9999px; }
 .letter-foot { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .send {
   border: 2px solid var(--ink);
-  background: #e4572e;
+  background: #8c2f45;
   color: #fff;
   border-radius: 999px;
   padding: 10px 24px;
@@ -621,7 +621,7 @@ button { font: inherit; color: inherit; }
 .send:disabled { opacity: 0.6; cursor: wait; }
 .form-status { margin: 0; font-weight: 500; }
 .form-status.ok { color: #4c9a2a; }
-.form-status.err { color: #e4572e; }
+.form-status.err { color: #8c2f45; }
 
 /* piè di pagina */
 .footer {
@@ -696,7 +696,7 @@ html.gravity-active .shake-hint { display: block; }
 .loose-page {
   border-radius: 3px;
   background:
-    linear-gradient(90deg, transparent 0 14%, rgba(228, 87, 46, 0.45) 14% calc(14% + 1px), transparent calc(14% + 1px)),
+    linear-gradient(90deg, transparent 0 14%, rgba(140, 47, 69, 0.45) 14% calc(14% + 1px), transparent calc(14% + 1px)),
     repeating-linear-gradient(to bottom, transparent 0 13px, rgba(46, 134, 171, 0.3) 13px 14px),
     #fffdf6;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -851,8 +851,8 @@ h1, h2 { letter-spacing: -0.02em; }
 }
 .letter input,
 .letter textarea { border: 1px solid var(--line); background: var(--bg); }
-.send { border: 0; box-shadow: 0 4px 14px rgba(228, 87, 46, 0.35); }
-.send:active { transform: none; box-shadow: 0 2px 6px rgba(228, 87, 46, 0.35); }
+.send { border: 0; box-shadow: 0 4px 14px rgba(140, 47, 69, 0.35); }
+.send:active { transform: none; box-shadow: 0 2px 6px rgba(140, 47, 69, 0.35); }
 
 .footer { border-top: 1px solid var(--line); }
 
@@ -1430,7 +1430,8 @@ body { padding-top: 0; font-family: var(--ui); }
   border: 1.5px solid transparent;
   pointer-events: none;
   opacity: 0;
-  transition: width 0.3s, height 0.3s, margin 0.3s, background 0.3s, border-color 0.3s, opacity 0.2s;
+  will-change: transform;
+  transition: width 0.25s, height 0.25s, margin 0.25s, background 0.25s, border-color 0.25s, opacity 0.2s;
 }
 .cursor-follow.on { opacity: 1; }
 .cursor-follow span {
@@ -1593,14 +1594,22 @@ html, body { overflow-x: clip; }
 
 /* ── telefono lanciato e caduto: schermo crepato (js/toys.js) ── */
 .phone .screen { position: relative; overflow: hidden; }
-.phone.cracked .screen { filter: saturate(0.6) brightness(0.85); }
+/* rotto non va più: schermo spento (nero), senza scritte, solo le crepe */
+.phone.cracked .screen { background: #141619; filter: none; }
+.phone.cracked .screen > * { opacity: 0; }
 .phone.cracked .screen::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   /* crepe che partono dal punto della botta, in alto a destra */
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='white' stroke-opacity='.9' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M68 52 L40 30 L18 6'/%3E%3Cpath d='M68 52 L96 20'/%3E%3Cpath d='M68 52 L84 92 L78 140 L92 196'/%3E%3Cpath d='M68 52 L30 88 L12 130'/%3E%3Cpath d='M68 52 L52 120 L60 170 L44 198'/%3E%3Cpath d='M68 52 L100 70'/%3E%3Cpath d='M40 30 L26 44 M84 92 L98 104 M30 88 L4 84 M52 120 L32 140' stroke-width='1'/%3E%3C/g%3E%3Ccircle cx='68' cy='52' r='5' fill='white' fill-opacity='.35'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='white' stroke-opacity='.55' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M68 52 L40 30 L18 6'/%3E%3Cpath d='M68 52 L96 20'/%3E%3Cpath d='M68 52 L84 92 L78 140 L92 196'/%3E%3Cpath d='M68 52 L30 88 L12 130'/%3E%3Cpath d='M68 52 L52 120 L60 170 L44 198'/%3E%3Cpath d='M68 52 L100 70'/%3E%3Cpath d='M40 30 L26 44 M84 92 L98 104 M30 88 L4 84 M52 120 L32 140' stroke-width='1'/%3E%3C/g%3E%3Ccircle cx='68' cy='52' r='5' fill='white' fill-opacity='.35'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
   animation: crack-flash 0.4s ease-out;
 }
 @keyframes crack-flash { from { background-color: rgba(255, 255, 255, 0.7); } }
+
+/* selezionando il nome grande: niente riquadri colorati lettera per lettera
+   (si sovrapponevano e "spaccavano" il nome), diventano bordeaux le lettere stesse */
+.fl-name::selection, .fl-name *::selection { background: transparent; color: var(--accent); }
+/* le immagini sparse intorno al nome non si colorano quando selezioni la pagina */
+.fl-float { user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }

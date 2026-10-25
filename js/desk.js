@@ -45,7 +45,6 @@ function setupDeskSpread() {
   let queued = false;
   const update = () => {
     queued = false;
-    if (document.documentElement.classList.contains("gravity-active")) return;
     const r = desk.getBoundingClientRect();
     // di quanto la scrivania è salita oltre il centro dello schermo (prima di arrivarci: 0)
     const past = (innerHeight / 2 - (r.top + r.height / 2)) / innerHeight;
@@ -53,6 +52,7 @@ function setupDeskSpread() {
     // su schermi stretti si allontanano di meno
     const reach = Math.min(260, innerWidth * 0.3);
     objs.forEach((o, i) => {
+      if (o.classList.contains("falling")) return; // durante la gravità lo muove la fisica
       const d = dirs[i], m = mood[i];
       const dist = a * reach * m.k;
       o.style.translate = `${(d.x * dist).toFixed(1)}px ${(d.y * dist).toFixed(1)}px`;

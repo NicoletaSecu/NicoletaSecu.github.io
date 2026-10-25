@@ -22,7 +22,7 @@
 
 // Ogni tipo è una "linea della metro" con il suo colore.
 const TYPES = {
-  app:   { label: "Web app",     label_en: "Web app",     color: "#e4572e" },
+  app:   { label: "Web app",     label_en: "Web app",     color: "#8c2f45" },
   study: { label: "Studio",      label_en: "Study",       color: "#2e86ab" },
   lab:   { label: "Esperimenti", label_en: "Experiments", color: "#4c9a2a" },
 };

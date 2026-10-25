@@ -6,7 +6,7 @@
 (function () {
   if (matchMedia("(hover: none)").matches || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  const FOLLOW = 0.35; // quanto in fretta insegue (1 = subito, più basso = più ritardo)
+  const FOLLOW = 0.5; // quanto in fretta insegue a ogni fotogramma (1 = subito, più basso = più ritardo)
 
   const dot = document.createElement("div");
   dot.className = "cursor-follow";
@@ -24,7 +24,7 @@
     tx = e.clientX;
     ty = e.clientY;
     dot.classList.add("on");
-    if (!running) { running = true; requestAnimationFrame(frame); }
+    if (!running) { running = true; last = performance.now(); requestAnimationFrame(frame); }
   });
   document.addEventListener("pointerleave", () => dot.classList.remove("on"));
 
@@ -37,10 +37,15 @@
     label.textContent = project ? t("cursor.open") : "";
   });
 
-  function frame() {
-    x += (tx - x) * FOLLOW;
-    y += (ty - y) * FOLLOW;
-    dot.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+  let last = performance.now();
+  function frame(now) {
+    // stessa velocità su tutti gli schermi (60 o 120 fotogrammi al secondo)
+    const dt = Math.min(64, now - last);
+    last = now;
+    const k = 1 - Math.pow(1 - FOLLOW, dt / 16.67);
+    x += (tx - x) * k;
+    y += (ty - y) * k;
+    dot.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
     // quando ha raggiunto il mouse si ferma, così non consuma
     if (Math.abs(tx - x) > 0.1 || Math.abs(ty - y) > 0.1) requestAnimationFrame(frame);
     else running = false;

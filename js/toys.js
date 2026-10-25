@@ -3,7 +3,7 @@
 //   quaderno → perde i fogli
 //   lampada  → la luce lampeggia per qualche secondo
 //   tazza    → il caffè si rovescia sulla scrivania
-//   telefono → squilla e vibra (e se lo lanci in aria e ricade forte, lo schermo si crepa)
+//   telefono → squilla e vibra (se lo lanci in aria e ricade forte, lo schermo si crepa e non va più)
 //   polaroid → il ritratto si scompiglia i capelli
 //   tutto il resto → trema un po'
 // La matita invece si prende per la punta: passala sui fogli caduti per scriverci sopra.
@@ -128,6 +128,12 @@ const Toys = (() => {
   function crackPhone(it, api) {
     it.cracked = true;
     it.el.classList.add("cracked");
+    // se stava squillando, smette: lo schermo si spegne
+    const screen = it.el.querySelector(".screen");
+    if (screen.dataset.ringing) {
+      delete screen.dataset.ringing;
+      screen.innerHTML = `<span data-i18n="desk.phone">${t("desk.phone")}</span><small data-i18n="desk.phoneSub">${t("desk.phoneSub")}</small>`;
+    }
     api.buzz(it, 250);
     if (navigator.vibrate && navigator.userActivation?.hasBeenActive) navigator.vibrate(160);
     api.onStop(() => { it.el.classList.remove("cracked"); });
@@ -322,6 +328,8 @@ const Toys = (() => {
 
   // ── Telefono: vibra e sullo schermo compare un messaggio ──
   function phone(it, api) {
+    // rotto non va più: niente squillo, al massimo un piccolo sussulto
+    if (it.cracked) { api.buzz(it, 200); return; }
     api.buzz(it, 1600);
     // vibra davvero, su telefono
     if (navigator.vibrate && navigator.userActivation?.hasBeenActive) navigator.vibrate([120, 80, 120, 80, 200]);
