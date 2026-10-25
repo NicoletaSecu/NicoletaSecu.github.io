@@ -13,6 +13,8 @@
 //  repo:        indirizzo del codice su GitHub, oppure ""
 //  featured:    true per metterlo "in evidenza"
 //  home:        true per mostrarlo anche nella home (tutti gli altri stanno solo nella pagina Progetti)
+//  with:        chi ha lavorato con te, es. [{ name: "Nome Cognome", url: "https://..." }]
+//               (compare come "Con Nome Cognome", con il link al suo sito)
 // ─────────────────────────────────────────────────────────────
 
 // Ogni tipo è una "linea della metro" con il suo colore.
@@ -75,11 +77,12 @@ const PROJECTS = [
     title: "WaySafe",
     date: "2026-05",
     type: "app",
-    description: "Progetto universitario di gruppo: una web app per muoversi a Trento in modo più sicuro, con percorsi a piedi che evitano le zone a rischio, la mappa della sicurezza delle strade, segnalazioni geolocalizzate e un pulsante SOS. React, Node.js e MongoDB.",
-    description_en: "University team project: a web app to get around Trento more safely, with walking routes that avoid risky areas, a map of street safety, geolocated reports and an SOS button. React, Node.js and MongoDB.",
+    description: "Progetto universitario: una web app per muoversi a Trento in modo più sicuro, con percorsi a piedi che evitano le zone a rischio, la mappa della sicurezza delle strade, segnalazioni geolocalizzate e un pulsante SOS. React, Node.js e MongoDB.",
+    description_en: "University project: a web app to get around Trento more safely, with walking routes that avoid risky areas, a map of street safety, geolocated reports and an SOS button. React, Node.js and MongoDB.",
     image: "img/waysafe.jpg",
     link: "https://waysafe.onrender.com",
     repo: "https://github.com/davide-modena/WaySafe",
+    with: [{ name: "Davide Modena", url: "https://davide-modena.github.io" }],
     home: true,
   },
   {

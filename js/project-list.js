@@ -5,6 +5,15 @@ const escapeHtml = (s = "") => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<"
 const sortedProjects = () => [...PROJECTS].sort((a, b) => b.date.localeCompare(a.date));
 const typeOf = (p) => TYPES[p.type] || Object.values(TYPES)[0];
 
+// "Con Davide Modena", con il link al sito di chi ha lavorato con te (campo with in content/projects.js)
+const withPeople = (p) => {
+  if (!p.with || !p.with.length) return "";
+  const names = p.with.map((w) => w.url
+    ? `<a href="${escapeHtml(w.url)}" target="_blank" rel="noopener">${escapeHtml(w.name)}</a>`
+    : escapeHtml(w.name));
+  return ` <span class="fl-with">${t("list.with")} ${names.join(", ")}.</span>`;
+};
+
 function renderProjectList() {
   const list = document.getElementById("projectList");
   if (!list) return;
@@ -33,7 +42,7 @@ function renderProjectList() {
           ${p.link ? `<a href="${escapeHtml(p.link)}" target="_blank" rel="noopener">${t("list.site")}</a>` : ""}
           ${p.repo ? `<a href="${escapeHtml(p.repo)}" target="_blank" rel="noopener">${t("list.code")}</a>` : ""}
         </div>
-        <p class="fl-desc">${escapeHtml(pick(p, "description"))}</p>
+        <p class="fl-desc">${escapeHtml(pick(p, "description"))}${withPeople(p)}</p>
       </li>`;
   });
   if (!onlyHome) html += `<li class="fl-end">${t("projects.terminus")}</li>`;

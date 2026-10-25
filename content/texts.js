@@ -34,6 +34,7 @@ const STRINGS = {
     "home.more": "Tutti i progetti, con i filtri ↗",
     "list.site": "Sito ↗",
     "list.code": "Codice ↗",
+    "list.with": "Con",
 
     // pagina Progetti
     "projects.title": "Tutti i progetti",
@@ -117,6 +118,7 @@ const STRINGS = {
     "home.more": "All projects, with filters ↗",
     "list.site": "Site ↗",
     "list.code": "Code ↗",
+    "list.with": "With",
 
     "projects.title": "All projects",
     "projects.lede": "Newest first. Hover a project to see it.",
