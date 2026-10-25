@@ -8,14 +8,15 @@ const polaroid = document.querySelector(".polaroid");
 if (polaroid) {
   for (const [part, color] of Object.entries(SETTINGS.avatar)) polaroid.style.setProperty(`--${part}`, color);
 }
-// nella pagina Chi sono, cliccando il ritratto i capelli si scompigliano (e si ripettinano)
+// nella pagina Chi sono, cliccando il ritratto mi vedi alla scrivania mentre programmo (e ritorno)
 const aboutPhoto = document.querySelector(".about-photo");
-if (aboutPhoto) aboutPhoto.addEventListener("click", () => aboutPhoto.classList.toggle("messy"));
+if (aboutPhoto) aboutPhoto.addEventListener("click", () => aboutPhoto.classList.toggle("coding"));
 
 setupAnchors();
 if (typeof setupFloats === "function") {
   setupFloats();
   setupStatement();
+  setupReveal();
   setupNameSpread();
 }
 if (document.getElementById("desk")) {

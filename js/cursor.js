@@ -1,6 +1,6 @@
 // ───────────── Il pallino che insegue il mouse ─────────────
 // Un piccolo cerchio terracotta segue il mouse con un leggero ritardo.
-// Sopra un progetto diventa un cerchio grande con scritto "Apri"; sopra gli altri link
+// Sopra un progetto (anche le immagini intorno al nome) diventa un cerchio grande con scritto "Apri"; sopra gli altri link
 // e bottoni diventa un anello. La freccia normale resta, così cliccare e trascinare
 // sono comodi come sempre. Niente pallino su telefono e per chi ha ridotto le animazioni.
 (function () {
@@ -30,7 +30,7 @@
 
   // sopra cosa siamo? progetti → "Apri"; altri link e bottoni → anello
   document.addEventListener("pointerover", (e) => {
-    const project = e.target.closest(".fl-main");
+    const project = e.target.closest(".fl-main, .fl-float");
     const clickable = e.target.closest("a, button, .chip, input, textarea, [data-gravity]");
     dot.classList.toggle("big", !!project);
     dot.classList.toggle("ring", !project && !!clickable);

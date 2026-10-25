@@ -3,7 +3,7 @@
 //   quaderno → perde i fogli
 //   lampada  → la luce lampeggia per qualche secondo
 //   tazza    → il caffè si rovescia sulla scrivania
-//   telefono → squilla e vibra
+//   telefono → squilla e vibra (e se lo lanci in aria e ricade forte, lo schermo si crepa)
 //   polaroid → il ritratto si scompiglia i capelli
 //   tutto il resto → trema un po'
 // La matita invece si prende per la punta: passala sui fogli caduti per scriverci sopra.
@@ -111,7 +111,30 @@ const Toys = (() => {
     ctx.restore();
   }
 
+  // ── Telefono lanciato in aria: se ricade forte, lo schermo si crepa ──
+  const THROW_UP = -9;   // velocità verso l'alto che conta come "lanciato"
+  const HIT_DOWN = 9;    // velocità di caduta che conta come "botta"
+  function checkPhoneDrop(api) {
+    for (const it of api.items()) {
+      if (!it.el.classList.contains("phone") || it.cracked) continue;
+      const vy = it.body.velocity.y;
+      if (vy < THROW_UP) it.thrown = true;
+      // stava cadendo veloce e si è fermato di colpo: ha sbattuto
+      if (it.thrown && (it.prevVy || 0) > HIT_DOWN && vy < it.prevVy * 0.3) crackPhone(it, api);
+      it.prevVy = vy;
+    }
+  }
+
+  function crackPhone(it, api) {
+    it.cracked = true;
+    it.el.classList.add("cracked");
+    api.buzz(it, 250);
+    if (navigator.vibrate && navigator.userActivation?.hasBeenActive) navigator.vibrate(160);
+    api.onStop(() => { it.el.classList.remove("cracked"); });
+  }
+
   function tick(api) {
+    checkPhoneDrop(api);
     if (!puddles.some((p) => p.amount > 0)) {
       // niente più caffè: eventuali fogli ancora appiccicati si staccano
       for (const page of api.items()) if (page.stuck) grab(page);

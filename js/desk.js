@@ -19,9 +19,9 @@ function setupLamp() {
   });
 }
 
-// ───────────── La scrivania si "monta" mentre scorri ─────────────
-// Quando la scrivania entra nello schermo gli oggetti arrivano da fuori e si ricompongono;
-// quando è al centro sono tutti al loro posto; scorrendo oltre si allontanano di nuovo.
+// ───────────── Gli oggetti della scrivania vanno via mentre scorri ─────────────
+// Arrivando alla scrivania gli oggetti sono già al loro posto; quando la superi
+// (il suo centro sale oltre il centro dello schermo) si allontanano, ruotano e sbiadiscono.
 function setupDeskSpread() {
   const desk = document.getElementById("desk");
   if (!desk || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -47,12 +47,14 @@ function setupDeskSpread() {
     queued = false;
     if (document.documentElement.classList.contains("gravity-active")) return;
     const r = desk.getBoundingClientRect();
-    // quanto è lontana la scrivania dal centro dello schermo (0 = al centro)
-    const off = Math.abs(r.top + r.height / 2 - innerHeight / 2) / innerHeight;
-    const a = Math.max(0, Math.min(1, (off - 0.12) * 1.6));
+    // di quanto la scrivania è salita oltre il centro dello schermo (prima di arrivarci: 0)
+    const past = (innerHeight / 2 - (r.top + r.height / 2)) / innerHeight;
+    const a = Math.max(0, Math.min(1, (past - 0.12) * 1.6));
+    // su schermi stretti si allontanano di meno
+    const reach = Math.min(260, innerWidth * 0.3);
     objs.forEach((o, i) => {
       const d = dirs[i], m = mood[i];
-      const dist = a * 260 * m.k;
+      const dist = a * reach * m.k;
       o.style.translate = `${(d.x * dist).toFixed(1)}px ${(d.y * dist).toFixed(1)}px`;
       o.style.rotate = `${(m.r * a * 25).toFixed(1)}deg`;
       o.style.opacity = String(1 - a * 0.6);

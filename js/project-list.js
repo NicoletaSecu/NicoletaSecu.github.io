@@ -5,6 +5,18 @@ const escapeHtml = (s = "") => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<"
 const sortedProjects = () => [...PROJECTS].sort((a, b) => b.date.localeCompare(a.date));
 const typeOf = (p) => TYPES[p.type] || Object.values(TYPES)[0];
 
+// Il periodo del progetto: "ott 2026", "mag – ago 2026", "dic 2025 – feb 2026", "ott 2026 – in corso"
+const monthYear = (d) => { const [y, m] = d.split("-"); return { m: t("months")[+m - 1], y }; };
+const period = (p) => {
+  const a = monthYear(p.date);
+  if (p.ongoing) return `${a.m} ${a.y} – ${t("list.ongoing")}`;
+  if (!p.until || p.until === p.date) return `${a.m} ${a.y}`;
+  const b = monthYear(p.until);
+  return a.y === b.y ? `${a.m} – ${b.m} ${b.y}` : `${a.m} ${a.y} – ${b.m} ${b.y}`;
+};
+// la nota per i progetti che ogni tanto aggiorni ancora
+const maintainedNote = (p) => (p.maintained ? `<span class="fl-note-small">${t("list.maintained")}</span>` : "");
+
 // "Con Davide Modena", con il link al sito di chi ha lavorato con te (campo with in content/projects.js)
 const withPeople = (p) => {
   if (!p.with || !p.with.length) return "";
@@ -24,7 +36,7 @@ function renderProjectList() {
   let html = "";
   items.forEach((p, i) => {
     const [y, m] = p.date.split("-");
-    const when = `${t("months")[+m - 1]} ${y}`;
+    const when = period(p);
     const main = p.link || p.repo || "#";
     const title = `
       <a class="fl-main" href="${escapeHtml(main)}" target="_blank" rel="noopener">
@@ -41,7 +53,7 @@ function renderProjectList() {
         <li class="fl-row" ${attrs}>
           <span class="fl-num">${String(i + 1).padStart(2, "0")}</span>
           ${title}
-          <div class="fl-side"><span class="fl-type">${escapeHtml(pick(typeOf(p), "label"))} · ${when}</span>${site}</div>
+          <div class="fl-side"><span class="fl-type">${escapeHtml(pick(typeOf(p), "label"))} · ${when}</span>${site}${maintainedNote(p)}</div>
           ${desc}
         </li>`;
       return;
@@ -59,7 +71,7 @@ function renderProjectList() {
         <span class="fl-dot" style="--c:${typeOf(p).color}" aria-hidden="true"></span>
         <div class="fl-card">
           ${title}
-          <div class="fl-side"><span class="fl-type">${escapeHtml(pick(typeOf(p), "label"))}</span>${site}</div>
+          <div class="fl-side"><span class="fl-type">${escapeHtml(pick(typeOf(p), "label"))}</span>${site}${maintainedNote(p)}</div>
           ${desc}
         </div>
       </li>`;
@@ -108,43 +120,41 @@ function setupFilters() {
   });
 }
 
-// ───────────── L'immagine grande che segue il mouse ─────────────
-// Compare solo quando passi sopra la miniatura, così il titolo e "Sito" restano cliccabili.
+// ───────────── L'anteprima grande della miniatura ─────────────
+// Passando sopra la miniatura compare l'immagine grande, ferma accanto alla miniatura
+// (a destra se c'è spazio, altrimenti a sinistra). Titolo e "Sito" restano cliccabili.
 function setupPreview() {
   const list = document.getElementById("projectList");
   const box = document.getElementById("preview");
   if (!list || !box || matchMedia("(hover: none)").matches) return;
   const img = box.querySelector("img");
-  let x = 0, y = 0, tx = 0, ty = 0, on = false;
+  const GAP = 18;
 
+  const place = (thumb) => {
+    const r = thumb.getBoundingClientRect();
+    const w = box.offsetWidth, h = box.offsetHeight;
+    const x = r.right + GAP + w < innerWidth ? r.right + GAP : r.left - GAP - w;
+    // centrata sulla miniatura, ma sempre dentro lo schermo
+    const y = Math.max(12, Math.min(innerHeight - h - 12, r.top + r.height / 2 - h / 2));
+    box.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px)`;
+  };
+
+  let current = null;
   list.addEventListener("pointerover", (e) => {
     const thumb = e.target.closest(".fl-thumb");
     const row = thumb && thumb.closest(".fl-row");
     if (!row || !row.dataset.img) return;
     if (img.getAttribute("src") !== row.dataset.img) img.src = row.dataset.img;
+    current = thumb;
+    place(thumb);
     box.classList.add("show");
-    on = true;
   });
   list.addEventListener("pointerout", (e) => {
     const thumb = e.target.closest(".fl-thumb");
     if (!thumb || thumb.contains(e.relatedTarget)) return;
+    current = null;
     box.classList.remove("show");
-    on = false;
   });
-  addEventListener("pointermove", (e) => {
-    // a destra del cursore se c'è spazio, altrimenti a sinistra
-    const w = box.offsetWidth;
-    tx = e.clientX + 24 + w < innerWidth ? e.clientX + 24 : e.clientX - 24 - w;
-    ty = e.clientY - box.offsetHeight / 2;
-  });
-
-  const frame = () => {
-    if (on) {
-      x += (tx - x) * 0.18;
-      y += (ty - y) * 0.18;
-      box.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
-    }
-    requestAnimationFrame(frame);
-  };
-  requestAnimationFrame(frame);
+  // se la pagina scorre mentre è aperta, resta attaccata alla sua miniatura
+  addEventListener("scroll", () => { if (current) place(current); }, { passive: true });
 }

@@ -119,7 +119,8 @@ button { font: inherit; color: inherit; }
   background: none;
   color: #2b2620;
 }
-.obj:hover, .obj:focus-visible { transform: rotate(var(--rot)) translateY(-6px) scale(1.04); }
+/* al passaggio crescono dal centro (non si alzano): così non "scappano" dal mouse e non tremano sul bordo */
+.obj:hover, .obj:focus-visible { transform: rotate(var(--rot)) scale(1.05); }
 .obj:focus-visible { outline: 3px dashed var(--ink); outline-offset: 6px; }
 .obj-label {
   position: absolute;
@@ -1500,7 +1501,7 @@ body { padding-top: 0; font-family: var(--ui); }
   font: inherit;
   color: #2b2620;
 }
-.about-photo:hover { transform: rotate(-1deg) scale(1.03); }
+.about-photo:hover { transform: rotate(3deg) scale(1.03); }
 /* più spazio bianco in basso: la didascalia qui va su due righe */
 .about-photo { padding-bottom: calc(5.4 * var(--u)); }
 .about-photo .cap { line-height: 1.2; padding: 0 var(--u); }
@@ -1520,15 +1521,86 @@ body { padding-top: 0; font-family: var(--ui); }
   line-height: 1;
 }
 @media (max-width: 700px) { .doing { grid-template-columns: 1fr; } }
-.tools {
-  margin: 0;
-  font-size: clamp(1.6rem, 3.6vw, 3rem);
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.03em;
-}
 .about-cta { display: inline-block; color: var(--accent); text-decoration: none; transition: translate 0.3s; }
 .about-cta:hover { translate: 12px 0; }
 
 /* le lettere del nome si spostano una per una quando scorri (js/hero.js) */
 .fl-name .ch { display: inline-block; will-change: translate, rotate; }
+
+/* ── il ritratto della pagina Chi sono: due scene, il clic passa dall'una all'altra ── */
+.about-photo .cap { display: grid; justify-items: center; gap: 2px; }
+.about-photo .cap-hint {
+  font-family: var(--ui);
+  font-style: normal;
+  font-size: calc(0.6 * var(--u));
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9a9488;
+}
+.about-photo .scene-coding { display: none; }
+.about-photo.coding .scene-portrait { display: none; }
+.about-photo.coding .scene-coding { display: inline; }
+/* la stanza della scena "programmo" */
+.pic .wall { fill: #f1e7da; }
+.pic .window-frame { fill: #fbf8f2; }
+.pic .window-sky { fill: #a9d3ea; }
+.pic .window-sun { fill: #ffe7a3; }
+.pic .desk-top { fill: #d1a77c; }
+.pic .desk-front { fill: #b98f66; }
+.pic .pot { fill: #c9744f; }
+.pic .leaf { fill: #7fae6a; }
+.pic .leaf.dark { fill: #5f9150; }
+.pic .mug-side { fill: #fbf8f2; }
+.pic .mug-handle { fill: none; stroke: #fbf8f2; stroke-width: 1.6; }
+.pic .hair-shade { fill: none; stroke: rgba(0, 0, 0, 0.14); stroke-width: 1.2; stroke-linecap: round; }
+/* il portatile: alluminio grigio, cornice nera */
+.pic .lap-silver { fill: #cfd2d6; }
+.pic .lap-edge { fill: #9da2a8; }
+.pic .lap-keys { fill: #30343a; }
+/* dettagli del viso di profilo: sopracciglio sottile, labbra morbide */
+.pic .brow.thin { stroke-width: 1; }
+.pic .lips { fill: none; stroke: #a8584a; stroke-width: 0.9; stroke-linecap: round; }
+.pic .lap-bezel { fill: #1b1f24; }
+.pic .lap-cam { fill: #4a4f55; }
+/* il codice sullo schermo e i simboli che salgono sono animati dentro il disegno (chi-sono.html),
+   così funzionano su tutti i browser, Safari compreso */
+/* il fumo del caffè */
+.pic .steam { fill: none; stroke: #fbf8f2; stroke-width: 0.9; stroke-linecap: round; animation: steam 2.6s ease-in-out infinite; }
+.pic .steam.s2 { animation-delay: 1.3s; }
+@keyframes steam {
+  0%, 100% { opacity: 0; transform: translateY(1.5px); }
+  40% { opacity: 0.9; }
+  80% { opacity: 0; transform: translateY(-2.5px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pic .steam { animation: none; }
+}
+
+/* "Insegno / Programmo": le parole si accendono mentre scorri (js/hero.js) */
+[data-reveal] .w { opacity: 0.15; transition: opacity 0.35s; }
+[data-reveal] .w.on { opacity: 1; }
+
+/* niente scorrimento di lato: gli effetti (oggetti e immagini che si allontanano)
+   possono uscire dai bordi senza allargare la pagina, soprattutto su telefono */
+html, body { overflow-x: clip; }
+
+/* le immagini intorno al nome sono link: al passaggio si sollevano un po' */
+.fl-float { display: block; transition: box-shadow 0.3s, scale 0.3s; }
+.fl-float:hover { scale: 1.05; box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.45); }
+
+/* "+ migliorie e bug fix ogni tanto" sotto categoria e link */
+.fl-note-small { display: block; margin-top: 4px; font-size: 0.78rem; font-style: italic; color: var(--muted); }
+
+/* ── telefono lanciato e caduto: schermo crepato (js/toys.js) ── */
+.phone .screen { position: relative; overflow: hidden; }
+.phone.cracked .screen { filter: saturate(0.6) brightness(0.85); }
+.phone.cracked .screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* crepe che partono dal punto della botta, in alto a destra */
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='white' stroke-opacity='.9' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M68 52 L40 30 L18 6'/%3E%3Cpath d='M68 52 L96 20'/%3E%3Cpath d='M68 52 L84 92 L78 140 L92 196'/%3E%3Cpath d='M68 52 L30 88 L12 130'/%3E%3Cpath d='M68 52 L52 120 L60 170 L44 198'/%3E%3Cpath d='M68 52 L100 70'/%3E%3Cpath d='M40 30 L26 44 M84 92 L98 104 M30 88 L4 84 M52 120 L32 140' stroke-width='1'/%3E%3C/g%3E%3Ccircle cx='68' cy='52' r='5' fill='white' fill-opacity='.35'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  animation: crack-flash 0.4s ease-out;
+}
+@keyframes crack-flash { from { background-color: rgba(255, 255, 255, 0.7); } }

@@ -24,6 +24,7 @@ function applyLanguage() {
   renderProjectList();
   renderFilters();
   if (typeof renderStatement === "function") renderStatement();
+  if (typeof renderReveal === "function") renderReveal();
 }
 
 function setupLanguageSwitch() {

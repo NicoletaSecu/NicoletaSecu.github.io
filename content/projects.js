@@ -6,7 +6,10 @@
 //
 //  title / description:        testi in italiano
 //  title_en / description_en:  testi in inglese (se mancano, si usa l'italiano)
-//  date:        "AAAA-MM"  (es. "2026-09")
+//  date:        quando l'hai iniziato, "AAAA-MM"  (es. "2026-09")
+//  until:       quando l'hai finito, "AAAA-MM" (facoltativo: se manca conta solo il mese di inizio)
+//  ongoing:     true se ci lavori ancora ("in corso")
+//  maintained:  true se ogni tanto fai ancora migliorie e bug fix
 //  type:        una delle chiavi di TYPES qui sotto
 //  image:       percorso di un'immagine (es. "img/meteo.png"), oppure "" per un segnaposto
 //  link:        indirizzo del sito online, oppure ""
@@ -39,6 +42,7 @@ const PROJECTS = [
     title: "Questo portfolio",
     title_en: "This portfolio",
     date: "2026-10",
+    ongoing: true,
     type: "lab",
     description: "Una scrivania da esplorare, una linea della metro e un bottone rosso che non dovresti premere. HTML, CSS e JavaScript, con la fisica di Matter.js.",
     description_en: "A desk to explore, a metro line and a red button you really shouldn't press. HTML, CSS and JavaScript, with Matter.js physics.",
@@ -62,7 +66,8 @@ const PROJECTS = [
   {
     title: "Da B2 a C1",
     title_en: "From B2 to C1",
-    date: "2026-10",
+    date: "2026-09",
+    until: "2026-10",
     type: "study",
     description: "Tutto per preparare il Cambridge C1 Advanced: 30 capitoli di teoria, 913 schede di lessico, quiz, prove a tempo e un quaderno degli errori che si svuota man mano.",
     description_en: "Everything to prepare for Cambridge C1 Advanced: 30 grammar chapters, 913 vocabulary cards, quizzes, timed mock tests and a mistakes notebook that empties as you improve.",
@@ -83,7 +88,8 @@ const PROJECTS = [
   },
   {
     title: "WaySafe",
-    date: "2026-05",
+    date: "2026-01",
+    until: "2026-05",
     type: "app",
     description: "Progetto universitario: una web app per muoversi a Trento in modo più sicuro, con percorsi a piedi che evitano le zone a rischio, la mappa della sicurezza delle strade, segnalazioni geolocalizzate e un pulsante SOS. React, Node.js e MongoDB.",
     description_en: "University project: a web app to get around Trento more safely, with walking routes that avoid risky areas, a map of street safety, geolocated reports and an SOS button. React, Node.js and MongoDB.",
@@ -94,7 +100,9 @@ const PROJECTS = [
   },
   {
     title: "FlowDegree",
-    date: "2026-07",
+    date: "2026-05",
+    until: "2026-08",
+    maintained: true,
     type: "app",
     description: "Web app full-stack per tenere sotto controllo il piano di studi universitario: esami, CFU, medie e conto alla rovescia agli appelli. React, FastAPI e PostgreSQL, con login Google.",
     description_en: "Full-stack web app to keep track of a university study plan: exams, credits, grade averages and a countdown to upcoming exams. React, FastAPI and PostgreSQL, with Google login.",

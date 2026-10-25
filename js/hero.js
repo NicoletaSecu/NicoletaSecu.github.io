@@ -1,7 +1,7 @@
 // ───────────── Apertura e "Chi sono" (solo in home) ─────────────
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Gli screenshot dei progetti sparsi intorno al nome.
+// Gli screenshot dei progetti sparsi intorno al nome (cliccandoli si apre il progetto).
 // x, y = posizione; w = larghezza; d = quanto si muovono (più è alto, più sembrano vicini)
 const FLOAT_SPOTS = [
   { x: "5%",  y: "16%", w: "17vw", rot: -4, d: 1.2 },
@@ -18,11 +18,12 @@ function setupFloats() {
   const withImages = sortedProjects().filter((p) => p.image);
   box.innerHTML = FLOAT_SPOTS.map((s, i) => {
     const p = withImages[i % withImages.length];
-    // data-gravity: anche loro cadono col bottone rosso
-    return `<div class="fl-float" data-gravity data-d="${s.d}"
-                 style="--x:${s.x};--y:${s.y};--w:${s.w};--rot:${s.rot}deg">
+    // ogni immagine apre il suo progetto; data-gravity: anche loro cadono col bottone rosso
+    return `<a class="fl-float" href="${escapeHtml(p.link || p.repo || "progetti.html")}" target="_blank" rel="noopener"
+               aria-label="${escapeHtml(pick(p, "title"))}" data-gravity data-d="${s.d}"
+               style="--x:${s.x};--y:${s.y};--w:${s.w};--rot:${s.rot}deg">
               <img src="${escapeHtml(p.image)}" alt="" draggable="false">
-            </div>`;
+            </a>`;
   }).join("");
   if (reduceMotion) return;
 
@@ -55,30 +56,90 @@ function setupFloats() {
   requestAnimationFrame(frame);
 }
 
-// La frase di "Chi sono" si accende parola per parola mentre scorri.
-// Il testo viene da content/texts.js (data-i18n-words), così cambia con la lingua.
-function updateStatement() {
-  const el = document.getElementById("statement");
-  if (!el) return;
-  const words = el.querySelectorAll(".w");
-  if (reduceMotion) { words.forEach((w) => w.classList.add("on")); return; }
-  const r = el.getBoundingClientRect();
-  const progress = (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35);
-  const lit = Math.round(Math.max(0, Math.min(1, progress)) * words.length);
-  words.forEach((w, i) => w.classList.toggle("on", i < lit));
+// ───────────── Testi che si accendono parola per parola ─────────────
+// Avvolge ogni parola dei testi (anche quelle dentro i link) in <span class="w">.
+function wrapWords(root) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const texts = [];
+  while (walker.nextNode()) texts.push(walker.currentNode);
+  for (const node of texts) {
+    if (!node.textContent.trim()) continue;
+    const frag = document.createDocumentFragment();
+    for (const part of node.textContent.split(/(\s+)/)) {
+      if (!part) continue;
+      if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); continue; }
+      const w = document.createElement("span");
+      w.className = "w";
+      w.textContent = part;
+      frag.appendChild(w);
+    }
+    node.replaceWith(frag);
+  }
+  return [...root.querySelectorAll(".w")];
 }
+
+// La frase grande di "Chi sono" si accende da sola, una parola alla volta,
+// appena compare sullo schermo (senza bisogno di scorrere).
+// Il testo viene da content/texts.js (data-i18n-words), così cambia con la lingua.
+let statementPlayed = false;
+let statementTimer = null;
 
 function renderStatement() {
   const el = document.getElementById("statement");
   if (!el) return;
-  el.innerHTML = t(el.dataset.i18nWords).split(/\s+/).map((w) => `<span class="w">${escapeHtml(w)}</span>`).join(" ");
-  updateStatement();
+  el.textContent = t(el.dataset.i18nWords);
+  const words = wrapWords(el);
+  // dopo un cambio di lingua (o se le animazioni sono ridotte) la frase è già tutta accesa
+  if (statementPlayed || reduceMotion) words.forEach((w) => w.classList.add("on"));
+}
+
+function playStatement() {
+  if (statementPlayed) return;
+  statementPlayed = true;
+  const words = [...document.querySelectorAll("#statement .w")];
+  let i = 0;
+  clearInterval(statementTimer);
+  statementTimer = setInterval(() => {
+    if (i < words.length) words[i++].classList.add("on");
+    else clearInterval(statementTimer);
+  }, 110);
 }
 
 function setupStatement() {
-  if (!document.getElementById("statement")) return;
-  addEventListener("scroll", updateStatement, { passive: true });
-  addEventListener("resize", updateStatement);
+  const el = document.getElementById("statement");
+  if (!el || reduceMotion) return;
+  // se è già sullo schermo all'apertura della pagina, parte subito
+  const r = el.getBoundingClientRect();
+  if (r.top < innerHeight && r.bottom > 0) { setTimeout(playStatement, 500); return; }
+  const io = new IntersectionObserver((entries) => {
+    if (entries.some((e) => e.isIntersecting)) { io.disconnect(); setTimeout(playStatement, 350); }
+  }, { threshold: 0.3 });
+  io.observe(el);
+}
+
+// I blocchi con data-reveal (es. "Insegno / Programmo") si accendono parola per parola
+// mentre scorri: più scendi, più parole si accendono.
+let revealBlocks = [];
+
+function renderReveal() {
+  revealBlocks = [...document.querySelectorAll("[data-reveal]")].map((el) => ({ el, words: wrapWords(el) }));
+  updateReveal();
+}
+
+function updateReveal() {
+  for (const { el, words } of revealBlocks) {
+    if (reduceMotion) { words.forEach((w) => w.classList.add("on")); continue; }
+    const r = el.getBoundingClientRect();
+    const progress = (innerHeight * 0.9 - r.top) / (r.height + innerHeight * 0.3);
+    const lit = Math.round(Math.max(0, Math.min(1, progress)) * words.length);
+    words.forEach((w, i) => w.classList.toggle("on", i < lit));
+  }
+}
+
+function setupReveal() {
+  if (!document.querySelector("[data-reveal]")) return;
+  addEventListener("scroll", updateReveal, { passive: true });
+  addEventListener("resize", updateReveal);
 }
 
 // ───────────── Il nome si sparpaglia mentre scorri ─────────────

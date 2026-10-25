@@ -32,6 +32,8 @@ const STRINGS = {
     "home.more": "Tutti i progetti, con i filtri ↗",
     "list.site": "Sito ↗",
     "list.with": "Con",
+    "list.ongoing": "in corso",
+    "list.maintained": "+ migliorie e bug fix ogni tanto",
     "cursor.open": "Apri",
 
     // pagina Progetti
@@ -47,7 +49,8 @@ const STRINGS = {
     // pagina Chi sono
     "page.aboutTitle": "Chi sono · Nicoleta Secu",
     "aboutPage.title": "Chi sono",
-    "aboutPage.photo": "io, più o meno (cliccami)",
+    "aboutPage.photo": "io, più o meno",
+    "aboutPage.hint": "cliccami",
     "label.doing": "Cosa faccio",
     "doing.teachTitle": "Insegno",
     "doing.teachText": "Informatica e Matematica, come docente ITP, dal 2025. Spiegare bene una cosa è il modo migliore per capirla davvero.",
@@ -57,10 +60,18 @@ const STRINGS = {
     "path.list":
       '<dl class="about-facts">' +
         '<dt>Dal 2025</dt><dd>Docente ITP di Informatica e Matematica</dd>' +
-        '<dt>Laurea</dt><dd>Informatica</dd>' +
-        '<dt>Diploma</dt><dd>Amministrazione, Finanza e Marketing, articolazione Sistemi Informativi Aziendali (SIA)</dd>' +
+        '<dt>2024 – oggi</dt><dd><strong>Laurea triennale in Informatica</strong>, Università di Trento</dd>' +
+        '<dt>2018 – 2023</dt><dd><strong>Diploma di Amministrazione, Finanza e Marketing</strong>, articolazione Sistemi Informativi Aziendali (SIA)</dd>' +
+        // durante le superiori
+        '<dt>2023</dt><dd><strong>Stage da Ithaca Studio (Verona)</strong>, studio di marketing e web design. ' +
+          'Ricerca di nuovi clienti e fornitori in Italia e nei mercati UE; revisione del design dei siti dei clienti, ' +
+          'con attenzione a usabilità e chiarezza, lavorando con i developer per sistemare le incongruenze grafiche.</dd>' +
+        '<dt>2022</dt><dd><strong>Corsi "Tandem" con l\'Università di Verona</strong>: ' +
+          '"Chi è l\'Homo Economicus e come evolverà" (ambito economico, prof.ssa Veronica Polin) e ' +
+          '"Introduzione all\'Intelligenza Artificiale" (ambito informatico, prof. Matteo Cristiani).</dd>' +
+        '<dt>2022</dt><dd><strong>Corso con COSP Verona</strong>: "Internazionalizzazione", ' +
+          'legato sia a percorsi accademici sia lavorativi e aziendali.</dd>' +
       '</dl>',
-    "label.tools": "Con cosa lavoro",
     "label.talk": "Parliamone",
     "aboutPage.cta": "Scriviamoci ↗",
 
@@ -133,6 +144,8 @@ const STRINGS = {
     "home.more": "All projects, with filters ↗",
     "list.site": "Site ↗",
     "list.with": "With",
+    "list.ongoing": "ongoing",
+    "list.maintained": "+ occasional improvements and bug fixes",
     "cursor.open": "Open",
 
     "projects.title": "All projects",
@@ -145,7 +158,8 @@ const STRINGS = {
 
     "page.aboutTitle": "About · Nicoleta Secu",
     "aboutPage.title": "About me",
-    "aboutPage.photo": "me, more or less (click me)",
+    "aboutPage.photo": "me, more or less",
+    "aboutPage.hint": "click me",
     "label.doing": "What I do",
     "doing.teachTitle": "I teach",
     "doing.teachText": "Computer Science and Maths, as an ITP (technical-practical) teacher, since 2025. Explaining something well is the best way to really understand it.",
@@ -155,10 +169,17 @@ const STRINGS = {
     "path.list":
       '<dl class="about-facts">' +
         '<dt>Since 2025</dt><dd>Computer Science and Maths teacher (ITP)</dd>' +
-        '<dt>Degree</dt><dd>Computer Science</dd>' +
-        '<dt>Diploma</dt><dd>Administration, Finance and Marketing, Business Information Systems track (SIA)</dd>' +
+        '<dt>2024 – now</dt><dd><strong>Bachelor\'s degree in Computer Science</strong>, University of Trento</dd>' +
+        '<dt>2018 – 2023</dt><dd><strong>Diploma in Administration, Finance and Marketing</strong>, Business Information Systems track (SIA)</dd>' +
+        '<dt>2023</dt><dd><strong>Internship at Ithaca Studio (Verona)</strong>, a marketing and web design studio. ' +
+          'Finding new clients and suppliers in Italy and EU markets; reviewing the design of clients\' websites, ' +
+          'focusing on usability and clarity, and working with developers to fix visual inconsistencies.</dd>' +
+        '<dt>2022</dt><dd><strong>"Tandem" courses with the University of Verona</strong>: ' +
+          '"Who is Homo Economicus and how will it evolve" (economics, Prof. Veronica Polin) and ' +
+          '"Introduction to Artificial Intelligence" (computer science, Prof. Matteo Cristiani).</dd>' +
+        '<dt>2022</dt><dd><strong>Course with COSP Verona</strong>: "Internationalisation", ' +
+          'covering academic as well as work and business paths.</dd>' +
       '</dl>',
-    "label.tools": "What I work with",
     "label.talk": "Let's talk",
     "aboutPage.cta": "Write me ↗",
 

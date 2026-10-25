@@ -6,7 +6,7 @@
 Portfolio/
 ├── index.html          la home: nome, progetti, chi sono, scrivania, contatti
 ├── progetti.html       tutti i progetti su un albero del tempo, con i filtri
-├── chi-sono.html       chi sono: ritratto, cosa faccio, percorso, con cosa lavoro
+├── chi-sono.html       chi sono: ritratto, cosa faccio, percorso
 ├── content/            ← QUELLO CHE MODIFICHI TU
 │   ├── projects.js     i progetti (italiano + inglese)
 │   ├── texts.js        tutti i testi del sito (italiano + inglese)
@@ -43,3 +43,14 @@ cd ~/Desktop/ThingsForMyLife/Portfolio && python3 -m http.server 5173
 ```
 
 Poi apri http://localhost:5173 nel browser.
+
+## Prima di ogni push: aggiorna la versione
+
+I browser tengono in memoria i file CSS e JS: senza questo passaggio chi ha già visto
+il sito potrebbe vedere pezzi vecchi mescolati a quelli nuovi. Dal Terminale:
+
+```bash
+sh aggiorna-versione.sh
+```
+
+Cambia il numero `?v=...` dei file in tutte le pagine, così i browser scaricano quelli nuovi.

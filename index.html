@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20261025-1632">
   <script>
     (function () {
       var t;
@@ -38,7 +38,7 @@
   <main id="top">
     <!-- 00 · APERTURA: il nome enorme, con gli screenshot dei progetti sparsi intorno -->
     <section class="fl-hero" data-i18n-aria="hero.label" aria-label="Presentazione">
-      <div class="fl-floats" id="floats" aria-hidden="true"></div>
+      <div class="fl-floats" id="floats"></div>
       <div class="fl-hero-text">
         <h1 class="fl-name" data-gravity>Nicoleta<br>Secu</h1>
         <p class="fl-lead" data-gravity data-i18n="intro.lead">Insegno, programmo e trasformo le idee <em>in cose che si possono usare.</em></p>
@@ -98,62 +98,62 @@
             <rect width="100" height="100" fill="url(#sky)"/>
 
             <!-- capelli dietro: lunghi, scendono oltre le spalle -->
-            <path class="hair hair-neat" d="M23 52 Q19 20 50 16 Q81 20 77 52 Q79 74 85 100 L15 100 Q21 74 23 52 Z"/>
+            <path class="hair hair-neat" d="M23 52 Q19 20 50 16 Q81 20 77 52 Q79 74 85 100 L15 100 Q21 74 23 52 Z" fill="#6b4329"/>
             <!-- capelli dietro scompigliati: una nuvola gonfia e spettinata -->
-            <path class="hair hair-messy" d="M22 54 L9 44 L18 39 L8 26 L22 27 L17 12 L31 19 L33 4 L44 15 L51 2 L57 15 L68 4 L69 19 L83 12 L78 27 L92 26 L82 39 L91 44 L78 54 L92 66 L80 72 L88 100 L12 100 L20 72 L8 66 Z"/>
+            <path class="hair hair-messy" d="M22 54 L9 44 L18 39 L8 26 L22 27 L17 12 L31 19 L33 4 L44 15 L51 2 L57 15 L68 4 L69 19 L83 12 L78 27 L92 26 L82 39 L91 44 L78 54 L92 66 L80 72 L88 100 L12 100 L20 72 L8 66 Z" fill="#6b4329"/>
 
             <!-- collo, poi la maglia beige con lo scollo tondo -->
-            <path class="skin" d="M44.5 58 L55.5 58 L55.5 71 Q57 75.5 62 77 Q50 84 38 77 Q43 75.5 44.5 71 Z"/>
-            <path class="neck-shade" d="M44.5 62 Q50 67 55.5 62 L55.5 58 L44.5 58 Z"/>
-            <path class="shirt" d="M14 100 Q15 80 38 77 Q50 84 62 77 Q85 80 86 100 Z"/>
-            <path class="fold" d="M38 77 Q50 84 62 77"/>
+            <path class="skin" d="M44.5 58 L55.5 58 L55.5 71 Q57 75.5 62 77 Q50 84 38 77 Q43 75.5 44.5 71 Z" fill="#f2c9a5"/>
+            <path class="neck-shade" d="M44.5 62 Q50 67 55.5 62 L55.5 58 L44.5 58 Z" fill="#000" fill-opacity="0.08"/>
+            <path class="shirt" d="M14 100 Q15 80 38 77 Q50 84 62 77 Q85 80 86 100 Z" fill="#dcc7a6"/>
+            <path class="fold" d="M38 77 Q50 84 62 77" fill="none" stroke="#000" stroke-opacity="0.14" stroke-width="1.4" stroke-linecap="round"/>
 
             <!-- testa -->
-            <ellipse class="skin" cx="50" cy="46" rx="17.5" ry="20"/>
+            <ellipse class="skin" cx="50" cy="46" rx="17.5" ry="20" fill="#f2c9a5"/>
 
             <!-- faccia normale -->
             <g class="face-calm">
-              <path class="brow" d="M39 40 Q43 38 46 40"/>
-              <path class="brow" d="M54 40 Q57 38 61 40"/>
-              <ellipse class="ink" cx="43" cy="47" rx="2" ry="2.4"/>
-              <ellipse class="ink" cx="57" cy="47" rx="2" ry="2.4"/>
-              <circle class="eye-shine" cx="43.7" cy="46.2" r="0.7"/>
-              <circle class="eye-shine" cx="57.7" cy="46.2" r="0.7"/>
+              <path class="brow" d="M39 40 Q43 38 46 40" fill="none" stroke="#6b4329" stroke-width="1.2" stroke-linecap="round"/>
+              <path class="brow" d="M54 40 Q57 38 61 40" fill="none" stroke="#6b4329" stroke-width="1.2" stroke-linecap="round"/>
+              <ellipse class="ink" cx="43" cy="47" rx="2" ry="2.4" fill="#2b2620"/>
+              <ellipse class="ink" cx="57" cy="47" rx="2" ry="2.4" fill="#2b2620"/>
+              <circle class="eye-shine" cx="43.7" cy="46.2" r="0.7" fill="#fff"/>
+              <circle class="eye-shine" cx="57.7" cy="46.2" r="0.7" fill="#fff"/>
               <!-- palpebre e ciglia -->
-              <path class="lash" d="M40.4 45.8 Q43 43.6 45.6 45.4"/>
-              <path class="lash" d="M40.9 45.2 L39.3 44.1"/>
-              <path class="lash" d="M41.9 44.5 L41 43"/>
-              <path class="lash" d="M54.4 45.4 Q57 43.6 59.6 45.8"/>
-              <path class="lash" d="M59.1 45.2 L60.7 44.1"/>
-              <path class="lash" d="M58.1 44.5 L59 43"/>
-              <path class="line thin" d="M49.5 50 Q48.5 53 50.5 53.4"/>
-              <path class="line" d="M45 56.5 Q50 60.5 55 56.5"/>
+              <path class="lash" d="M40.4 45.8 Q43 43.6 45.6 45.4" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="lash" d="M40.9 45.2 L39.3 44.1" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="lash" d="M41.9 44.5 L41 43" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="lash" d="M54.4 45.4 Q57 43.6 59.6 45.8" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="lash" d="M59.1 45.2 L60.7 44.1" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="lash" d="M58.1 44.5 L59 43" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="line thin" d="M49.5 50 Q48.5 53 50.5 53.4" fill="none" stroke="#2b2620" stroke-width="1.6" stroke-linecap="round"/>
+              <path class="line" d="M45 56.5 Q50 60.5 55 56.5" fill="none" stroke="#2b2620" stroke-width="1.6" stroke-linecap="round"/>
             </g>
             <!-- faccia stordita (dopo lo scossone) -->
             <g class="face-dizzy">
-              <path class="line" d="M39.5 47 q1.6 -3 3.2 0 q1.6 3 3.2 0"/>
-              <path class="line" d="M54 47 q1.6 -3 3.2 0 q1.6 3 3.2 0"/>
-              <ellipse class="ink" cx="50" cy="57" rx="2.4" ry="3"/>
+              <path class="line" d="M39.5 47 q1.6 -3 3.2 0 q1.6 3 3.2 0" fill="none" stroke="#2b2620" stroke-width="1.6" stroke-linecap="round"/>
+              <path class="line" d="M54 47 q1.6 -3 3.2 0 q1.6 3 3.2 0" fill="none" stroke="#2b2620" stroke-width="1.6" stroke-linecap="round"/>
+              <ellipse class="ink" cx="50" cy="57" rx="2.4" ry="3" fill="#2b2620"/>
             </g>
-            <circle class="blush" cx="38.5" cy="53" r="3"/>
-            <circle class="blush" cx="61.5" cy="53" r="3"/>
+            <circle class="blush" cx="38.5" cy="53" r="3" fill="#f08a8a" opacity="0.35"/>
+            <circle class="blush" cx="61.5" cy="53" r="3" fill="#f08a8a" opacity="0.35"/>
 
             <!-- capelli davanti: riga in mezzo, fronte scoperta, ciocche sulle spalle -->
             <g class="hair-neat">
-              <path class="hair" d="M31 47 Q28 21 50 20 Q72 21 69 47 Q67 33 60 28.5 Q54 26.5 50 29.5 Q46 26.5 40 28.5 Q33 33 31 47 Z"/>
-              <path class="hair" d="M33 44 Q28 64 30 80 Q25 84 21 86 Q24 66 27 50 Z"/>
-              <path class="hair" d="M67 44 Q72 64 70 80 Q75 84 79 86 Q76 66 73 50 Z"/>
-              <path class="shine" d="M38 26 Q44 22 48 23"/>
-              <path class="shine" d="M27 58 Q26 68 25 76"/>
+              <path class="hair" d="M31 47 Q28 21 50 20 Q72 21 69 47 Q67 33 60 28.5 Q54 26.5 50 29.5 Q46 26.5 40 28.5 Q33 33 31 47 Z" fill="#6b4329"/>
+              <path class="hair" d="M33 44 Q28 64 30 80 Q25 84 21 86 Q24 66 27 50 Z" fill="#6b4329"/>
+              <path class="hair" d="M67 44 Q72 64 70 80 Q75 84 79 86 Q76 66 73 50 Z" fill="#6b4329"/>
+              <path class="shine" d="M38 26 Q44 22 48 23" fill="none" stroke="#fff" stroke-opacity="0.22" stroke-width="1.6" stroke-linecap="round"/>
+              <path class="shine" d="M27 58 Q26 68 25 76" fill="none" stroke="#fff" stroke-opacity="0.22" stroke-width="1.6" stroke-linecap="round"/>
             </g>
             <!-- capelli davanti scompigliati: ciuffi per aria -->
             <g class="hair-messy">
-              <path class="hair" d="M29 46 L23 33 L31 35 L28 22 L37 28 L39 14 L46 25 L51 11 L55 25 L63 14 L64 28 L73 22 L69 35 L77 33 L71 46 Q62 33 50 32 Q38 33 29 46 Z"/>
-              <path class="strand" d="M30 20 q-7 -5 -4 -13"/>
-              <path class="strand" d="M70 19 q8 -4 5 -12"/>
-              <path class="strand" d="M50 9 q3 -5 -1 -8"/>
-              <path class="strand" d="M16 52 q-8 2 -10 -5"/>
-              <path class="strand" d="M84 52 q8 2 10 -5"/>
+              <path class="hair" d="M29 46 L23 33 L31 35 L28 22 L37 28 L39 14 L46 25 L51 11 L55 25 L63 14 L64 28 L73 22 L69 35 L77 33 L71 46 Q62 33 50 32 Q38 33 29 46 Z" fill="#6b4329"/>
+              <path class="strand" d="M30 20 q-7 -5 -4 -13" fill="none" stroke="#6b4329" stroke-width="2.4" stroke-linecap="round"/>
+              <path class="strand" d="M70 19 q8 -4 5 -12" fill="none" stroke="#6b4329" stroke-width="2.4" stroke-linecap="round"/>
+              <path class="strand" d="M50 9 q3 -5 -1 -8" fill="none" stroke="#6b4329" stroke-width="2.4" stroke-linecap="round"/>
+              <path class="strand" d="M16 52 q-8 2 -10 -5" fill="none" stroke="#6b4329" stroke-width="2.4" stroke-linecap="round"/>
+              <path class="strand" d="M84 52 q8 2 10 -5" fill="none" stroke="#6b4329" stroke-width="2.4" stroke-linecap="round"/>
             </g>
           </svg>
           <span class="cap" data-i18n="desk.polaroid">io, più o meno</span>
@@ -221,19 +221,19 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
   <!-- contenuti che modifichi tu -->
-  <script src="content/settings.js"></script>
-  <script src="content/texts.js"></script>
-  <script src="content/projects.js"></script>
+  <script src="content/settings.js?v=20261025-1632"></script>
+  <script src="content/texts.js?v=20261025-1632"></script>
+  <script src="content/projects.js?v=20261025-1632"></script>
   <!-- codice del sito -->
-  <script src="js/lang.js"></script>
-  <script src="js/project-list.js"></script>
-  <script src="js/hero.js"></script>
-  <script src="js/desk.js"></script>
-  <script src="js/contact.js"></script>
-  <script src="js/navigation.js"></script>
-  <script src="js/toys.js"></script>
-  <script src="js/gravity.js"></script>
-  <script src="js/cursor.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/lang.js?v=20261025-1632"></script>
+  <script src="js/project-list.js?v=20261025-1632"></script>
+  <script src="js/hero.js?v=20261025-1632"></script>
+  <script src="js/desk.js?v=20261025-1632"></script>
+  <script src="js/contact.js?v=20261025-1632"></script>
+  <script src="js/navigation.js?v=20261025-1632"></script>
+  <script src="js/toys.js?v=20261025-1632"></script>
+  <script src="js/gravity.js?v=20261025-1632"></script>
+  <script src="js/cursor.js?v=20261025-1632"></script>
+  <script src="js/main.js?v=20261025-1632"></script>
 </body>
 </html>
