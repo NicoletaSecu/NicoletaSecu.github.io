@@ -14,6 +14,7 @@ const STRINGS = {
     "nav.projects": "Progetti",
     "nav.about": "Chi sono",
     "nav.contact": "Contatti",
+    "nav.theme": "Accendi o spegni la luce (tema scuro o chiaro)",
 
     // apertura: il nome enorme
     "hero.label": "Presentazione",
@@ -60,7 +61,7 @@ const STRINGS = {
         '<dt>2024 – oggi</dt><dd><strong>Laurea triennale in Informatica</strong>, Università di Trento</dd>' +
         '<dt>2018 – 2023</dt><dd><strong>Diploma di Amministrazione, Finanza e Marketing</strong>, articolazione Sistemi Informativi Aziendali (SIA)</dd>' +
         // durante le superiori
-        '<dt>2023</dt><dd><strong>Stage da Ithaca Studio (Verona)</strong>, studio di marketing e web design. ' +
+        '<dt>2022</dt><dd><strong>Stage da Ithaca Studio (Verona)</strong>, studio di marketing e web design. ' +
           'Ricerca di nuovi clienti e fornitori in Italia e nei mercati UE; revisione del design dei siti dei clienti, ' +
           'con attenzione a usabilità e chiarezza, lavorando con i developer per sistemare le incongruenze grafiche.</dd>' +
         '<dt>2022</dt><dd><strong>Corsi "Tandem" con l\'Università di Verona</strong>: ' +
@@ -129,6 +130,7 @@ const STRINGS = {
     "nav.projects": "Projects",
     "nav.about": "About",
     "nav.contact": "Contact",
+    "nav.theme": "Turn the light on or off (dark or light theme)",
 
     "hero.label": "Introduction",
     "intro.lead": "I teach, I code, and I turn ideas <em>into things people can actually use.</em>",
@@ -168,7 +170,7 @@ const STRINGS = {
         '<dt>Since 2025</dt><dd>Computer Science and Maths teacher (ITP)</dd>' +
         '<dt>2024 – now</dt><dd><strong>Bachelor\'s degree in Computer Science</strong>, University of Trento</dd>' +
         '<dt>2018 – 2023</dt><dd><strong>Diploma in Administration, Finance and Marketing</strong>, Business Information Systems track (SIA)</dd>' +
-        '<dt>2023</dt><dd><strong>Internship at Ithaca Studio (Verona)</strong>, a marketing and web design studio. ' +
+        '<dt>2022</dt><dd><strong>Internship at Ithaca Studio (Verona)</strong>, a marketing and web design studio. ' +
           'Finding new clients and suppliers in Italy and EU markets; reviewing the design of clients\' websites, ' +
           'focusing on usability and clarity, and working with developers to fix visual inconsistencies.</dd>' +
         '<dt>2022</dt><dd><strong>"Tandem" courses with the University of Verona</strong>: ' +

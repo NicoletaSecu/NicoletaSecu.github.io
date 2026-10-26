@@ -8,7 +8,7 @@ Portfolio/
 ├── progetti.html       tutti i progetti su un albero del tempo, con i filtri
 ├── chi-sono.html       chi sono: ritratto, cosa faccio, percorso
 ├── contatti.html       il modulo per scrivermi
-├── favicon.svg         l'iconcina della scheda (NS in bordeaux) + favicon-32.png e apple-touch-icon.png
+├── favicon.svg         l'iconcina della scheda (</> con il pallino bordeaux) + favicon-32.png e apple-touch-icon.png
 ├── content/            ← QUELLO CHE MODIFICHI TU
 │   ├── projects.js     i progetti (italiano + inglese)
 │   ├── texts.js        tutti i testi del sito (italiano + inglese)
@@ -20,6 +20,7 @@ Portfolio/
     ├── lang.js           lingua IT / EN
     ├── project-list.js   elenco e linea del tempo dei progetti, filtri, immagine che segue il mouse
     ├── hero.js           apertura (immagini sparse) e frase "Chi sono" che si accende
+    ├── graph.js          il grafo di linguaggi dietro al nome (legge il campo stack dei progetti)
     ├── desk.js           scrivania e lampada (giorno/notte)
     ├── contact.js        modulo "Scrivimi"
     ├── navigation.js     link interni e ricarica dall'inizio

@@ -15,6 +15,7 @@
 //  link:        indirizzo del sito online, oppure ""
 //  repo:        indirizzo del codice su GitHub, oppure ""
 //  featured:    true per metterlo "in evidenza"
+//  stack:       linguaggi e strumenti usati, es. ["HTML", "CSS", "JavaScript", "React"] (servono al grafo nella home)
 //  home:        true per mostrarlo anche nella home (tutti gli altri stanno solo nella pagina Progetti)
 //  with:        chi ha lavorato con te, es. [{ name: "Nome Cognome", url: "https://..." }]
 //               (compare come "Con Nome Cognome", con il link al suo sito)
@@ -29,6 +30,7 @@ const TYPES = {
 const PROJECTS = [
   {
     title: "Sync",
+    stack: ["HTML", "CSS", "JavaScript"],
     date: "2026-10",
     type: "app",
     description: "Un'app per tenere traccia del ciclo mestruale con i dati salvati solo sul telefono: niente account, niente server, niente pubblicità. Calendario, previsioni, sintomi, grafici e consigli per ogni fase; si installa sul telefono e funziona anche offline.",
@@ -39,6 +41,7 @@ const PROJECTS = [
   },
   {
     title: "Questo portfolio",
+    stack: ["HTML", "CSS", "JavaScript", "Matter.js"],
     title_en: "This portfolio",
     date: "2026-10",
     ongoing: true,
@@ -52,6 +55,7 @@ const PROJECTS = [
   },
   {
     title: "Air Math",
+    stack: ["HTML", "CSS", "JavaScript", "MediaPipe"],
     date: "2026-10",
     type: "lab",
     description: "Nato per divertimento: disegni una forma nell'aria davanti alla webcam e ottieni la sua equazione, dalle rette ai cerchi fino a un cuore. Ma è soprattutto un modo diverso per studiare le funzioni ed esercitarsi a riconoscerle.",
@@ -64,6 +68,7 @@ const PROJECTS = [
   },
   {
     title: "Da B2 a C1",
+    stack: ["HTML", "CSS", "JavaScript"],
     title_en: "From B2 to C1",
     date: "2026-09",
     until: "2026-10",
@@ -76,6 +81,7 @@ const PROJECTS = [
   },
   {
     title: "Studio Java",
+    stack: ["Java", "HTML", "CSS", "JavaScript"],
     title_en: "Java Study Guide",
     date: "2026-08",
     type: "study",
@@ -87,6 +93,7 @@ const PROJECTS = [
   },
   {
     title: "WaySafe",
+    stack: ["JavaScript", "React", "Node.js", "MongoDB"],
     date: "2026-01",
     until: "2026-05",
     type: "app",
@@ -99,6 +106,7 @@ const PROJECTS = [
   },
   {
     title: "FlowDegree",
+    stack: ["JavaScript", "React", "Python", "FastAPI", "SQL", "PostgreSQL"],
     date: "2026-05",
     until: "2026-08",
     maintained: true,

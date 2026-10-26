@@ -23,3 +23,12 @@ function setupAnchors() {
     else target.scrollIntoView({ behavior: "smooth" });
   });
 }
+
+// La lampadina nel menu: cambia tema chiaro/scuro da qualsiasi pagina, come la lampada della scrivania.
+function setupThemeButton() {
+  document.querySelectorAll(".theme-btn").forEach((b) => b.addEventListener("click", () => {
+    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  }));
+}

@@ -13,8 +13,10 @@ const aboutPhoto = document.querySelector(".about-photo");
 if (aboutPhoto) aboutPhoto.addEventListener("click", () => aboutPhoto.classList.toggle("coding"));
 
 setupAnchors();
+setupThemeButton();
 if (typeof setupFloats === "function") {
   setupFloats();
+  if (typeof setupGraph === "function") setupGraph();
   setupStatement();
   setupReveal();
   setupNameSpread();

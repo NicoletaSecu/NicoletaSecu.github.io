@@ -1142,6 +1142,8 @@ body { padding-top: 0; font-family: var(--ui); }
 
 /* gli screenshot sparsi intorno al nome */
 .fl-floats { position: absolute; inset: 0; z-index: 0; }
+/* il grafo dietro al nome: non si clicca, il mouse lo "sente" da js/hero.js */
+.fl-graph { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 .fl-float {
   position: absolute;
   left: var(--x);
@@ -1623,3 +1625,53 @@ html, body { overflow-x: clip; }
 /* bottone GitHub nel piè di pagina: passandoci sopra diventa bordeaux */
 .github { transition: background-color 0.25s, border-color 0.25s, color 0.25s; }
 .fl-footer .github:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+/* la lampadina nel menu: spenta col tema chiaro, accesa (gialla, con un alone) col tema scuro */
+.theme-btn {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.3s;
+}
+.theme-btn svg { overflow: visible; }
+.theme-btn .bulb-glass { fill: none; stroke: currentColor; stroke-width: 1.6; transition: fill 0.3s, stroke 0.3s; }
+.theme-btn .bulb-base { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.theme-btn:hover .bulb-glass { fill: color-mix(in srgb, #f5c84c 35%, transparent); }
+[data-theme="dark"] .theme-btn .bulb-glass { fill: #f5c84c; stroke: #f5c84c; }
+[data-theme="dark"] .theme-btn { box-shadow: 0 0 14px rgba(245, 200, 76, 0.45); }
+
+/* il codice che si scrive accanto al linguaggio sotto al mouse (js/graph.js): chiaro e dietro a tutto */
+.graph-code {
+  position: absolute;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink);
+  transition: opacity 0.3s;
+}
+.graph-code.on { opacity: 0.34; }
+.graph-code .code-tab { width: fit-content; padding: 0 2px 2px; margin-bottom: 6px; border-bottom: 2px solid var(--accent); font-size: 11px; }
+.graph-code .code-line { display: flex; gap: 14px; white-space: pre; }
+.graph-code .ln { flex: none; width: 2ch; text-align: right; opacity: 0.5; }
+.graph-code.term .ln { display: none; }
+.graph-code .prompt { color: var(--accent); }
+.graph-code .k, .graph-code .s { color: var(--accent); }
+.graph-code .k, .graph-code .p { font-weight: 600; }
+.graph-code .c { font-style: italic; opacity: 0.7; }
+.graph-code .caret { display: inline-block; width: 0.55em; height: 1.1em; margin-left: 1px; vertical-align: -0.2em; background: var(--accent); animation: caret 1s steps(1) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+/* gli screenshot dei progetti che usano il linguaggio sotto al mouse si fanno avanti */
+.fl-float { outline: 2px solid transparent; outline-offset: 3px; transition: box-shadow 0.3s, scale 0.3s, outline-color 0.3s; }
+.fl-float.graph-lit { scale: 1.06; outline-color: var(--accent); }

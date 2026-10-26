@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- favicon: le iniziali NS in bianco su un quadrato bordeaux con gli angoli arrotondati -->
-  <rect width="64" height="64" rx="14" fill="#8c2f45"/>
-  <text x="32" y="43" text-anchor="middle"
-        font-family="Inter Tight, Helvetica Neue, Helvetica, Arial, sans-serif"
-        font-size="30" font-weight="600" letter-spacing="-1.5" fill="#f4efe6">NS</text>
+  <!-- favicon: il codice </> su crema con il pallino bordeaux (disegnato a tratti, così non dipende dai font) -->
+  <rect width="64" height="64" rx="14" fill="#f4efe6"/>
+  <g fill="none" stroke="#1d1b18" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 23 L9 33 L19 43"/>
+    <path d="M36 20 L28 46"/>
+    <path d="M45 23 L55 33 L45 43"/>
+  </g>
+  <circle cx="53" cy="12" r="5.5" fill="#8c2f45"/>
 </svg>

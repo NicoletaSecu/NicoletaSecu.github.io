@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nicoleta Secu · Portfolio</title>
-  <!-- favicon: le iniziali NS in bordeaux (SVG per i browser moderni, PNG per gli altri e per l'iPhone) -->
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- favicon: il codice </> con il pallino bordeaux (SVG per i browser moderni, PNG per gli altri e per l'iPhone) -->
+  <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png?v=2" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
   <meta name="theme-color" content="#eeebe5">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20261025-1748">
+  <link rel="stylesheet" href="css/style.css?v=20261026-1446">
   <script>
     (function () {
       var t;
@@ -32,6 +32,13 @@
         <a href="chi-sono.html" data-i18n="nav.about">Chi sono</a>
         <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
       </nav>
+      <!-- lampadina: accesa = tema scuro (come la lampada della scrivania), spenta = tema chiaro -->
+      <button class="theme-btn" type="button" data-i18n-aria="nav.theme" aria-label="Tema chiaro o scuro">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path class="bulb-glass" d="M12 2.5a6.5 6.5 0 0 0-3.9 11.7c.6.5 1 1.2 1 2V17h5.8v-.8c0-.8.4-1.5 1-2A6.5 6.5 0 0 0 12 2.5Z"/>
+          <path class="bulb-base" d="M9.3 19h5.4M10 21.3h4"/>
+        </svg>
+      </button>
       <div class="lang" role="group" data-i18n-aria="lang.label" aria-label="Lingua">
         <button type="button" data-lang="it" aria-pressed="true">IT</button>
         <button type="button" data-lang="en" aria-pressed="false">EN</button>
@@ -42,6 +49,8 @@
   <main id="top">
     <!-- 00 · APERTURA: il nome enorme, con gli screenshot dei progetti sparsi intorno -->
     <section class="fl-hero" data-i18n-aria="hero.label" aria-label="Presentazione">
+      <!-- il grafo di linguaggi e strumenti che si muove dietro a tutto (js/graph.js) -->
+      <canvas class="fl-graph" id="graph" aria-hidden="true"></canvas>
       <div class="fl-floats" id="floats"></div>
       <div class="fl-hero-text">
         <h1 class="fl-name" data-gravity>Nicoleta<br>Secu</h1>
@@ -197,18 +206,19 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
   <!-- contenuti che modifichi tu -->
-  <script src="content/settings.js?v=20261025-1748"></script>
-  <script src="content/texts.js?v=20261025-1748"></script>
-  <script src="content/projects.js?v=20261025-1748"></script>
+  <script src="content/settings.js?v=20261026-1446"></script>
+  <script src="content/texts.js?v=20261026-1446"></script>
+  <script src="content/projects.js?v=20261026-1446"></script>
   <!-- codice del sito -->
-  <script src="js/lang.js?v=20261025-1748"></script>
-  <script src="js/project-list.js?v=20261025-1748"></script>
-  <script src="js/hero.js?v=20261025-1748"></script>
-  <script src="js/desk.js?v=20261025-1748"></script>
-  <script src="js/navigation.js?v=20261025-1748"></script>
-  <script src="js/toys.js?v=20261025-1748"></script>
-  <script src="js/gravity.js?v=20261025-1748"></script>
-  <script src="js/cursor.js?v=20261025-1748"></script>
-  <script src="js/main.js?v=20261025-1748"></script>
+  <script src="js/lang.js?v=20261026-1446"></script>
+  <script src="js/project-list.js?v=20261026-1446"></script>
+  <script src="js/hero.js?v=20261026-1446"></script>
+  <script src="js/graph.js?v=20261026-1446"></script>
+  <script src="js/desk.js?v=20261026-1446"></script>
+  <script src="js/navigation.js?v=20261026-1446"></script>
+  <script src="js/toys.js?v=20261026-1446"></script>
+  <script src="js/gravity.js?v=20261026-1446"></script>
+  <script src="js/cursor.js?v=20261026-1446"></script>
+  <script src="js/main.js?v=20261026-1446"></script>
 </body>
 </html>

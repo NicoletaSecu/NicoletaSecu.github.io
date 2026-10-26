@@ -20,7 +20,7 @@ function setupFloats() {
     const p = withImages[i % withImages.length];
     // ogni immagine apre il suo progetto; data-gravity: anche loro cadono col bottone rosso
     return `<a class="fl-float" href="${escapeHtml(p.link || p.repo || "progetti.html")}" target="_blank" rel="noopener"
-               aria-label="${escapeHtml(pick(p, "title"))}" data-gravity data-d="${s.d}"
+               aria-label="${escapeHtml(pick(p, "title"))}" data-title="${escapeHtml(p.title)}" data-gravity data-d="${s.d}"
                style="--x:${s.x};--y:${s.y};--w:${s.w};--rot:${s.rot}deg">
               <img src="${escapeHtml(p.image)}" alt="" draggable="false">
             </a>`;
