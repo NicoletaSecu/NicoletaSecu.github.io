@@ -35,7 +35,7 @@ function highlightCode(line) {
 const CARET = '<span class="caret"></span>';
 const TYPE_SPEED = () => 0.05 + Math.random() * 0.04; // lettere al millisecondo: circa 70 al secondo
 
-// Cosa si scrive passando sopra a un linguaggio (nudge: ritocco della posizione, in pixel, come [destra, basso]): righe vere dei progetti, tranne Java e SQL
+// Cosa si scrive passando sopra a un linguaggio (nudge: ritocco della posizione, in pixel, come [destra, basso]; below: sotto il punto; belowShot: sotto lo screenshot di quel progetto): righe vere dei progetti, tranne Java e SQL
 // che sono esempi (non ho il codice di Studio Java sul computer e FlowDegree usa SQLAlchemy).
 const HOVER_CODE = {
   "JavaScript": { file: "airmath/js/app.js", below: true, code: String.raw`function extendStroke(x, y) {
@@ -69,7 +69,7 @@ const HOVER_CODE = {
     if (importo > 0) saldo += importo;
   }
 }` },
-  "SQL": { file: "esempio/esami.sql", code: String.raw`SELECT name, cfu
+  "SQL": { file: "esempio/esami.sql", belowShot: "Da B2 a C1", code: String.raw`SELECT name, cfu
 FROM courses
 WHERE user_id = 1
 ORDER BY year, name;` },
@@ -155,7 +155,15 @@ function setupGraph() {
     // lo si scarta solo se coprirebbe il nome o la frase.
     const under = [Math.max(8, Math.min(W - w - 8, nd.x + lab)), Math.min(H - h - 30, nd.y + 18)];
     const useUnder = c.below && !words.some((q) => overlap(under, { l: q.l - 6, r: q.r + 6, t: q.t - 6, b: q.b + 6 }) > 0);
-    const [bx, by] = useUnder ? under : best || spots[0];
+    // belowShot: il codice sta sotto lo screenshot di quel progetto, con il bordo sinistro allineato all'immagine
+    const shotEl = c.belowShot && hero.querySelector(`.fl-float[data-title="${c.belowShot}"]`);
+    let underShot = null;
+    if (shotEl && shotEl.offsetWidth) {
+      const q = rect(shotEl);
+      const sp = [Math.max(8, Math.min(W - w - 8, q.l)), q.b + 14];
+      if (inside(sp) && !words.some((t) => overlap(sp, { l: t.l - 6, r: t.r + 6, t: t.t - 6, b: t.b + 6 }) > 0)) underShot = sp;
+    }
+    const [bx, by] = underShot || (useUnder ? under : best || spots[0]);
     // un ritocco a mano per i punti dove il posto scelto non piaceva: [spostamento a destra, spostamento in basso]
     const [nx, ny] = c.nudge || [0, 0];
     const px = bx + nx, py = by + ny;
