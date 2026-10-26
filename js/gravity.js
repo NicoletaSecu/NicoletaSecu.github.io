@@ -238,6 +238,10 @@ const Gravity = (() => {
   document.addEventListener("click", (e) => {
     if (active && e.target.closest(".falling")) { e.preventDefault(); e.stopPropagation(); }
   }, true);
+  // Cliccando il nome in alto per tornare all'inizio, anche gli oggetti caduti tornano al loro posto.
+  document.addEventListener("click", (e) => {
+    if (active && e.target.closest('a[href="#top"]')) stop();
+  });
   addEventListener("pointermove", onMove);
   addEventListener("pointerup", onUp);
   addEventListener("pointercancel", onUp);
