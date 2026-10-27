@@ -41,7 +41,7 @@ const STRINGS = {
     "projects.terminus": "capolinea: qui è dove tutto è cominciato",
 
     // chi sono: la frase grande si accende parola per parola; sotto la scheda
-    "about.statement": "Chi sono?<br>Una ragazza piena di idee, questo è sicuro.<br>E pronta ad affrontare più di quanto immagini, a volte persino più di quanto immagini io.",
+    "about.statement": "Chi sono?<br>Una ragazza piena di idee, questo è sicuro.<br>Pronta ad affrontare più di quanto immagini, a volte persino più di quanto immagini io.",
 
     // pagina Chi sono
     "page.aboutTitle": "Chi sono · Nicoleta Secu",
@@ -152,7 +152,7 @@ const STRINGS = {
     "projects.all": "All",
     "projects.terminus": "end of the line: this is where it all started",
 
-    "about.statement": "Who am I?<br>A girl full of ideas, that's for sure.<br>And ready to take on more than you'd expect, sometimes even more than I'd expect.",
+    "about.statement": "Who am I?<br>A girl full of ideas, that's for sure.<br>Ready to take on more than you'd expect, sometimes even more than I'd expect.",
 
     "page.aboutTitle": "About · Nicoleta Secu",
     "page.contactTitle": "Contact · Nicoleta Secu",
