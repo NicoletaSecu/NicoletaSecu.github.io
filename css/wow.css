@@ -916,7 +916,8 @@ html.gravity-active .shake-hint { display: block; }
 .acc-strip {
   --c: var(--accent);
   position: relative; flex: 1 1 0; min-width: 0; border-radius: 16px; overflow: hidden;
-  border: 1px solid var(--line); background: var(--card);
+  /* niente bordo: sulle immagini scure si vedeva come una linea chiara in alto */
+  border: 0; background: var(--card);
   opacity: 0; transform: translateY(18px);
   transition: flex 0.65s var(--ease), opacity 0.6s var(--ease), transform 0.6s var(--ease), border-color 0.3s;
 }
