@@ -899,23 +899,24 @@ html.gravity-active .shake-hint { display: block; }
 
 /* PAGINA PROGETTI: tutti i progetti dal più recente, con i filtri */
 .pl { padding-top: 0; }
-.pl-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+.pl-filters { display: flex; flex-wrap: wrap; gap: 6px 26px; margin-bottom: 30px; }
+/* i filtri: solo la parola, niente riquadri né colori. Quello scelto è nel colore pieno del testo
+   e sottolineato; gli altri sono più tenui */
 .pl-chip {
-  display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: 999px; cursor: pointer;
-  font-family: var(--mono); font-size: 0.72rem; border: 1px solid var(--line); background: var(--glass); color: var(--muted);
-  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  padding: 4px 0; border: 0; background: none; cursor: pointer;
+  font-family: var(--mono); font-size: 0.74rem; color: var(--muted);
+  text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 6px; text-decoration-thickness: 1px;
+  transition: color 0.2s, text-decoration-color 0.2s;
 }
 .pl-chip i { font-style: normal; opacity: 0.6; }
 .pl-chip:hover { color: var(--ink); }
-/* il filtro scelto: senza colori, solo testo pieno e bordo più chiaro */
-.pl-chip.is-on { color: var(--bg); border-color: var(--ink); background: var(--ink); }
-.pl-chip.is-on i { opacity: 0.7; }
+.pl-chip.is-on { color: var(--ink); text-decoration-color: currentColor; }
 /* la fisarmonica: strisce chiuse della stessa larghezza; quella sotto il cursore si apre */
 .acc { display: flex; gap: 8px; height: clamp(480px, 68vh, 640px); }
 .acc-strip {
   --c: var(--accent);
   position: relative; flex: 1 1 0; min-width: 0; border-radius: 16px; overflow: hidden;
-  border: 1px solid var(--line); border-top: 3px solid var(--c); background: var(--card);
+  border: 1px solid var(--line); background: var(--card);
   opacity: 0; transform: translateY(18px);
   transition: flex 0.65s var(--ease), opacity 0.6s var(--ease), transform 0.6s var(--ease), border-color 0.3s;
 }
