@@ -84,7 +84,7 @@
   const cm = { x: innerWidth / 2, y: innerHeight / 2, tx: innerWidth / 2, ty: innerHeight / 2 };
   // Cosa c'è scritto nel cerchio, a seconda di cosa hai sotto.
   // Le parole sono in italiano; CURSOR_EN dice come si traducono.
-  const CURSOR_EN = { vai: "go", scopri: "explore", "apri ↗": "open ↗", prendi: "grab", clic: "click", trascina: "drag", ingrandisci: "zoom", home: "home" };
+  const CURSOR_EN = { vai: "go", scopri: "explore", "apri ↗": "open ↗", prendi: "grab", clic: "click", trascina: "drag", ingrandisci: "zoom", home: "home", rompi: "break" };
   function labelIt(t) {
     if (t.dataset.cursor) return t.dataset.cursor;          // un elemento può chiedere la sua parola con data-cursor="..."
     if (t.classList.contains("falling")) return "prendi";   // gli oggetti che cadono col bottone rosso

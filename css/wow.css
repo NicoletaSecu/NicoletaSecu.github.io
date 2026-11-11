@@ -397,8 +397,30 @@ body[data-page="home"]:not(.scrolled) .nav-brand { opacity: 0; transform: transl
 .btn:hover { transform: translateY(-2px); box-shadow: 0 0 44px color-mix(in srgb, var(--accent) 60%, transparent); }
 .btn:disabled { opacity: 0.6; }
 
-.foot { display: flex; justify-content: space-between; gap: 20px; padding: 26px; border-top: 1px solid var(--line); }
+/* il footer: tre colonne come la barra in alto (nome a sinistra, "rompi il sito" al centro, GitHub a destra).
+   Nella 404 ci sono solo due elementi: GitHub va comunque a destra perché è l'ultimo (:last-child) */
+.foot { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; padding: 26px; border-top: 1px solid var(--line); }
+.foot > :last-child { grid-column: 3; justify-self: end; }
 .foot a:hover { color: var(--ink); }
+/* "rompi il sito": porta alla pagina 404. Un piccolo segnale di pericolo davanti;
+   passandoci sopra la scritta diventa rosa e trema, come se si stesse rompendo */
+.foot-break { display: inline-flex; align-items: center; gap: 8px; }
+.foot-break::before { content: "⚠"; font-size: 0.9em; opacity: 0.7; }
+.foot .foot-break:hover { color: var(--accent); animation: crack 0.35s steps(2, end) infinite; }
+@keyframes crack {
+  0%   { transform: translate(0, 0) rotate(0); }
+  25%  { transform: translate(-1px, 1px) rotate(-1.5deg); }
+  50%  { transform: translate(1px, -1px) rotate(1deg); }
+  75%  { transform: translate(-1px, 0) rotate(-0.5deg); }
+  100% { transform: translate(1px, 1px) rotate(1.5deg); }
+}
+@media (prefers-reduced-motion: reduce) { .foot .foot-break:hover { animation: none; } }
+/* sul telefono il footer va su due righe: il link sta sotto, al centro */
+@media (max-width: 560px) {
+  .foot { grid-template-columns: 1fr auto; }
+  .foot > :last-child { grid-column: 2; }
+  .foot-break { grid-row: 2; grid-column: 1 / -1; justify-self: center; }
+}
 
 [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
 [data-reveal].in { opacity: 1; transform: none; }
