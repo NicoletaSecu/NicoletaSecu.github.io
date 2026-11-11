@@ -58,11 +58,12 @@
 :root {
   /* I colori dei tipi di progetto (filtri, etichette, strisce) e delle tappe della linea del tempo.
      --t1 = Web app, --t2 = Studio, --t3 = Esperimenti; --on-t è il colore del testo sopra di loro.
-     Le palette di prova A, B e C (più sotto, "PROVA COLORI") li sostituiscono. */
-  --t1: var(--accent);
-  --t2: #4a9bff;
-  --t3: var(--accent2);
-  --on-t: #fff;
+     Palette "Inchiostro": tutto nei toni del testo, dal più chiaro al più tenue (color-mix mescola
+     il colore del testo con quello dello sfondo). L'unico colore vero è il rosa del sito, su ciò che è acceso. */
+  --t1: var(--ink);
+  --t2: color-mix(in srgb, var(--ink) 62%, var(--bg));
+  --t3: color-mix(in srgb, var(--ink) 40%, var(--bg));
+  --on-t: var(--bg);
   --display: "Space Grotesk", system-ui, sans-serif;
   --body: "Inter", system-ui, sans-serif;
   --mono: "Space Mono", ui-monospace, Menlo, monospace;
@@ -987,38 +988,10 @@ html.gravity-active .shake-hint { display: block; }
 .lb-close { position: absolute; top: 18px; right: 18px; }
 html.lb-open, html.lb-open body { overflow: hidden; }
 
-/* PROVA COLORI (temporaneo): tre palette sobrie per tipi di progetto e linea del tempo.
-   Le accende js/prova-palette.js mettendo la classe pal-a, pal-b o pal-c su <html>.
-   Scelta quella giusta, i suoi valori vanno in --t1/--t2/--t3 in cima al file e questo blocco si toglie. */
-
-/* A, Inchiostro: tutto nei toni del testo; l'unico colore è il rosa del sito, solo su ciò che è acceso */
-:root.pal-a {
-  --t1: var(--ink);
-  --t2: color-mix(in srgb, var(--ink) 62%, var(--bg));
-  --t3: color-mix(in srgb, var(--ink) 40%, var(--bg));
-  --on-t: var(--bg);
-}
-/* le etichette del tipo (sui progetti) col solo bordo: piene di grigio si leggerebbero male */
-:root.pal-a .proj-badge, :root.pal-a .work-badge { background: color-mix(in srgb, var(--bg) 70%, transparent); color: var(--ink); box-shadow: inset 0 0 0 1px var(--c); }
-/* sulla linea del tempo la tappa scelta, il pallino e la data diventano rosa */
-:root.pal-a .path { --era: var(--accent) !important; }
-:root.pal-a .path-tick.is-era.on { --c: var(--accent) !important; }
-
-/* B, Polvere: rosa antico, blu ardesia, salvia (nel tema chiaro un po' più scuri, per leggersi bene) */
-:root.pal-b { --t1: #c47f89; --t2: #7f95b5; --t3: #8faa92; --on-t: #101114; }
-:root.pal-b[data-theme="light"] { --t1: #a85a66; --t2: #546f94; --t3: #5e8264; --on-t: #fff; }
-
-/* C, Carta e inchiostro: bordeaux, blu notte, ocra */
-:root.pal-c { --t1: #d06a7c; --t2: #7a96c8; --t3: #d2ad5c; --on-t: #101114; }
-:root.pal-c[data-theme="light"] { --t1: #b5485c; --t2: #4d6a9c; --t3: #a07a28; --on-t: #fff; }
-
-/* il selettore di prova in basso a sinistra */
-.pal-switch {
-  position: fixed; left: 16px; bottom: 16px; z-index: 3000; display: flex; align-items: center; gap: 4px;
-  padding: 5px 6px 5px 12px; border-radius: 999px; border: 1px solid var(--line);
-  background: var(--glass-strong); backdrop-filter: blur(14px);
-  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
-}
-.pal-switch span { margin-right: 6px; }
-.pal-switch button { min-width: 30px; height: 28px; padding: 0 8px; border: 0; border-radius: 999px; background: none; color: var(--ink); cursor: pointer; font: inherit; }
-.pal-switch button.on { background: var(--ink); color: var(--bg); }
+/* Con la palette "Inchiostro" (vedi --t1, --t2, --t3 in cima):
+   le etichette del tipo sui progetti hanno il solo bordo, perché piene di grigio si leggerebbero male */
+.proj-badge, .work-badge { background: color-mix(in srgb, var(--bg) 70%, transparent); color: var(--ink); box-shadow: inset 0 0 0 1px var(--c); }
+/* sulla linea del tempo la tappa scelta, il pallino e la data sono rosa.
+   (!important serve perché js/percorso.js scrive il colore della tappa direttamente sull'elemento) */
+.path { --era: var(--accent) !important; }
+.path-tick.is-era.on { --c: var(--accent) !important; }
