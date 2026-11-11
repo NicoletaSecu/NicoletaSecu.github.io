@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-en="About — Nicoleta Secu">Chi sono — Nicoleta Secu</title>
+  <script>
+    (function () { var t, l, d = document.documentElement; try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {} d.dataset.theme = t || "dark"; d.lang = l === "en" ? "en" : "it"; })();
+  </script>
+  <link rel="icon" href="favicon.svg?v=4" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png?v=4" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/wow.css?v=29">
+</head>
+<body data-page="about">
+  <div class="fx" aria-hidden="true"><div class="fx-aurora"></div><div class="fx-vignette"></div><div class="fx-grain"></div></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"></span><b class="cursor-label"></b></div>
+
+  <header class="nav" aria-label="Navigazione" data-en-aria-label="Navigation">
+    <a href="index.html#home" class="nav-brand">Nicoleta Secu</a>
+    <nav class="nav-pill">
+      <a href="index.html#home" class="nav-link" data-section="home">Home</a>
+      <a href="progetti.html" class="nav-link" data-page="projects" data-en="Projects">Progetti</a>
+      <a href="chi-sono.html" class="nav-link" data-page="about" aria-current="page" data-en="About">Chi sono</a>
+      <a href="contatti.html" class="nav-link" data-page="contact" data-en="Contact">Contatti</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Tema chiaro o scuro" data-en-aria-label="Light or dark theme"><span></span></button>
+    </div>
+  </header>
+  <div class="scrollbar" aria-hidden="true"><i id="scrollbarFill"></i></div>
+
+  <main class="page">
+    <section class="page-head">
+      <div class="mono"><span class="num">—</span> <span data-en="About">Chi sono</span></div>
+      <p class="statement" data-words data-en="Who am I? A girl full of ideas, that's for sure.&lt;br&gt;Ready to take on more than you'd imagine, sometimes even more than I'd imagine myself.">Chi sono? Una ragazza piena di idee, questo è sicuro.<br>Pronta ad affrontare più di quanto immagini, a volte persino più di quanto immagini io.</p>
+    </section>
+
+    <section class="block">
+      <div class="block-head mono"><span class="num">01</span> <span data-en="What I do">Cosa faccio</span></div>
+      <div class="doing">
+        <div data-reveal>
+          <h2 class="doing-title" data-en="I code">Programmo</h2>
+          <p data-en="Web apps and study tools, often born from a problem of my own. &lt;a href=&quot;progetti.html&quot;&gt;My projects ↗&lt;/a&gt;">Web app e strumenti per studiare, nati spesso da un problema mio. <a href="progetti.html">I miei progetti ↗</a></p>
+        </div>
+        <div data-reveal>
+          <h2 class="doing-title" data-en="I teach">Insegno</h2>
+          <p data-en="Computer Science and Maths, as a lab teacher (ITP), since 2025. Explaining something well is the best way to really understand it.">Informatica e Matematica, come docente ITP, dal 2025. Spiegare bene una cosa è il modo migliore per capirla davvero.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block-head mono"><span class="num">02</span> <span data-en="Journey">Percorso</span> <span class="path-hint" data-en="drag the dot →">trascina il pallino →</span></div>
+      <div class="path" id="path">
+        <div class="path-odo" id="pathOdo" aria-hidden="true"></div>
+        <div class="path-rail" id="pathRail" role="slider" tabindex="0" aria-label="Anno del percorso" data-en-aria-label="Year of the journey" aria-valuemin="2018" aria-valuemax="2026">
+          <div class="path-line"></div>
+          <div class="path-fill" id="pathFill"></div>
+          <div class="path-knob" id="pathKnob" data-cursor="trascina"></div>
+        </div>
+        <div class="path-era" id="pathEra" aria-live="polite">
+          <span class="path-when"></span>
+          <h3></h3>
+          <div class="path-text"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <a class="cta-big" href="contatti.html"><span data-en="Let's talk">Scriviamoci</span> <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer class="foot mono">
+    <span>Nicoleta Secu · © 2026</span>
+    <a href="https://github.com/NicoletaSecu" target="_blank" rel="noopener">GitHub ↗</a>
+  </footer>
+
+  <script src="js/site.js?v=18"></script>
+  <script src="js/prova-palette.js?v=1"></script>
+  <script src="js/percorso.js?v=5"></script>
+</body>
+</html>

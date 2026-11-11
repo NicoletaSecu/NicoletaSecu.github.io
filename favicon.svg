@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- favicon: il codice </> chiaro sul fondo scuro del sito, col pallino rosa che brilla (a tratti, così non dipende dai font) -->
+  <defs>
+    <radialGradient id="glowA" cx="0.2" cy="0.2" r="0.75">
+      <stop offset="0" stop-color="#ff4d6d" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#ff4d6d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0.9" cy="0.95" r="0.7">
+      <stop offset="0" stop-color="#8b7bff" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#8b7bff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="dot" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff4d6d" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#ff4d6d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#05060a"/>
+  <rect width="64" height="64" rx="14" fill="url(#glowA)"/>
+  <rect width="64" height="64" rx="14" fill="url(#glowB)"/>
+  <g fill="none" stroke="#f4f1ea" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 23 L9 33 L19 43"/>
+    <path d="M36 20 L28 46"/>
+    <path d="M45 23 L55 33 L45 43"/>
+  </g>
+  <circle cx="53" cy="12" r="10" fill="url(#dot)"/>
+  <circle cx="53" cy="12" r="5.5" fill="#ff4d6d"/>
+</svg>

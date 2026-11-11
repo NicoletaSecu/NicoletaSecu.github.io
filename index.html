@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nicoleta Secu — portfolio</title>
+  <meta name="description" content="Nicoleta Secu — programmo e trasformo le idee in cose che si possono usare." data-en-content="Nicoleta Secu — I code and turn ideas into things people can use.">
+  <script>
+    // il tema scelto l'ultima volta (di base: scuro) e la lingua (di base: italiano), prima che la pagina si disegni
+    (function () { var t, l, d = document.documentElement; try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {} d.dataset.theme = t || "dark"; d.lang = l === "en" ? "en" : "it"; })();
+  </script>
+  <link rel="icon" href="favicon.svg?v=4" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png?v=4" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/wow.css?v=29">
+</head>
+<body data-page="home">
+  <div class="fx" aria-hidden="true"><div class="fx-aurora"></div><div class="fx-vignette"></div><div class="fx-grain"></div></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"></span><b class="cursor-label"></b></div>
+
+  <header class="nav" aria-label="Navigazione" data-en-aria-label="Navigation">
+    <a href="index.html#home" class="nav-brand">Nicoleta Secu</a>
+    <nav class="nav-pill">
+      <a href="index.html#home" class="nav-link" data-section="home">Home</a>
+      <a href="progetti.html" class="nav-link" data-page="projects" data-en="Projects">Progetti</a>
+      <a href="chi-sono.html" class="nav-link" data-page="about" data-en="About">Chi sono</a>
+      <a href="contatti.html" class="nav-link" data-page="contact" data-en="Contact">Contatti</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Tema chiaro o scuro" data-en-aria-label="Light or dark theme"><span></span></button>
+    </div>
+  </header>
+  <div class="scrollbar" aria-hidden="true"><i id="scrollbarFill"></i></div>
+
+  <main>
+    <section id="home" class="hero" data-section-root>
+      <h1 class="hero-name" aria-label="Nicoleta Secu">
+        <span class="line">NICOLETA</span>
+        <span class="line">SECU</span>
+      </h1>
+      <div class="hero-foot">
+        <p class="hero-lead">
+          <span class="lead-fixed" data-en="I code and turn ideas">Programmo e trasformo le idee</span>
+          <span class="lead-rotate"><em class="type"><span id="typeText">in cose che si possono usare.</span><b class="caret" aria-hidden="true"></b></em></span>
+          <span class="mono hero-role" data-en="web apps · study tools · experiments">web apps · strumenti per studiare · esperimenti</span>
+        </p>
+        <a href="#desk-section" class="hero-scroll"><span class="hero-scroll-dot"></span><span data-en="scroll">scorri</span></a>
+      </div>
+    </section>
+
+
+    <section id="desk-section" class="desk-section" data-section-root>
+      <div class="play-head mono" data-gravity><span class="num">01</span> <span data-en="The desk">La scrivania</span></div>
+      <p class="play-lead" data-gravity data-en="Touch the objects. And if you really must, press the red button.">Tocca gli oggetti. E se proprio vuoi, premi il bottone rosso.</p>
+      <div class="desk-wrap" aria-label="La mia scrivania" data-en-aria-label="My desk">
+      <div class="desk" id="desk">
+        <div class="obj sticky" style="--x:5%;--y:8%;--rot:-4deg" data-gravity>
+          <p data-en="Hi!">Ciao!</p>
+          <p data-en="This is my desk: touch the objects to explore.">Questa è la mia scrivania: tocca gli oggetti per esplorare.</p>
+        </div>
+
+        <a class="obj notebook" href="progetti.html" style="--x:35%;--y:7%;--rot:3deg" data-gravity>
+          <span class="spiral" aria-hidden="true"></span>
+          <span class="nb-title" data-en="Projects">Progetti</span>
+          <span class="nb-sub" data-en="newest first">dal più recente</span>
+        </a>
+
+        <a class="obj mug" href="chi-sono.html" style="--x:70%;--y:10%;--rot:0deg" data-gravity>
+          <span class="coffee" aria-hidden="true"></span>
+          <span class="obj-label" data-en="About me">Chi sono</span>
+        </a>
+
+        <a class="obj phone" href="contatti.html" style="--x:82%;--y:44%;--rot:-8deg" data-gravity>
+          <span class="screen"><span data-en="Contact">Contatti</span><small data-en="write to me">scrivimi</small></span>
+        </a>
+
+        <button class="obj lamp" id="lamp" type="button" style="--x:6%;--y:56%;--rot:0deg" data-gravity aria-label="Accendi o spegni la lampada (tema scuro)" data-en-aria-label="Turn the lamp on or off (dark theme)">
+          <span class="bulb" aria-hidden="true"></span>
+          <span class="obj-label" data-en="light">luce</span>
+        </button>
+
+        <div class="obj polaroid" style="--x:38%;--y:62%;--rot:-6deg" data-gravity>
+          <!-- ritratto cartoon: capelli castani lunghi e maglia beige (i colori sono in content/settings.js) -->
+          <svg class="pic" viewBox="0 0 100 100" aria-hidden="true">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9ed0e6"/><stop offset="1" stop-color="#d8eef6"/>
+              </linearGradient>
+            </defs>
+            <rect width="100" height="100" fill="url(#sky)"/>
+
+            <!-- capelli dietro: lunghi, scendono oltre le spalle -->
+            <path class="hair hair-neat" d="M23 52 Q19 20 50 16 Q81 20 77 52 Q79 74 85 100 L15 100 Q21 74 23 52 Z" fill="#6b4329"/>
+            <!-- capelli dietro scompigliati: una nuvola gonfia e spettinata -->
+            <path class="hair hair-messy" d="M22 54 L9 44 L18 39 L8 26 L22 27 L17 12 L31 19 L33 4 L44 15 L51 2 L57 15 L68 4 L69 19 L83 12 L78 27 L92 26 L82 39 L91 44 L78 54 L92 66 L80 72 L88 100 L12 100 L20 72 L8 66 Z" fill="#6b4329"/>
+
+            <!-- collo, poi la maglia beige con lo scollo tondo -->
+            <path class="skin" d="M44.5 58 L55.5 58 L55.5 71 Q57 75.5 62 77 Q50 84 38 77 Q43 75.5 44.5 71 Z" fill="#f2c9a5"/>
+            <path class="neck-shade" d="M44.5 62 Q50 67 55.5 62 L55.5 58 L44.5 58 Z" fill="#000" fill-opacity="0.08"/>
+            <path class="shirt" d="M14 100 Q15 80 38 77 Q50 84 62 77 Q85 80 86 100 Z" fill="#dcc7a6"/>
+            <path class="fold" d="M38 77 Q50 84 62 77" fill="none" stroke="#000" stroke-opacity="0.14" stroke-width="1.4" stroke-linecap="round"/>
+
+            <!-- testa -->
+            <ellipse class="skin" cx="50" cy="46" rx="17.5" ry="20" fill="#f2c9a5"/>
+
+            <!-- faccia normale -->
+            <g class="face-calm">
+              <path class="brow" d="M39 40 Q43 38 46 40" fill="none" stroke="#6b4329" stroke-width="1.2" stroke-linecap="round"/>
+              <path class="brow" d="M54 40 Q57 38 61 40" fill="none" stroke="#6b4329" stroke-width="1.2" stroke-linecap="round"/>
+              <ellipse class="ink" cx="43" cy="47" rx="2" ry="2.4" fill="#2b2620"/>
+              <ellipse class="ink" cx="57" cy="47" rx="2" ry="2.4" fill="#2b2620"/>
+              <circle class="eye-shine" cx="43.7" cy="46.2" r="0.7" fill="#fff"/>
+              <circle class="eye-shine" cx="57.7" cy="46.2" r="0.7" fill="#fff"/>
+              <!-- palpebre e ciglia -->
+              <path class="lash" d="M40.4 45.8 Q43 43.6 45.6 45.4" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="lash" d="M40.9 45.2 L39.3 44.1" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="lash" d="M41.9 44.5 L41 43" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="lash" d="M54.4 45.4 Q57 43.6 59.6 45.8" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="lash" d="M59.1 45.2 L60.7 44.1" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="lash" d="M58.1 44.5 L59 43" fill="none" stroke="#2b2620" stroke-width="1" stroke-linecap="round"/>
+              <path class="line thin" d="M49.5 50 Q48.5 53 50.5 53.4" fill="none" stroke="#2b2620" stroke-width="1.6" stroke-linecap="round"/>
+              <path class="line" d="M45 56.5 Q50 60.5 55 56.5" fill="none" stroke="#2b2620" stroke-width="1.6" stroke-linecap="round"/>
+            </g>
+            <!-- faccia stordita (dopo lo scossone) -->
+            <g class="face-dizzy">
+              <path class="line" d="M39.5 47 q1.6 -3 3.2 0 q1.6 3 3.2 0" fill="none" stroke="#2b2620" stroke-width="1.6" stroke-linecap="round"/>
+              <path class="line" d="M54 47 q1.6 -3 3.2 0 q1.6 3 3.2 0" fill="none" stroke="#2b2620" stroke-width="1.6" stroke-linecap="round"/>
+              <ellipse class="ink" cx="50" cy="57" rx="2.4" ry="3" fill="#2b2620"/>
+            </g>
+            <circle class="blush" cx="38.5" cy="53" r="3" fill="#f08a8a" opacity="0.35"/>
+            <circle class="blush" cx="61.5" cy="53" r="3" fill="#f08a8a" opacity="0.35"/>
+
+            <!-- capelli davanti: riga in mezzo, fronte scoperta, ciocche sulle spalle -->
+            <g class="hair-neat">
+              <path class="hair" d="M31 47 Q28 21 50 20 Q72 21 69 47 Q67 33 60 28.5 Q54 26.5 50 29.5 Q46 26.5 40 28.5 Q33 33 31 47 Z" fill="#6b4329"/>
+              <path class="hair" d="M33 44 Q28 64 30 80 Q25 84 21 86 Q24 66 27 50 Z" fill="#6b4329"/>
+              <path class="hair" d="M67 44 Q72 64 70 80 Q75 84 79 86 Q76 66 73 50 Z" fill="#6b4329"/>
+              <path class="shine" d="M38 26 Q44 22 48 23" fill="none" stroke="#fff" stroke-opacity="0.22" stroke-width="1.6" stroke-linecap="round"/>
+              <path class="shine" d="M27 58 Q26 68 25 76" fill="none" stroke="#fff" stroke-opacity="0.22" stroke-width="1.6" stroke-linecap="round"/>
+            </g>
+            <!-- capelli davanti scompigliati: ciuffi per aria -->
+            <g class="hair-messy">
+              <path class="hair" d="M29 46 L23 33 L31 35 L28 22 L37 28 L39 14 L46 25 L51 11 L55 25 L63 14 L64 28 L73 22 L69 35 L77 33 L71 46 Q62 33 50 32 Q38 33 29 46 Z" fill="#6b4329"/>
+              <path class="strand" d="M30 20 q-7 -5 -4 -13" fill="none" stroke="#6b4329" stroke-width="2.4" stroke-linecap="round"/>
+              <path class="strand" d="M70 19 q8 -4 5 -12" fill="none" stroke="#6b4329" stroke-width="2.4" stroke-linecap="round"/>
+              <path class="strand" d="M50 9 q3 -5 -1 -8" fill="none" stroke="#6b4329" stroke-width="2.4" stroke-linecap="round"/>
+              <path class="strand" d="M16 52 q-8 2 -10 -5" fill="none" stroke="#6b4329" stroke-width="2.4" stroke-linecap="round"/>
+              <path class="strand" d="M84 52 q8 2 10 -5" fill="none" stroke="#6b4329" stroke-width="2.4" stroke-linecap="round"/>
+            </g>
+          </svg>
+          <span class="cap" data-en="me, more or less">io, più o meno</span>
+        </div>
+
+        <span class="obj pencil" style="--x:14%;--y:88%;--rot:-10deg" data-gravity aria-hidden="true"><span class="pencil-body"></span></span>
+
+        <button class="obj big-red" id="gravityDesk" type="button" style="--x:61%;--y:62%;--rot:0deg" data-gravity>
+          <span data-en="DON'T<br>PRESS">NON<br>PREMERE</span>
+        </button>
+      </div>
+      </div>
+      </div>
+    </section>
+
+    <section id="work" class="work" data-section-root>
+      <div class="work-stage" id="workStage">
+        <div class="work-head mono"><span class="num">02</span> <span data-en="My favourites">I miei preferiti</span></div>
+        <div class="work-track" id="workTrack"></div>
+        <div class="work-foot">
+          <span class="work-hint mono" data-en="swipe sideways on the touchpad, or drag">scorri di lato col touchpad, o trascina</span>
+          <div class="work-progress"><i id="workProgress"></i></div>
+          <button class="work-arrow" id="workPrev" type="button" aria-label="Progetto precedente" data-en-aria-label="Previous project">←</button>
+          <button class="work-arrow" id="workNext" type="button" aria-label="Progetto successivo" data-en-aria-label="Next project">→</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="gravity-bar">
+    <p class="shake-hint mono" data-en="Try grabbing an object and shaking it">Prova ad afferrare un oggetto e scuoterlo</p>
+    <button id="restore" class="btn restore" type="button" hidden data-en="Put everything back">Rimetti tutto a posto</button>
+  </div>
+
+  <footer class="foot mono">
+    <span data-gravity>Nicoleta Secu · © 2026</span>
+    <a href="https://github.com/NicoletaSecu" target="_blank" rel="noopener" data-gravity>GitHub ↗</a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <script src="js/site.js?v=18"></script>
+  <script src="js/prova-palette.js?v=1"></script>
+  <script src="content/projects.js?v=10"></script>
+  <script src="js/wow.js?v=10"></script>
+  <script src="js/desk-texts.js?v=8"></script>
+  <script src="js/toys.js?v=9"></script>
+  <script src="js/gravity.js?v=7"></script>
+  <script src="js/desk.js?v=7"></script>
+</body>
+</html>

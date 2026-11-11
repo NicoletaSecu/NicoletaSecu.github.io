@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-en="404 — merge conflict">404 — conflitto di merge</title>
+  <script>
+    (function () { var t, l, d = document.documentElement; try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {} d.dataset.theme = t || "dark"; d.lang = l === "en" ? "en" : "it"; })();
+  </script>
+  <!-- percorsi dalla radice: GitHub Pages mostra questa pagina a qualsiasi indirizzo sbagliato, anche dentro cartelle -->
+  <link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/wow.css?v=29">
+</head>
+<body data-page="404">
+  <div class="fx" aria-hidden="true"><div class="fx-aurora"></div><div class="fx-vignette"></div><div class="fx-grain"></div></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"></span><b class="cursor-label"></b></div>
+
+  <header class="nav" aria-label="Navigazione" data-en-aria-label="Navigation">
+    <a href="/index.html#home" class="nav-brand">Nicoleta Secu</a>
+    <nav class="nav-pill">
+      <a href="/index.html#home" class="nav-link" data-section="home">Home</a>
+      <a href="/progetti.html" class="nav-link" data-page="projects" data-en="Projects">Progetti</a>
+      <a href="/chi-sono.html" class="nav-link" data-page="about" data-en="About">Chi sono</a>
+      <a href="/contatti.html" class="nav-link" data-page="contact" data-en="Contact">Contatti</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Tema chiaro o scuro" data-en-aria-label="Light or dark theme"><span></span></button>
+    </div>
+  </header>
+
+  <main class="nf">
+    <h1 class="nf-big" aria-label="404"><span data-gravity>4</span><span class="nf-zero" data-gravity>0</span><span data-gravity>4</span></h1>
+    <p class="nf-sub" data-gravity data-en="This page is in conflict with reality: it doesn't exist.">Questa pagina è in conflitto con la realtà: non esiste.</p>
+
+    <div class="editor" id="editor">
+      <div class="editor-bar" data-gravity>
+        <span class="editor-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="mono" data-en="page.html">pagina.html</span>
+        <span class="editor-badge mono" id="editorBadge" data-en="conflict">conflitto</span>
+      </div>
+      <div class="editor-lens mono" id="editorLens" data-gravity>
+        <a href="/index.html" data-cursor="home" data-en="Accept yours">Accetta la tua</a> |
+        <button type="button" id="acceptMine" data-en="Accept mine">Accetta la mia</button> |
+        <button type="button" id="gravityDesk" data-en="Accept both">Accetta entrambe</button>
+      </div>
+      <div class="editor-code mono" id="editorCode">
+        <div class="ln mark" data-gravity><b>1</b><span data-en="&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD (your version)">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (la tua versione)</span></div>
+        <div class="ln ours" data-gravity><b>2</b><span data-en="the page you were looking for">la pagina che cercavi</span></div>
+        <div class="ln mark" data-gravity><b>3</b><span>=======</span></div>
+        <div class="ln theirs" data-gravity><b>4</b><span data-en="(nothing: I deleted it by mistake)">(niente: l'ho cancellata per sbaglio)</span></div>
+        <div class="ln mark" data-gravity><b>5</b><span data-en="&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; main (my version)">&gt;&gt;&gt;&gt;&gt;&gt;&gt; main (la mia versione)</span></div>
+      </div>
+    </div>
+    <p class="nf-hint mono" data-gravity data-en="resolve the conflict to continue">risolvi il conflitto per continuare</p>
+  </main>
+
+  <div class="gravity-bar">
+    <p class="shake-hint mono" data-en="Try grabbing an object and shaking it">Prova ad afferrare un oggetto e scuoterlo</p>
+    <button id="restore" class="btn restore" type="button" hidden data-en="Put everything back">Rimetti tutto a posto</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <script src="/js/site.js?v=18"></script>
+  <script src="/js/desk-texts.js?v=8"></script>
+  <script src="/js/toys.js?v=9"></script>
+  <script src="/js/gravity.js?v=7"></script>
+  <script>
+    // "Accetta la mia": il conflitto si risolve nel nulla, e l'editor si arrabbia.
+    // Sostituisco le righe di codice con un errore e un link alla home, cambio l'etichetta
+    // in "risolto (male)" e faccio tremare l'editor (classe "shake" nel CSS).
+    // "Accetta la tua" è un semplice link alla home; "Accetta entrambe" ha id="gravityDesk",
+    // lo stesso del bottone rosso della scrivania, quindi fa cadere tutto con gravity.js.
+    (function () {
+      const code = document.getElementById("editorCode");
+      const badge = document.getElementById("editorBadge");
+      const editor = document.getElementById("editor");
+      document.getElementById("acceptMine").addEventListener("click", () => {
+        code.innerHTML =
+          `<div class="ln theirs" data-gravity><b>1</b><span>${L("(niente: l'ho cancellata per sbaglio)", "(nothing: I deleted it by mistake)")}</span></div>` +
+          `<div class="ln err" data-gravity><b>2</b><span>${L("Error: impossibile mostrare il nulla. Ma la home c'è →", "Error: cannot display nothingness. But the home page exists →")}</span></div>` +
+          '<div class="ln" data-gravity><b>3</b><span><a href="/index.html">/index.html</a></span></div>';
+        // tolgo data-en, altrimenti cambiando lingua tornerebbe a dire "conflitto"
+        badge.removeAttribute("data-en");
+        badge.textContent = L("risolto (male)", "resolved (badly)");
+        badge.classList.add("bad");
+        editor.classList.remove("shake");
+        void editor.offsetWidth; // forza il browser a ripartire, così l'animazione riparte a ogni clic
+        editor.classList.add("shake");
+      });
+    })();
+  </script>
+</body>
+</html>

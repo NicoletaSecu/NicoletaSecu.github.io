@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-en="Projects — Nicoleta Secu">Progetti — Nicoleta Secu</title>
+  <script>
+    (function () { var t, l, d = document.documentElement; try { t = localStorage.getItem("theme"); l = localStorage.getItem("lang"); } catch (e) {} d.dataset.theme = t || "dark"; d.lang = l === "en" ? "en" : "it"; })();
+  </script>
+  <link rel="icon" href="favicon.svg?v=4" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png?v=4" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/wow.css?v=29">
+</head>
+<body data-page="projects">
+  <div class="fx" aria-hidden="true"><div class="fx-aurora"></div><div class="fx-vignette"></div><div class="fx-grain"></div></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"></span><b class="cursor-label"></b></div>
+
+  <header class="nav" aria-label="Navigazione" data-en-aria-label="Navigation">
+    <a href="index.html#home" class="nav-brand">Nicoleta Secu</a>
+    <nav class="nav-pill">
+      <a href="index.html#home" class="nav-link" data-section="home">Home</a>
+      <a href="progetti.html" class="nav-link" data-page="projects" aria-current="page" data-en="Projects">Progetti</a>
+      <a href="chi-sono.html" class="nav-link" data-page="about" data-en="About">Chi sono</a>
+      <a href="contatti.html" class="nav-link" data-page="contact" data-en="Contact">Contatti</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Tema chiaro o scuro" data-en-aria-label="Light or dark theme"><span></span></button>
+    </div>
+  </header>
+  <div class="scrollbar" aria-hidden="true"><i id="scrollbarFill"></i></div>
+
+  <main class="page">
+    <section class="page-head">
+      <div class="mono"><span class="num">—</span> <span data-en="Projects">Progetti</span></div>
+      <h1 class="page-big" data-en="All projects.">Tutti i progetti.</h1>
+      <p class="page-lead" data-en="Newest first, from the left. Hover over a project to open it: the image takes you to the site, the title to its page.">Dal più recente, da sinistra. Passa sopra un progetto per aprirlo: l'immagine porta al sito, il titolo alla sua pagina.</p>
+    </section>
+
+    <section class="block pl">
+      <div class="pl-filters" id="plFilters" role="group" aria-label="Filtra per tipo" data-en-aria-label="Filter by type"></div>
+      <!-- la fisarmonica: la scrive js/progetti.js a partire da content/projects.js -->
+      <div class="acc" id="plAcc"></div>
+    </section>
+  </main>
+
+  <footer class="foot mono">
+    <span>Nicoleta Secu · © 2026</span>
+    <a href="https://github.com/NicoletaSecu" target="_blank" rel="noopener">GitHub ↗</a>
+  </footer>
+
+  <script src="content/projects.js?v=10"></script>
+  <script src="js/site.js?v=18"></script>
+  <script src="js/prova-palette.js?v=1"></script>
+  <script src="js/progetti.js?v=5"></script>
+</body>
+</html>
