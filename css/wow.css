@@ -83,7 +83,10 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; }
-::selection { background: var(--accent); color: var(--on-accent); }
+/* il testo selezionato: un velo leggero invece del blocco rosa pieno */
+::selection { background: color-mix(in srgb, var(--ink) 18%, transparent); color: inherit; }
+/* il nome grande e la scrivania non si selezionano: ci passi sopra e trascini, non serve evidenziarli */
+.hero, .desk-section { user-select: none; -webkit-user-select: none; }
 /* .mono: le scritte piccole, maiuscole, in carattere "macchina da scrivere" (etichette, date…) */
 .mono { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .num { color: var(--accent); }
@@ -722,7 +725,7 @@ html.gravity-active .shake-hint { display: block; }
 /* CHI SONO: il percorso come linea del tempo da trascinare */
 .path { --era: var(--accent); position: relative; padding: 34px 30px 36px; border-radius: 20px; border: 1px solid var(--line); background: linear-gradient(120deg, color-mix(in srgb, var(--era) 14%, transparent), transparent 62%), var(--glass); transition: background 0.6s; }
 .path-hint { margin-left: 12px; opacity: 0.7; }
-.path-odo { display: flex; height: 1em; overflow: hidden; font-family: var(--display); font-weight: 700; font-size: clamp(4rem, 13vw, 8.5rem); line-height: 1; letter-spacing: -0.04em; }
+.path-odo { display: flex; height: 1em; overflow: hidden; font-family: var(--display); font-weight: 700; font-size: clamp(2.6rem, 7vw, 4.6rem); line-height: 1; letter-spacing: -0.04em; }
 .path-col { display: flex; flex-direction: column; transition: transform 0.6s cubic-bezier(.3, 1.3, .5, 1); }
 .path-col span { height: 1em; }
 .path-rail { position: relative; height: 74px; margin: 26px 12px 8px; touch-action: none; user-select: none; -webkit-user-select: none; outline: none; }
@@ -734,9 +737,11 @@ html.gravity-active .shake-hint { display: block; }
 .path-tick::before { content: ""; position: absolute; left: 50%; top: -12px; width: 1px; height: 7px; background: var(--stroke); }
 /* dove comincia una tappa: segno più grande, colorato e cliccabile */
 .path-tick.is-era { opacity: 1; font-size: 0.74rem; font-weight: 700; color: var(--ink); cursor: pointer; }
-.path-tick.is-era::before { top: -24px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: var(--bg); border: 2px solid var(--c); }
-.path-tick.is-era.on { color: var(--c); }
-.path-tick.is-era.on::before { background: var(--c); }
+/* il pallino di una tappa: tutti uguali, bordo del colore del testo */
+.path-tick.is-era::before { top: -24px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); }
+/* l'anno in cui ti trovi (classe "on", la mette js/percorso.js): numero rosa, e se è una tappa anche il pallino */
+.path-tick.on { opacity: 1; color: var(--accent); }
+.path-tick.is-era.on::before { background: var(--accent); border-color: var(--accent); }
 .path-era { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); min-height: 170px; }
 .path-era.swap { animation: era-in 0.5s var(--ease); }
 @keyframes era-in { from { opacity: 0; transform: translateY(12px); } }
@@ -783,17 +788,21 @@ html.gravity-active .shake-hint { display: block; }
 .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); box-shadow: none; }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); box-shadow: none; }
 .proj-private { padding: 0 6px; }
-.proj-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 6vh 0 12vh; }
-.proj-step { display: flex; flex-direction: column; gap: 10px; padding: 26px; border-radius: 18px; border: 1px solid var(--line); background: var(--glass); transition: border-color 0.3s, transform 0.4s var(--ease); }
-.proj-step b { font-family: var(--display); font-weight: 600; font-size: clamp(1.4rem, 3vw, 2.2rem); letter-spacing: -0.03em; }
-.proj-step.is-next { text-align: right; }
-.proj-step:hover { border-color: var(--accent); transform: translateY(-3px); }
+/* precedente / successivo: una riga semplice sotto una linea sottile, niente riquadri.
+   Passandoci sopra il titolo diventa rosa e la freccia si sposta un po' nella sua direzione */
+.proj-nav { display: flex; justify-content: space-between; gap: 24px; margin-top: 4vh; padding: 22px 0 10vh; border-top: 1px solid var(--line); }
+.proj-step { display: flex; flex-direction: column; gap: 6px; max-width: 48%; }
+.proj-step .mono { display: inline-block; transition: transform 0.3s var(--ease); }
+.proj-step b { font-family: var(--display); font-weight: 500; font-size: 1.05rem; letter-spacing: -0.01em; transition: color 0.2s; }
+.proj-step.is-next { text-align: right; margin-left: auto; }
+.proj-step:hover b { color: var(--accent); }
+.proj-step:hover .mono { transform: translateX(-4px); }
+.proj-step.is-next:hover .mono { transform: translateX(4px); }
 .rise { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .rise.in { opacity: 1; transform: none; }
 @media (max-width: 760px) {
   .proj-grid { grid-template-columns: 1fr; }
-  .proj-nav { grid-template-columns: 1fr; }
-  .proj-step.is-next { text-align: left; }
+  .proj-step { max-width: 50%; }
 }
 @media (prefers-reduced-motion: reduce) { .rise { opacity: 1; transform: none; } }
 
@@ -898,8 +907,9 @@ html.gravity-active .shake-hint { display: block; }
 }
 .pl-chip i { font-style: normal; opacity: 0.6; }
 .pl-chip:hover { color: var(--ink); }
-.pl-chip.is-on { color: var(--ink); border-color: var(--c, var(--accent)); background: color-mix(in srgb, var(--c, var(--accent)) 16%, transparent); }
-.pl-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+/* il filtro scelto: senza colori, solo testo pieno e bordo più chiaro */
+.pl-chip.is-on { color: var(--bg); border-color: var(--ink); background: var(--ink); }
+.pl-chip.is-on i { opacity: 0.7; }
 /* la fisarmonica: strisce chiuse della stessa larghezza; quella sotto il cursore si apre */
 .acc { display: flex; gap: 8px; height: clamp(480px, 68vh, 640px); }
 .acc-strip {
@@ -991,7 +1001,6 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 /* Con la palette "Inchiostro" (vedi --t1, --t2, --t3 in cima):
    le etichette del tipo sui progetti hanno il solo bordo, perché piene di grigio si leggerebbero male */
 .proj-badge, .work-badge { background: color-mix(in srgb, var(--bg) 70%, transparent); color: var(--ink); box-shadow: inset 0 0 0 1px var(--c); }
-/* sulla linea del tempo la tappa scelta, il pallino e la data sono rosa.
+/* sulla linea del tempo il pallino che trascini, la linea percorsa e la data della tappa sono rosa.
    (!important serve perché js/percorso.js scrive il colore della tappa direttamente sull'elemento) */
 .path { --era: var(--accent) !important; }
-.path-tick.is-era.on { --c: var(--accent) !important; }

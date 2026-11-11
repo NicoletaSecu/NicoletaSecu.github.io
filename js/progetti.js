@@ -26,10 +26,8 @@
     const title = esc(tr(p, "title"));
     const page = `progetto.html?id=${encodeURIComponent(p.id)}`;
     const img = `<img src="${esc(p.image)}" alt="" loading="lazy" draggable="false">`;
-    // l'immagine copre tutta la striscia: se c'è il sito ci porta lì
-    const media = p.link
-      ? `<a class="acc-img" href="${esc(p.link)}" target="_blank" rel="noopener" data-cursor="apri ↗" aria-label="${L("Apri il sito di", "Open the site of")} ${title}">${img}</a>`
-      : `<a class="acc-img" href="${page}" data-cursor="scopri" aria-label="${title}">${img}</a>`;
+    // l'immagine copre tutta la striscia e porta alla pagina del progetto (il sito vero ha il suo bottone)
+    const media = `<a class="acc-img" href="${page}" data-cursor="scopri" aria-label="${title}">${img}</a>`;
     return `
       <div class="acc-strip" data-type="${esc(p.type)}" style="--c:${type.color}">
         ${media}
@@ -74,7 +72,7 @@
   function renderFilters() {
     filters.innerHTML =
       `<button type="button" class="pl-chip${filter === "all" ? " is-on" : ""}" data-f="all">${L("Tutti", "All")} <i>${all.length}</i></button>` +
-      used.map((k) => `<button type="button" class="pl-chip${filter === k ? " is-on" : ""}" data-f="${k}" style="--c:${TYPES[k].color}"><span class="pl-dot"></span>${esc(tr(TYPES[k], "label"))} <i>${all.filter((p) => p.type === k).length}</i></button>`).join("");
+      used.map((k) => `<button type="button" class="pl-chip${filter === k ? " is-on" : ""}" data-f="${k}" style="--c:${TYPES[k].color}">${esc(tr(TYPES[k], "label"))} <i>${all.filter((p) => p.type === k).length}</i></button>`).join("");
   }
 
   // Un solo ascoltatore per tutti i filtri: guardo quale bottone è stato cliccato (closest).

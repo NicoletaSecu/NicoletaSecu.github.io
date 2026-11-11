@@ -66,7 +66,6 @@
     t.textContent = y;
     if (e) {
       t.type = "button";
-      t.style.setProperty("--c", `var(${e.c})`);
       // stopPropagation: il clic sulla tacca non deve arrivare anche alla linea (che inizierebbe a trascinare)
       t.addEventListener("pointerdown", (ev) => ev.stopPropagation());
       t.addEventListener("click", () => go(y, true));
@@ -87,6 +86,8 @@
     year = Math.round(Y0 + p * (Y1 - Y0));
     rail.setAttribute("aria-valuenow", year);
     String(year).split("").forEach((d, i) => { cols[i].style.transform = `translateY(${-d}em)`; });
+    // si accende l'anno in cui ti trovi (non la tappa: prima del 2022, per esempio, non è acceso il 2023)
+    rail.querySelectorAll(".path-tick").forEach((t) => t.classList.toggle("on", +t.textContent === year));
     // la tappa da mostrare: l'ultima iniziata entro l'anno scelto (prima del 2022, il diploma)
     const e = ERAS.filter((x) => x.at <= year).pop() || BEFORE;
     if (e !== cur) {
@@ -97,7 +98,6 @@
       box.style.setProperty("--era", `var(${e.c})`);
       // rifaccio partire l'animazione di cambio tappa (void offsetWidth forza il browser a ripartire)
       era.classList.remove("swap"); void era.offsetWidth; era.classList.add("swap");
-      rail.querySelectorAll(".is-era").forEach((t) => t.classList.toggle("on", +t.textContent === e.at));
     }
   }
   const go = (y, animate) => show((y - Y0) / (Y1 - Y0), animate);
