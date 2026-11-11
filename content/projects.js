@@ -74,7 +74,7 @@ const PROJECTS = [
     teaser_en: "Draw a shape in the air in front of your webcam and get its equation. A different way to study functions.",
     description: "Nato per divertimento: disegni una forma nell'aria davanti alla webcam e ottieni la sua equazione, dalle rette ai cerchi fino a un cuore. Ma è soprattutto un modo diverso per studiare le funzioni ed esercitarsi a riconoscerle.",
     description_en: "Born just for fun: draw a shape in the air in front of your webcam and get its equation, from lines and circles to a heart. But above all it's a different way to study functions and practise recognising them.",
-    image: "img/progetti/air-math/01.webp",
+    image: "img/progetti/air-math/01.webp?v=2",
     link: "https://airmath.onrender.com/",
     repo: "https://github.com/NicoletaSecu/AirMath",
     // le didascalie delle immagini in img/progetti/air-math/, una per immagine e nello stesso ordine
@@ -93,7 +93,7 @@ const PROJECTS = [
     teaser_en: "Preparing for Cambridge C1: 30 chapters, 913 vocabulary cards, quizzes and timed tests.",
     description: "Tutto per preparare il Cambridge C1 Advanced: 30 capitoli di teoria, 913 schede di lessico, quiz, prove a tempo e un quaderno degli errori che si svuota man mano.",
     description_en: "Everything to prepare for Cambridge C1 Advanced: 30 grammar chapters, 913 vocabulary cards, quizzes, timed mock tests and a mistakes notebook that empties as you improve.",
-    image: "img/progetti/b2-c1/01.webp",
+    image: "img/progetti/b2-c1/01.webp?v=2",
     link: "https://b2-to-c1.netlify.app/",
     repo: "https://github.com/NicoletaSecu/B2-to-C1",
     // le didascalie delle immagini in img/progetti/b2-c1/, una per immagine e nello stesso ordine
@@ -111,7 +111,7 @@ const PROJECTS = [
     teaser_en: "For the Programming 2 exam: theory, exam-style exercises and timed mock tests.",
     description: "Pensato per chi deve preparare l'esame di Programmazione 2: teoria a capitoli, esercizi nello stesso formato dello scritto e simulazioni cronometrate da 45 minuti.",
     description_en: "Made for students preparing the Programming 2 (Java) exam: theory chapters, exercises in the same format as the written exam and timed 45-minute mock exams.",
-    image: "img/progetti/studio-java/01.webp",
+    image: "img/progetti/studio-java/01.webp?v=2",
     link: "https://easy-java.netlify.app/",
     repo: "https://github.com/NicoletaSecu/Studio-Java",
     // le didascalie delle immagini in img/progetti/studio-java/, una per immagine e nello stesso ordine
@@ -129,7 +129,7 @@ const PROJECTS = [
     teaser_en: "Getting around the city more safely: routes that avoid risky areas, reports and an SOS button.",
     description: "Progetto universitario: una web app per muoversi in città in modo più sicuro, con percorsi a piedi che evitano le zone a rischio, la mappa della sicurezza delle strade, segnalazioni geolocalizzate e un pulsante SOS. React, Node.js e MongoDB.",
     description_en: "University project: a web app to get around the city more safely, with walking routes that avoid risky areas, a map of street safety, geolocated reports and an SOS button. React, Node.js and MongoDB.",
-    image: "img/progetti/waysafe/01.webp",
+    image: "img/progetti/waysafe/01.webp?v=2",
     link: "https://waysafe.onrender.com",
     repo: "https://github.com/davide-modena/WaySafe",
     with: [{ name: "Davide Modena", url: "https://davide-modena.github.io" }],
