@@ -185,20 +185,35 @@ body[data-page="home"]:not(.scrolled) .nav-brand { opacity: 0; transform: transl
   width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
   background: var(--glass); backdrop-filter: blur(10px); display: grid; place-items: center; cursor: pointer;
 }
-/* al buio una luna; col tema chiaro un sole: il tondo si rimpicciolisce e spuntano otto raggi
-   (i raggi ci sono anche nella luna, ma nascosti dietro, così il passaggio è morbido) */
+/* Luna e sole sono due disegni sovrapposti nella stessa casella (grid-area: 1 / 1).
+   Al buio si vede la luna; col tema chiaro la luna ruota e sparisce, e compare il sole. */
+
+/* La luna: una falce vera. È un quadratino del colore del testo "ritagliato" con una maschera
+   (mask) a forma di mezzaluna, disegnata in SVG: così prende sempre il colore del tema. */
+.theme-btn::before {
+  content: ""; grid-area: 1 / 1; width: 19px; height: 19px;
+  background: var(--ink);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform 0.6s var(--ease), opacity 0.4s;
+}
+:root[data-theme="light"] .theme-btn::before { opacity: 0; transform: rotate(70deg) scale(0.4); }
+
+/* Il sole: un tondo con otto raggi fatti di ombre (box-shadow) tutt'intorno.
+   Al buio è piccolo, trasparente e con i raggi chiusi dentro; col tema chiaro i raggi si aprono. */
 .theme-btn span {
   --r: var(--ink);
-  width: 16px; height: 16px; border-radius: 50%;
+  grid-area: 1 / 1; width: 9px; height: 9px; border-radius: 50%;
   background: var(--ink);
-  box-shadow: inset -6px -2px 0 0 var(--bg),
+  opacity: 0; transform: rotate(-90deg) scale(0.4);
+  box-shadow:
     0 0 0 -5px var(--r), 0 0 0 -5px var(--r), 0 0 0 -5px var(--r), 0 0 0 -5px var(--r),
     0 0 0 -5px var(--r), 0 0 0 -5px var(--r), 0 0 0 -5px var(--r), 0 0 0 -5px var(--r);
-  transition: width 0.5s var(--ease), height 0.5s var(--ease), box-shadow 0.5s var(--ease), transform 0.6s var(--ease);
+  transition: box-shadow 0.5s var(--ease), transform 0.6s var(--ease), opacity 0.4s;
 }
 :root[data-theme="light"] .theme-btn span {
-  width: 9px; height: 9px; transform: rotate(90deg);
-  box-shadow: inset 0 0 0 0 var(--bg),
+  opacity: 1; transform: rotate(90deg);
+  box-shadow:
     0 -8px 0 -3px var(--r), 0 8px 0 -3px var(--r), 8px 0 0 -3px var(--r), -8px 0 0 -3px var(--r),
     5.7px 5.7px 0 -3px var(--r), -5.7px 5.7px 0 -3px var(--r), 5.7px -5.7px 0 -3px var(--r), -5.7px -5.7px 0 -3px var(--r);
 }

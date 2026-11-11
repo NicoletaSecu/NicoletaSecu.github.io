@@ -62,8 +62,7 @@ const PROJECTS = [
     description: "Una scrivania da esplorare, una linea della metro e un bottone rosso che non dovresti premere. HTML, CSS e JavaScript, con la fisica di Matter.js.",
     description_en: "A desk to explore, a metro line and a red button you really shouldn't press. HTML, CSS and JavaScript, with Matter.js physics.",
     image: "img/portfolio.jpg",
-    link: "https://nicoletasecu.github.io/",
-    repo: "https://github.com/NicoletaSecu/NicoletaSecu.github.io",
+    link: "https://old-portfolio-secu.netlify.app/",
   },
   {
     id: "air-math",
