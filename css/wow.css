@@ -795,8 +795,16 @@ html.gravity-active .shake-hint { display: block; }
 /* PAGINA DI UN PROGETTO */
 .proj { --c: var(--accent); }
 .proj .page-head { padding-bottom: 6vh; }
-.proj-back { display: inline-block; margin-bottom: 30px; transition: color 0.2s; }
-.proj-back:hover { color: var(--ink); }
+/* "← tutti i progetti": un bottone a pillola ben visibile per tornare alla lista.
+   Passandoci sopra diventa rosa e si sposta un po' a sinistra, verso dove torni */
+.proj-back {
+  display: inline-flex; align-items: center; gap: 10px; margin-bottom: 30px;
+  padding: 13px 24px; border-radius: 999px; border: 1px solid var(--line); background: var(--glass);
+  font-size: 0.92rem; color: var(--ink);
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.3s var(--ease);
+}
+/* (.rise.in, che lo fa comparire, azzererebbe lo spostamento: per questo la regola è ripetuta più specifica) */
+.proj-back:hover, .proj-back.rise.in:hover { color: var(--on-accent); border-color: var(--accent); background: var(--accent); transform: translateX(-4px); }
 .proj-tags { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
 .proj-badge { padding: 5px 12px; border-radius: 999px; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-t); background: var(--c); }
 .proj .page-big { font-size: clamp(3rem, 11vw, 8.5rem); }
