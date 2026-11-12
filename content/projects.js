@@ -61,8 +61,11 @@ const PROJECTS = [
     teaser_en: "A desk to explore and a red button you shouldn't press. With Matter.js physics.",
     description: "Una scrivania da esplorare, una linea della metro e un bottone rosso che non dovresti premere. HTML, CSS e JavaScript, con la fisica di Matter.js.",
     description_en: "A desk to explore, a metro line and a red button you really shouldn't press. HTML, CSS and JavaScript, with Matter.js physics.",
-    image: "img/portfolio.jpg",
+    image: "img/progetti/vecchio-portfolio/01.webp?v=1",
     link: "https://old-portfolio-secu.netlify.app/",
+    // le didascalie delle immagini in img/progetti/vecchio-portfolio/, una per immagine e nello stesso ordine
+    captions: ["La home: il nome al centro e intorno una rete di linguaggi e progetti", "La scrivania da esplorare, con il bottone rosso da non premere", "Chi sono, dal telefono", "Cliccando la polaroid il ritratto cambia"],
+    captions_en: ["Home: my name in the middle, surrounded by a web of languages and projects", "The desk to explore, with the red button you shouldn't press", "About me, on the phone", "Clicking the polaroid changes the portrait"],
   },
   {
     id: "air-math",
