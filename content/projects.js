@@ -61,11 +61,18 @@ const PROJECTS = [
     teaser_en: "A desk to explore and a red button you shouldn't press. With Matter.js physics.",
     description: "Una scrivania da esplorare, una linea della metro e un bottone rosso che non dovresti premere. HTML, CSS e JavaScript, con la fisica di Matter.js.",
     description_en: "A desk to explore, a metro line and a red button you really shouldn't press. HTML, CSS and JavaScript, with Matter.js physics.",
-    image: "img/progetti/vecchio-portfolio/01.webp?v=1",
+    image: "img/progetti/vecchio-portfolio/cover.webp?v=1",
     link: "https://old-portfolio-secu.netlify.app/",
-    // le didascalie delle immagini in img/progetti/vecchio-portfolio/, una per immagine e nello stesso ordine
-    captions: ["La home: il nome al centro e intorno una rete di linguaggi e progetti", "La scrivania da esplorare, con il bottone rosso da non premere", "Chi sono, dal telefono", "Cliccando la polaroid il ritratto cambia"],
-    captions_en: ["Home: my name in the middle, surrounded by a web of languages and projects", "The desk to explore, with the red button you shouldn't press", "About me, on the phone", "Clicking the polaroid changes the portrait"],
+    // Qui al posto delle immagini ci sono due video che girano da soli, in loop e senza audio.
+    // w e h sono larghezza e altezza del video: servono per metterli in riga prima che siano caricati.
+    // poster è il primo fotogramma, che si vede mentre il video si carica.
+    videos: [
+      { src: "img/progetti/vecchio-portfolio/video-pc.mp4", poster: "img/progetti/vecchio-portfolio/cover.webp", w: 1600, h: 908 },
+      { src: "img/progetti/vecchio-portfolio/video-telefono.mp4", poster: "img/progetti/vecchio-portfolio/cover-telefono.webp", w: 640, h: 1270 },
+    ],
+    // le didascalie dei video, una per video e nello stesso ordine
+    captions: ["Dal computer: la home con la rete di linguaggi e progetti, poi giù fino alla scrivania", "Dal telefono: Chi sono, e cliccando la polaroid il ritratto cambia"],
+    captions_en: ["On a computer: the home page with its web of languages and projects, then down to the desk", "On a phone: About me, and clicking the polaroid changes the portrait"],
   },
   {
     id: "air-math",
@@ -96,12 +103,18 @@ const PROJECTS = [
     teaser_en: "Preparing for Cambridge C1: 30 chapters, 913 vocabulary cards, quizzes and timed tests.",
     description: "Tutto per preparare il Cambridge C1 Advanced: 30 capitoli di teoria, 913 schede di lessico, quiz, prove a tempo e un quaderno degli errori che si svuota man mano.",
     description_en: "Everything to prepare for Cambridge C1 Advanced: 30 grammar chapters, 913 vocabulary cards, quizzes, timed mock tests and a mistakes notebook that empties as you improve.",
-    image: "img/progetti/b2-c1/01.webp?v=2",
+    image: "img/progetti/b2-c1/cover.webp?v=1",
     link: "https://b2-to-c1.netlify.app/",
     repo: "https://github.com/NicoletaSecu/B2-to-C1",
-    // le didascalie delle immagini in img/progetti/b2-c1/, una per immagine e nello stesso ordine
-    captions: ["La home: da dove partire e a che punto sei", "Sul telefono: com'è fatto l'esame"],
-    captions_en: ["Home: where to start and how far you've got", "On the phone: how the exam works"],
+    // due video al posto delle immagini, come nel vecchio portfolio (w e h = misure del video)
+    videos: [
+      { src: "img/progetti/b2-c1/video-pc.mp4", poster: "img/progetti/b2-c1/cover.webp", w: 1600, h: 908 },
+      { src: "img/progetti/b2-c1/video-telefono.mp4", poster: "img/progetti/b2-c1/cover-telefono.webp", w: 640, h: 1360 },
+    ],
+    // le didascalie dei video, una per video e nello stesso ordine
+    // (i due video sono montati sulle stesse sezioni con gli stessi tempi, e la pagina li fa andare insieme)
+    captions: ["Dal computer: home, l'esame, teoria, parole C1 e Use of English, dal menu a lato", "Dal telefono: lo stesso percorso, nello stesso momento, dal menu a comparsa"],
+    captions_en: ["On a computer: home, the exam, grammar, C1 words and Use of English, from the side menu", "On a phone: the same path at the same moment, from the pop-up menu"],
   },
   {
     id: "studio-java",

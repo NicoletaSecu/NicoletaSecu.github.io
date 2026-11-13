@@ -305,6 +305,57 @@
   // Così la mia email non compare mai sul sito. La "access_key" dice a Web3Forms a chi spedire:
   // non è una password, può stare nel codice.
   const form = document.getElementById("contactForm");
+
+  // L'aeroplanino: quando il messaggio è partito, il modulo si piega (classe "fold" nel CSS) e al suo
+  // posto compare un aeroplanino di carta che vola fuori dallo schermo in alto a destra, lasciando una
+  // scia tratteggiata. Aeroplanino e scia stanno "sopra" la pagina (position: fixed), così possono
+  // uscire dal riquadro del modulo. Restituisce una Promise che "finisce" quando è tutto concluso:
+  // chi la chiama aspetta con await e solo dopo riapre il modulo vuoto.
+  function flyAway(sheet) {
+    if (reduce) return Promise.resolve();   // con "riduci movimento" niente volo
+    return new Promise((done) => {
+      const r = sheet.getBoundingClientRect();
+      const x0 = r.left + r.width / 2, y0 = r.top + r.height / 2; // il centro del modulo sullo schermo
+      const ns = "http://www.w3.org/2000/svg";
+      const trail = document.createElementNS(ns, "svg");
+      trail.setAttribute("class", "plane-trail");
+      trail.innerHTML = "<path/>";
+      const plane = document.createElement("div");
+      plane.className = "plane-fly";
+      plane.innerHTML = '<svg viewBox="0 0 64 64"><path class="fill" d="M4 30 L60 6 L36 58 L28 36 Z"/><path d="M4 30 L60 6 L36 58 L28 36 Z M28 36 L60 6"/></svg>';
+      document.body.append(trail, plane);
+      sheet.classList.add("fold");
+      // la traiettoria, con t che va da 0 (partenza) a 1 (arrivo): verso destra, prima scende
+      // un pochino e poi sale sempre più ripida fino a uscire dallo schermo in alto
+      const W = innerWidth, path = trail.firstChild;
+      const at = (t) => ({
+        x: x0 + (W - x0 + 120) * t - Math.sin(t * Math.PI) * 60,
+        y: y0 + 40 * Math.sin(t * Math.PI * 1.2) - (y0 + 160) * t * t,
+      });
+      let d = "", prev = at(0);
+      setTimeout(() => {
+        plane.style.opacity = 1;
+        const t0 = performance.now(), dur = 1700;
+        const step = (now) => {
+          const t = Math.min((now - t0) / dur, 1), p = at(t);
+          // l'aeroplanino punta nella direzione in cui si muove (+22° perché il disegno è un po' storto)
+          const ang = Math.atan2(p.y - prev.y, p.x - prev.x) * 180 / Math.PI + 22;
+          plane.style.transform = `translate(${p.x}px, ${p.y}px) rotate(${ang}deg) scale(${1 - t * 0.3})`;
+          d += (d ? " L " : "M ") + p.x.toFixed(1) + " " + p.y.toFixed(1);
+          path.setAttribute("d", d);
+          prev = p;
+          if (t < 1) return requestAnimationFrame(step);
+          // arrivato: la scia sbiadisce, il modulo torna (vuoto) e tolgo tutto
+          trail.classList.add("gone");
+          sheet.classList.remove("fold");
+          setTimeout(() => { trail.remove(); plane.remove(); }, 900);
+          done();
+        };
+        requestAnimationFrame(step);
+      }, 650); // aspetto che il foglio finisca di piegarsi
+    });
+  }
+
   if (form) {
     const status = document.getElementById("contactStatus");
     // scrive il messaggio sotto il bottone; k è "ok" (verde) o "err" (rosso)
@@ -337,6 +388,8 @@
         });
         const json = await res.json();
         if (!res.ok || !json.success) throw new Error();   // qualcosa è andato storto: salto al catch
+        say("");
+        await flyAway(form);   // il foglio si piega in un aeroplanino che vola via (solo se è partito davvero)
         form.reset();
         say(L("grazie! ti rispondo appena posso", "thank you! I'll get back to you as soon as I can"), "ok");
       } catch (_) {

@@ -345,8 +345,11 @@ body[data-page="home"]:not(.scrolled) .nav-brand { opacity: 0; transform: transl
 .page { max-width: 1040px; margin: 0 auto; padding: 0 26px; }
 .page-head { padding: 22vh 0 10vh; }
 .page-head > .mono { margin-bottom: 26px; }
-.page-big { font-family: var(--display); font-weight: 700; font-size: clamp(3.4rem, 13vw, 10rem); line-height: 0.88; letter-spacing: -0.045em; }
-.page-lead { margin-top: 28px; font-size: clamp(1.05rem, 2vw, 1.35rem); line-height: 1.45; color: var(--muted); max-width: 44ch; }
+/* il titolo grande delle pagine secondarie (Tutti i progetti, Scriviamoci, il nome di un progetto):
+   ridotto da 10rem a 4.4rem al massimo, così non schiaccia il resto della pagina */
+.page-big { font-family: var(--display); font-weight: 700; font-size: clamp(2.2rem, 6.4vw, 4.4rem); line-height: 0.95; letter-spacing: -0.035em; }
+/* la frase sotto il titolo, più piccola insieme al titolo */
+.page-lead { margin-top: 20px; font-size: clamp(0.98rem, 1.5vw, 1.12rem); line-height: 1.5; color: var(--muted); max-width: 44ch; }
 .statement { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 5.6vw, 4.4rem); line-height: 1.05; letter-spacing: -0.035em; }
 .statement .w { opacity: 0.14; transition: opacity 0.35s; }
 .statement .w.on { opacity: 1; }
@@ -392,6 +395,17 @@ body[data-page="home"]:not(.scrolled) .nav-brand { opacity: 0; transform: transl
 .contact-status.ok { color: var(--accent2); }
 .contact-status.err { color: var(--accent); }
 @media (max-width: 620px) { .mail { grid-template-columns: 1fr; } }
+/* Messaggio inviato: il modulo si piega e diventa piccolissimo (come un foglio ripiegato), poi torna.
+   L'aeroplanino e la sua scia li crea js/site.js e stanno sopra tutta la pagina. */
+.mail { transform-origin: 50% 50%; transition: transform 0.7s var(--ease), opacity 0.4s; }
+.mail.fold { transform: perspective(1200px) rotateX(70deg) scale(0.12) rotate(-18deg); opacity: 0; pointer-events: none; transition: transform 0.7s var(--ease), opacity 0.4s 0.35s; }
+.plane-fly { position: fixed; left: 0; top: 0; z-index: 5000; width: 64px; height: 64px; margin: -32px 0 0 -32px; opacity: 0; pointer-events: none; }
+.plane-fly svg { width: 100%; height: 100%; overflow: visible; }
+.plane-fly path { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
+.plane-fly .fill { fill: color-mix(in srgb, var(--ink) 10%, transparent); }
+.plane-trail { position: fixed; left: 0; top: 0; z-index: 4999; width: 100vw; height: 100vh; overflow: visible; pointer-events: none; transition: opacity 0.9s; }
+.plane-trail path { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 3 7; opacity: 0.6; }
+.plane-trail.gone { opacity: 0; }
 
 .btn { font-family: var(--mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 14px 26px; border-radius: 999px; border: 0; cursor: pointer; color: var(--on-accent); background: var(--accent); box-shadow: 0 0 30px color-mix(in srgb, var(--accent) 45%, transparent); transition: transform 0.2s var(--ease), box-shadow 0.2s; }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 0 44px color-mix(in srgb, var(--accent) 60%, transparent); }
@@ -741,9 +755,11 @@ html.gravity-active .shake-hint { display: block; }
 .editor-dots i:first-child { background: var(--accent); }
 .editor-badge { margin-left: auto; padding: 3px 9px; border-radius: 999px; color: var(--accent3); border: 1px solid color-mix(in srgb, var(--accent3) 50%, transparent); }
 .editor-badge.bad { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, transparent); }
-.editor-lens { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 16px 4px 52px; text-transform: none; letter-spacing: 0; font-size: 0.72rem; }
-.editor-lens a, .editor-lens button { border: 0; background: none; padding: 0; color: var(--muted); font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: transparent; transition: color 0.2s, text-decoration-color 0.2s; }
-.editor-lens a:hover, .editor-lens button:hover { color: var(--ink); text-decoration-color: currentColor; }
+/* le tre scelte sopra il conflitto: devono sembrare subito dei link, quindi testo pieno, più grande
+   e sempre sottolineato in rosa; le barre "|" in mezzo restano tenui. Al passaggio diventano rosa. */
+.editor-lens { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; padding: 14px 16px 8px 52px; text-transform: none; letter-spacing: 0; font-size: 0.92rem; color: var(--t3); }
+.editor-lens a, .editor-lens button { border: 0; background: none; padding: 2px 0; color: var(--ink); font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1.5px; text-decoration-color: var(--accent); transition: color 0.2s; }
+.editor-lens a:hover, .editor-lens button:hover { color: var(--accent); }
 .editor-code { padding: 6px 0 16px; text-transform: none; letter-spacing: 0; font-size: clamp(0.8rem, 1.6vw, 0.95rem); color: var(--ink); }
 .ln { display: flex; gap: 18px; padding: 3px 16px; border-left: 3px solid transparent; }
 .ln b { flex: none; width: 2ch; text-align: right; font-weight: 400; color: var(--muted); opacity: 0.6; }
@@ -807,7 +823,7 @@ html.gravity-active .shake-hint { display: block; }
 .proj-back:hover, .proj-back.rise.in:hover { color: var(--on-accent); border-color: var(--accent); background: var(--accent); transform: translateX(-4px); }
 .proj-tags { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
 .proj-badge { padding: 5px 12px; border-radius: 999px; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-t); background: var(--c); }
-.proj .page-big { font-size: clamp(3rem, 11vw, 8.5rem); }
+.proj .page-big { font-size: clamp(2.1rem, 6vw, 4.2rem); }
 .proj-shot-wrap { perspective: 1400px; }
 /* L'immagine grande in alto. Il riquadro non ha una forma fissa: prende quella dell'immagine
    (width 100% e height auto), così lo screenshot si vede intero, senza tagli ai lati */
@@ -944,18 +960,22 @@ html.gravity-active .shake-hint { display: block; }
 
 /* PAGINA PROGETTI: tutti i progetti dal più recente, con i filtri */
 .pl { padding-top: 0; }
-.pl-filters { display: flex; flex-wrap: wrap; gap: 6px 26px; margin-bottom: 30px; }
+.pl-filters { display: flex; flex-wrap: wrap; gap: 10px 38px; margin-bottom: 36px; }
 /* i filtri: solo la parola, niente riquadri né colori. Quello scelto è nel colore pieno del testo
-   e sottolineato; gli altri sono più tenui */
+   e sottolineato; gli altri sono più tenui.
+   La linea è un trattino disegnato sotto tutto il bottone (::after), non la sottolineatura del testo:
+   quella prendeva il colore di ogni pezzo di testo, quindi sotto il numero (più tenue) veniva grigia
+   e la linea sembrava spezzata. */
 .pl-chip {
-  padding: 4px 0; border: 0; background: none; cursor: pointer;
-  font-family: var(--mono); font-size: 0.74rem; color: var(--muted);
-  text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 6px; text-decoration-thickness: 1px;
-  transition: color 0.2s, text-decoration-color 0.2s;
+  position: relative; padding: 4px 0 8px; border: 0; background: none; cursor: pointer;
+  font-family: var(--mono); font-size: 1.02rem; color: var(--muted);
+  transition: color 0.2s;
 }
+.pl-chip::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease); }
 .pl-chip i { font-style: normal; opacity: 0.6; }
 .pl-chip:hover { color: var(--ink); }
-.pl-chip.is-on { color: var(--ink); text-decoration-color: currentColor; }
+.pl-chip.is-on { color: var(--ink); }
+.pl-chip.is-on::after { transform: scaleX(1); }
 /* la fisarmonica: strisce chiuse della stessa larghezza; quella sotto il cursore si apre */
 .acc { display: flex; gap: 8px; height: clamp(480px, 68vh, 640px); }
 .acc-strip {
@@ -1030,15 +1050,15 @@ html.gravity-active .shake-hint { display: block; }
 .proj-fig { flex: 1 1 0; min-width: 0; margin: 0; opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .proj-fig.in { opacity: 1; transform: none; }
 .proj-zoom { display: block; width: 100%; padding: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card); cursor: zoom-in; box-shadow: 0 40px 80px -40px var(--shadow); }
-.proj-zoom img { display: block; width: 100%; height: auto; transition: transform 0.8s var(--ease); }
-.proj-zoom:hover img { transform: scale(1.02); }
+.proj-zoom img, .proj-zoom video { display: block; width: 100%; height: auto; transition: transform 0.8s var(--ease); }
+.proj-zoom:hover img, .proj-zoom:hover video { transform: scale(1.02); }
 .proj-fig figcaption { margin-top: 12px; color: var(--muted); font-size: 0.95rem; line-height: 1.45; max-width: 62ch; }
 .proj-fig figcaption .mono { color: var(--c); margin-right: 6px; }
 
 .lightbox { position: fixed; inset: 0; z-index: 6000; display: grid; grid-template-columns: 70px 1fr 70px; align-items: center; background: rgba(5, 6, 10, 0.92); backdrop-filter: blur(8px); }
-.lightbox[hidden] { display: none; }
+.lightbox[hidden], .lightbox [hidden] { display: none; }
 .lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; max-height: 92vh; }
-.lightbox img { max-width: 100%; max-height: 84vh; object-fit: contain; border-radius: 10px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); }
+.lightbox img, .lightbox video { max-width: 100%; max-height: 84vh; object-fit: contain; border-radius: 10px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); }
 .lightbox figcaption { color: #c9c6be; text-transform: none; letter-spacing: 0; font-size: 0.8rem; text-align: center; }
 .lightbox button { justify-self: center; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.06); color: #fff; font-size: 1.2rem; cursor: pointer; }
 .lightbox button:hover { background: var(--accent); border-color: var(--accent); }

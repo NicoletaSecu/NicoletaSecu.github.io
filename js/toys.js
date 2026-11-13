@@ -399,8 +399,8 @@ const Toys = (() => {
   // Mentre la gravità è attiva conto quanto si gioca (afferrare = 1, scuotere = 3).
   // Superato il limite compare una console con l'errore e il resoconto di quello che hai combinato
   // (quante prese, cosa hai scosso), poi la scrivania si "riavvia" e torna tutto a posto.
-  // Più basso è il numero, prima arriva (15 = una quindicina di prese, o cinque scossoni).
-  const PLAY_LIMIT = 15;
+  // Più basso è il numero, prima arriva (25 = una venticinquina di prese, o otto-nove scossoni).
+  const PLAY_LIMIT = 25;
   let playScore = 0;
   const stats = { grabs: 0, shaken: new Map() };
 

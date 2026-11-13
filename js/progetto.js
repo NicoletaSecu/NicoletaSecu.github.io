@@ -55,7 +55,7 @@
 
     <section class="proj-shot-wrap rise">
       <div class="proj-shot" id="projShot">
-        ${p.image ? `<img id="projCover" src="${esc(shotSrcs[0] || p.image)}" alt="${title}">` : `<div class="proj-ph">${title}</div>`}
+        ${p.image ? `<img id="projCover" src="${esc((shots[0] && !shots[0].video && shotSrcs[0]) || p.image)}" alt="${title}">` : `<div class="proj-ph">${title}</div>`}
         <span class="proj-glare" aria-hidden="true"></span>
       </div>
     </section>
@@ -122,6 +122,11 @@
     }
   };
   async function findShots() {
+    // Se il progetto ha dei video (videos in content/projects.js), uso quelli al posto delle immagini.
+    // Li trasformo in oggetti con gli stessi nomi di un'immagine caricata (src, naturalWidth, naturalHeight),
+    // così il resto del codice (le righe, la lightbox) funziona uguale; video: true dice che è un video.
+    if (p.videos && p.videos.length)
+      return p.videos.map((v) => ({ video: true, src: v.src, poster: v.poster || "", naturalWidth: v.w, naturalHeight: v.h }));
     const found = [];
     for (let i = 1; i <= 30; i++) {
       let hit = null;
@@ -154,7 +159,8 @@
         if (ratios[i] < 1 && ratios[i + 1] < 1) { rows.push([i, i + 1]); i++; }
         else rows.push([i]);
       }
-      return { rows, maxH };
+      // sul telefono uno screenshot (o video) del telefono da solo verrebbe alto quasi tutto lo schermo: lo tengo più basso
+      return { rows, maxH: Math.max(innerHeight * 0.6, 320) };
     }
     const best = [{ cost: 0, from: -1 }];
     for (let i = 1; i <= n; i++) {
@@ -182,12 +188,17 @@
     const W = box.clientWidth, gap = 22;
     const ratios = shots.map((im) => im.naturalWidth / im.naturalHeight);
     const { rows, maxH } = rowsFor(ratios, W, gap);
+    // un video: parte da solo, senza audio, in loop. playsinline serve sull'iPhone, altrimenti
+    // si aprirebbe a tutto schermo. Con "riduci movimento" attivo non parte da solo e ha i comandi.
+    const media = (i) => shots[i].video
+      ? `<video src="${esc(shots[i].src)}" poster="${esc(shots[i].poster)}" muted loop playsinline preload="metadata"${reduce ? " controls" : " autoplay"}></video>`
+      : `<img src="${esc(shots[i].src)}" alt="${esc(c[i] || tr(p, "title") + " — " + L("immagine", "image") + " " + (i + 1))}" loading="lazy">`;
     const fig = (i) => {
       const cap = c[i] ? `<figcaption><span class="mono">${String(i + 1).padStart(2, "0")}</span> ${esc(c[i])}</figcaption>` : "";
       // flex-grow proporzionale al rapporto: in una riga ogni immagine prende spazio in proporzione alla sua
       // forma, e così vengono tutte della stessa altezza. (Moltiplico per 100 perché se la somma dei flex-grow
       // è minore di 1 il browser non distribuisce tutto lo spazio: uno screenshot del telefono da solo resterebbe stretto.)
-      return `<figure class="proj-fig" data-i="${i}" style="flex-grow:${(ratios[i] * 100).toFixed(2)}"><button type="button" class="proj-zoom" data-cursor="ingrandisci" aria-label="${L("Ingrandisci l'immagine", "Enlarge image")} ${i + 1}"><img src="${esc(shots[i].src)}" alt="${esc(c[i] || tr(p, "title") + " — " + L("immagine", "image") + " " + (i + 1))}" loading="lazy"></button>${cap}</figure>`;
+      return `<figure class="proj-fig" data-i="${i}" style="flex-grow:${(ratios[i] * 100).toFixed(2)}"><button type="button" class="proj-zoom" data-cursor="ingrandisci" aria-label="${L("Ingrandisci", "Enlarge")} ${i + 1}">${media(i)}</button>${cap}</figure>`;
     };
     box.innerHTML = rows.map((r) => {
       // se la riga verrebbe più alta del massimo, la stringo e la metto al centro
@@ -196,9 +207,32 @@
       const style = h > maxH ? ` style="max-width:${Math.round(maxH * R + gap * (r.length - 1))}px"` : "";
       return `<div class="proj-row"${style}>${r.map(fig).join("")}</div>`;
     }).join("");
+    // alcuni browser fanno partire da soli i video solo se "muted" è impostato anche da script
+    if (!reduce) {
+      box.querySelectorAll("video").forEach((v) => { v.muted = true; v.play().catch(() => {}); });
+      syncVideos([...box.querySelectorAll("video")]);
+    }
     box.querySelectorAll(".proj-fig").forEach((f, i) => {
       if (animate) setTimeout(() => f.classList.add("in"), reduce ? 0 : 60 + i * 70);
       else f.classList.add("in");
+    });
+  }
+
+  // Tiene insieme i video dello stesso progetto (computer e telefono), così mostrano la stessa
+  // sezione nello stesso momento. Funziona solo se i video durano uguale: aspetto di conoscere
+  // le durate, li riporto tutti all'inizio e li faccio partire insieme. Poi il primo video fa da
+  // "direttore": ogni volta che avanza controllo gli altri e, se sono indietro o avanti di più di
+  // 15 centesimi di secondo (capita se uno si carica più lentamente), li rimetto al suo stesso punto.
+  function syncVideos(vids) {
+    if (vids.length < 2) return;
+    const ready = (v) => new Promise((ok) => (v.readyState >= 1 ? ok() : v.addEventListener("loadedmetadata", ok, { once: true })));
+    Promise.all(vids.map(ready)).then(() => {
+      const [lead, ...rest] = vids;
+      if (rest.some((v) => Math.abs(v.duration - lead.duration) > 0.3)) return; // durate diverse: non c'è niente da allineare
+      vids.forEach((v) => { v.currentTime = 0; v.play().catch(() => {}); });
+      lead.addEventListener("timeupdate", () => {
+        rest.forEach((v) => { if (Math.abs(v.currentTime - lead.currentTime) > 0.15) v.currentTime = lead.currentTime; });
+      });
     });
   }
 
@@ -211,19 +245,23 @@
     lb.hidden = true;
     lb.innerHTML = `<button type="button" class="lb-close" aria-label="${L("Chiudi", "Close")}">×</button>
       <button type="button" class="lb-prev" aria-label="${L("Immagine precedente", "Previous image")}">←</button>
-      <figure><img alt=""><figcaption class="mono"></figcaption></figure>
+      <figure><img alt=""><video muted loop playsinline controls hidden></video><figcaption class="mono"></figcaption></figure>
       <button type="button" class="lb-next" aria-label="${L("Immagine successiva", "Next image")}">→</button>`;
     document.body.appendChild(lb);
-    const img = lb.querySelector("img"), cap = lb.querySelector("figcaption");
+    const img = lb.querySelector("img"), vid = lb.querySelector("video"), cap = lb.querySelector("figcaption");
     let at = 0;
     const show = (i) => {
       at = (i + shotSrcs.length) % shotSrcs.length;
       const c = capsNow();
-      img.src = shotSrcs[at];
+      // nella vista grande mostro l'immagine oppure il video, e nascondo l'altro
+      const isVideo = !!shots[at].video;
+      img.hidden = isVideo; vid.hidden = !isVideo;
+      if (isVideo) { vid.src = shotSrcs[at]; vid.muted = true; vid.play().catch(() => {}); }
+      else { vid.pause(); img.src = shotSrcs[at]; }
       cap.textContent = `${String(at + 1).padStart(2, "0")} / ${String(shotSrcs.length).padStart(2, "0")}${c[at] ? " — " + c[at] : ""}`;
     };
     lightboxOpen = (i) => { show(i); lb.hidden = false; document.documentElement.classList.add("lb-open"); };
-    const close = () => { lb.hidden = true; document.documentElement.classList.remove("lb-open"); };
+    const close = () => { vid.pause(); lb.hidden = true; document.documentElement.classList.remove("lb-open"); };
     lb.querySelector(".lb-close").addEventListener("click", close);
     lb.querySelector(".lb-prev").addEventListener("click", () => show(at - 1));
     lb.querySelector(".lb-next").addEventListener("click", () => show(at + 1));
@@ -274,7 +312,7 @@
     shots = found; shotSrcs = found.map((im) => im.src);
     // la prima immagine diventa anche quella grande in alto (più nitida di quella della galleria)
     const cover = document.getElementById("projCover");
-    if (cover) cover.src = shotSrcs[0];
+    if (cover && !shots[0].video) cover.src = shotSrcs[0];
     fillShots(true);
     setupLightbox();
     // se la finestra cambia larghezza le righe migliori possono essere altre: le rifaccio
